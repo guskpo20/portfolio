@@ -1,0 +1,212 @@
+---
+import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+
+const { pathname } = Astro.url;
+const currentLang = getLanguageFromURL(pathname);
+const t = useTranslations(currentLang);
+
+interface TabItem {
+    id: string;
+    title: string;
+    items: {
+        title: string;
+        description: string;
+        image: string;
+        idealFor: string;
+        includes: string;
+    }[];
+}
+
+const tabs = (t('types') as any).tabs as TabItem[];
+---
+
+<style lang="scss">
+    @import '../styles/variables.scss';
+
+    .container {
+        padding: 90px 40px;
+
+        h2{
+            margin-bottom: 50px;
+            color: $base-color;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+
+            button {
+                background: none;
+                border: 2px solid $accent-color;
+                padding: 10px 20px;
+                color: $accent-color;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &.active {
+                    background: $accent-color;
+                    color: white;
+                }
+
+                &:hover:not(.active) {
+                    background: rgba($accent-color, 0.1);
+                }
+            }
+        }
+
+        .tab-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+
+            .type-card {
+                display: none;
+                border: 1px solid $grey-color;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+
+                &.active {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 15px;
+                    animation: fadeIn 0.5s ease;
+                }
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    object-fit: contain;
+                }
+
+                h3 {
+                    color: $accent-color;
+                    margin: 10px 0;
+                }
+
+                .description {
+                    color: $grey-color;
+                    font-size: 0.95em;
+                    margin-bottom: 15px;
+                }
+
+                .details {
+                    width: 100%;
+                    text-align: left;
+                    
+                    .detail-section {
+                        margin-top: 12px;
+                        
+                        strong {
+                            color: $accent-color;
+                            font-size: 0.9em;
+                            display: block;
+                            margin-bottom: 4px;
+                        }
+
+                        p {
+                            color: $grey-color;
+                            font-size: 0.85em;
+                            line-height: 1.4;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<section class="container" id="types">
+    <h2 class="heading-text">{t('types.title')}</h2>
+    <div class="tabs">
+        {tabs.map((tab, index) => (
+            <button 
+                class={index === 0 ? 'active' : ''} 
+                data-tab={tab.id}
+            >
+                {tab.title}
+            </button>
+        ))}
+    </div>
+    
+    <div class="tab-content">
+        {tabs.map((tab, tabIndex) => 
+            tab.items.map((item, itemIndex) => (
+                <div 
+                    class={`type-card ${tabIndex === 0 ? 'active' : ''}`}
+                    data-content={tab.id}
+                >
+                    <img src={item.image} alt={item.title} />
+                    <h3>{item.title}</h3>
+                    <p class="description">{item.description}</p>
+                    <div class="details">
+                        <div class="detail-section">
+                            <strong>{currentLang === 'es' ? 'Ideal para:' : 'Ideal for:'}</strong>
+                            <p>{item.idealFor}</p>
+                        </div>
+                        <div class="detail-section">
+                            <strong>{currentLang === 'es' ? 'Incluye:' : 'Includes:'}</strong>
+                            <p>{item.includes}</p>
+                        </div>
+                    </div>
+                </div>
+            ))
+        )}
+    </div>
+</section>
+
+<script>
+    function setupTabs() {
+        const tabs = document.querySelectorAll('.tabs button[data-tab]') as NodeListOf<HTMLButtonElement>;
+        const cards = document.querySelectorAll('.type-card') as NodeListOf<HTMLDivElement>;
+
+        function setActiveTab(tabId: string): void {
+            // Update tabs
+            tabs.forEach(tab => {
+                tab.classList.toggle('active', tab.getAttribute('data-tab') === tabId);
+            });
+
+            // Update content
+            cards.forEach(card => {
+                card.classList.toggle('active', card.getAttribute('data-content') === tabId);
+            });
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                if (tabId) {
+                    setActiveTab(tabId);
+                }
+            });
+        });
+    }
+
+    // Setup tabs when the page loads
+    document.addEventListener('DOMContentLoaded', setupTabs);
+    document.addEventListener('astro:page-load', setupTabs);
+
+    // Run setup immediately in case the page is already loaded
+    if (document.readyState === 'complete') {
+        setupTabs();
+    }
+</script>

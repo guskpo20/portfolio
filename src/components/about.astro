@@ -11,19 +11,15 @@ const t = useTranslations(currentLang);
 <style lang="scss">
      @import '../styles/variables.scss';
     .container{
-        max-height: 100vh;
+        padding-bottom: 90px;
         padding-top: 90px; /* 70px del header + 20px de espacio extra */
         margin-top: 0;
         width: 100%;
-        height: calc(100% - 90px);
         position: relative; /* Asegura que el z-index funcione */
         z-index: 1; /* Menor que el z-index del header */
         display: flex;
         justify-content: center;
         align-items: center;
-
-
-        
         .columns{
             width: 100%;
             max-width: $container-max-width; // Asumiendo que tienes esta variable definida
@@ -40,11 +36,35 @@ const t = useTranslations(currentLang);
                 justify-content: flex-end;
             }
             .image-container{
-                width: 250px;
-                border-radius: 50% !important;
+                width: 400px;
+                border-radius: 30% !important;
                 overflow: hidden;
-                img{
-                    height: 100%
+                background-color: $base-color;
+                display: flex;
+                justify-content: center;
+                @media screen and (max-width: $almost-mobile) {
+                    width: 250px;
+                    aspect-ratio: 1/1;
+                    display: flex;
+                    align-items: center;
+                    height: 250px;
+                    border-radius: 20% !important;
+                    overflow: hidden;
+                    background-color: $base-color;
+                    display: flex;
+                    position: relative;
+                }
+                img {
+                    width: 100%;
+                    height: auto;  
+                    @media screen and (max-width: $almost-mobile) {
+                        width: 100%;
+                        height: auto;
+                        min-height: 100%;
+                        object-fit: cover;
+                        position: absolute;
+                        top:0;
+                    }
                 }
             }
 
@@ -72,6 +92,7 @@ const t = useTranslations(currentLang);
                 flex-direction: row;
                 gap: 20px;
                 width: 100%;
+                margin-bottom: 20px;
             }
 
             
@@ -92,9 +113,38 @@ const t = useTranslations(currentLang);
 
 
     }
+
+    .scroll-arrow {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .arrow {
+            width: 30px;
+            height: 30px;
+            border-right: 3px solid $base-color;
+            border-bottom: 3px solid $base-color;
+            transform: rotate(45deg);
+            animation: arrow-bounce 2s infinite;
+            opacity: 1;
+        }
+
+        @keyframes arrow-bounce {
+            0% {
+                transform: rotate(45deg) translate(0, 0);
+            }
+            50% {
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+            100% {
+                transform: rotate(45deg) translate(0, 0);
+            }
+        }
+    }
 </style>
 
-<main class="container">
+<main class="container" id="about">
  <div class="columns">
     <div class={`left-column ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
         <p class="base-text base-text-typo">{t('about.intro')}</p>
@@ -107,8 +157,11 @@ const t = useTranslations(currentLang);
     </div>
     <div class={`right-column ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
         <div class="image-container">
-            <img src="/tavo.jpg" alt="Tavo Dev" width="250"/>
+            <img src="/tavo.png" alt="Tavo Dev" width="250"/>
         </div>
     </div>
+ </div>
+ <div class="scroll-arrow">
+    <a href="#services" target="_self"><div class="arrow"></div></a>
  </div>
 </main>

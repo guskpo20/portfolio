@@ -1,0 +1,73 @@
+---
+import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+import Cta from './cta.astro';
+
+const { pathname } = Astro.url;
+const currentLang = getLanguageFromURL(pathname);
+const t = useTranslations(currentLang);
+
+interface ServiceCard {
+    title: string;
+    description: string;
+    image: string;
+}
+
+const services = t('services.cards') as ServiceCard[];
+---
+
+<style lang="scss">
+    @import '../styles/variables.scss';
+    .container{
+        padding-top: 90px;
+       
+        h2,.base-text{
+            text-align: center;
+            color: $accent-color;
+        }
+
+         h2{
+            margin-bottom: 30px;
+            color: $base-color;
+        }
+
+        .services-container{
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 40px;
+            div{
+                border: 1px solid $grey-color;
+                color: $accent-color;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                
+                &:hover{
+                    h3{
+                        color: $base-color;
+                    }
+                }
+            }
+        }
+    }
+</style>
+
+
+<section class="container" id="services">
+    <h2 class="heading-text ">{t('services.title')}</h2>
+    <p class="base-text">{t('services.subtitle')}</p>
+    <div class="services-container">
+        {services.map((service: ServiceCard) => (
+            <div>
+                <img src={service.image} width="35"/>
+                <h3>{service.title}</h3>
+                <p class="grey-text">{service.description}</p>
+            </div>
+        ))}
+    </div>
+</section>

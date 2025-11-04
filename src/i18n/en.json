@@ -8,5 +8,163 @@
         "intro": "Hello!",
         "im": "I´m",
         "description": "I design and develop <b>high-performing emails</b> and <b>conversion-driven websites</b>.<br>I'm passionate about creating clean, fast, and purposeful experiences."
+    },
+    "services": {
+        "title": "Services",
+        "subtitle": "Digital solutions that drive performance",
+        "cards": [
+            {
+                "title": "HTML Email Development",
+                "description": "Professional HTML emails. Clean code structure and layout responsiveness.",
+                "image": "/code.png"
+            },
+            {
+                "title": "Email Templates for your CRM",
+                "description": "Customised HTML email Templates for your email marketing activities. (Salesforce marketing cloud, Veeva, MailChimp)",
+                "image": "/code.png"
+            },
+            {
+                "title": "Email Testing",
+                "description": "Tested based on your scope. Using litmus, email on acid and real devices.",
+                "image": "/code.png"
+            },
+            {
+                "title": "Emails Code review",
+                "description": "Review HTML/CSS code to provide optimization and best practices.",
+                "image": "/code.png"
+            },
+            {
+                "title": "Landing Pages",
+                "description": "Capture leads for your business. Send your subscribers to a dedicated page.",
+                "image": "/code.png"
+            },
+            {
+                "title": "Performance Optimization",
+                "description": "Enhancing website speed and efficiency for maximum user satisfaction.",
+                "image": "/code.png"
+            }
+        ]
+    },
+    "types": {
+        "title": "Custom Solutions",
+        "tabs": [
+            {
+                "id": "emails",
+                "title": "Email Types",
+                "items": [
+                    {
+                        "title": "Newsletter Email",
+                        "description": "Regular updates about your business, products, or content.",
+                        "idealFor": "Small businesses, content creators, personal brands",
+                        "includes": "Header design, content sections, footer with social links",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Promotional Email",
+                        "description": "Special offers, discounts, and limited-time deals.",
+                        "idealFor": "E-commerce, local businesses, service providers",
+                        "includes": "Offer highlights, countdown timer, call-to-action buttons",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Freelancer Portfolio Email",
+                        "description": "Professional email template to showcase your work and services.",
+                        "idealFor": "Designers, developers, writers, photographers, artists",
+                        "includes": "Portfolio preview, services list, testimonial section",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Business Proposal Email",
+                        "description": "Professional template for sending quotes and proposals.",
+                        "idealFor": "Independent consultants, small agencies, freelancers",
+                        "includes": "Service breakdown, pricing table, terms summary",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Personal Event Invitation",
+                        "description": "Elegant email templates for weddings, birthdays, and anniversaries.",
+                        "idealFor": "Event planners, individuals hosting celebrations",
+                        "includes": "Event details, RSVP button, dress code information",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Follow-up Email",
+                        "description": "Friendly template for following up after meetings or initial contacts.",
+                        "idealFor": "Professionals, networkers, job seekers",
+                        "includes": "Meeting summary, next steps, contact information",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Thank You Email",
+                        "description": "Personalized template to thank clients, collaborators, or event attendees.",
+                        "idealFor": "Event organizers, business owners, project managers",
+                        "includes": "Personal message, future opportunities, social links",
+                        "image": "/code.png"
+                    }
+                ]
+            },
+            {
+                "id": "landings",
+                "title": "Landing Page Types",
+                "items": [
+                    {
+                        "title": "Social Event Page",
+                        "description": "Beautiful page for weddings, birthdays, and anniversaries.",
+                        "idealFor": "Couples, party planners, celebration hosts",
+                        "includes": "RSVP form, event schedule, gift registry, location map",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Personal Portfolio",
+                        "description": "Minimalist landing page to showcase your work.",
+                        "idealFor": "Artists, photographers, designers, creative professionals",
+                        "includes": "Work gallery, about section, contact form, skills list",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Local Event",
+                        "description": "Promote small festivals, local concerts, or art exhibitions.",
+                        "idealFor": "Local organizers, artists, community groups",
+                        "includes": "Ticket sales, event program, interactive map, gallery",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Family Gathering",
+                        "description": "Organize family reunions or alumni meetings.",
+                        "idealFor": "Family organizers, reunion committees, alumni groups",
+                        "includes": "Photo gallery, attendance form, logistics details, updates",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Small Business",
+                        "description": "Simple yet effective page for local businesses.",
+                        "idealFor": "Restaurants, hair salons, yoga studios, local shops",
+                        "includes": "Services menu, booking form, testimonials, business hours",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Project Launch",
+                        "description": "Announce your new personal project or venture.",
+                        "idealFor": "Entrepreneurs, creators, startups",
+                        "includes": "Countdown timer, preview gallery, waitlist signup, features",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Digital Resume",
+                        "description": "Modern web version of your CV with interactive elements.",
+                        "idealFor": "Job seekers, professionals, career changers",
+                        "includes": "Skills matrix, work timeline, portfolio section, contact form",
+                        "image": "/code.png"
+                    },
+                    {
+                        "title": "Donation Page",
+                        "description": "Raise funds for personal or community causes.",
+                        "idealFor": "Small NGOs, community projects, fundraisers",
+                        "includes": "Donation form, progress bar, cause description, updates feed",
+                        "image": "/code.png"
+                    }
+                ]
+            }
+        ]
     }
 }

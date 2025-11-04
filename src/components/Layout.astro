@@ -1,6 +1,8 @@
 ---
 import Header from './header.astro';
 import About from './about.astro';
+import Services from './services.astro';
+import Types from './types.astro';
 const { title, lang } = Astro.props;
 ---
 <html lang={lang}>
@@ -17,6 +19,10 @@ const { title, lang } = Astro.props;
 	<body>
 		<Header />
         <About />
+		<div class="background-dark">
+			<Services />
+		</div>
+		<Types />
 		<slot />
 	</body>
 </html>

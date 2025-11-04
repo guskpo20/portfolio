@@ -27,6 +27,22 @@ const t = useTranslations(currentLang);
     const hamburger = document.querySelector('.hamburger');
     const links = document.querySelector('.links');
     const langSwitcher = document.querySelector('.lang-switcher');
+    const navLinks = document.querySelectorAll('.links a');
+
+    // Función para cerrar el menú
+    const closeMenu = () => {
+        links?.classList.remove('active');
+        hamburger?.classList.remove('active');
+    };
+
+    // Agregar evento click a cada link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) { // Asumiendo que 768px es tu breakpoint mobile
+                closeMenu();
+            }
+        });
+    });
     
     if (hamburger && links) {
         hamburger.addEventListener('click', () => {
@@ -54,6 +70,14 @@ const t = useTranslations(currentLang);
 <style lang="scss">
     @import '../styles/variables.scss';
     
+    .background-white{
+        background-color: #FFFFFF;
+        width: 100%;
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        display: flex;
+    }
     .container {
         height: 70px;
         display: flex;
@@ -61,12 +85,7 @@ const t = useTranslations(currentLang);
         flex-direction: row;
         align-items: center;
         width: 100%;
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
         background-color: white;
-        z-index: 1000;
         color: $base-color;
 
         .column {
@@ -186,32 +205,34 @@ const t = useTranslations(currentLang);
     }
 </style>
 
-<header class={`container ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
-    <div class="heading-text-typo logo">TAVODEV</div>
-    
-    <div class="column">
-        <div class="right-section">
-            <button class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-        <div class="text-size links heading-text-typo">
-            <a target="_self" href="#about">{t('nav.about')}</a>
-            <a target="_self" href="#services">{t('nav.services')}</a>
-            <a target="_self" href="#contact">{t('nav.contact')}</a>
-        </div>
-        <div>
-            <button class="lang-switcher text-size heading-text-typo">
-            {currentLang === "es" ? 
-                <img src="/spanish.png" alt="Español" width="30"/>    
-                :
-                <img src="/english.png" alt="English" width="30"/>
-            }
-            
-            {currentLang === 'es' ? 'ES' : 'EN'}
-            </button>
+<header class={`background-white ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
+    <div class="container">
+        <div class="heading-text-typo logo">TAVODEV</div>
+        
+        <div class="column">
+            <div class="right-section">
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="text-size links heading-text-typo">
+                <a target="_self" href="#about">{t('nav.about')}</a>
+                <a target="_self" href="#services">{t('nav.services')}</a>
+                <a target="_self" href="#contact">{t('nav.contact')}</a>
+            </div>
+            <div>
+                <button class="lang-switcher text-size heading-text-typo">
+                {currentLang === "es" ? 
+                    <img src="/spanish.png" alt="Español" width="30"/>    
+                    :
+                    <img src="/english.png" alt="English" width="30"/>
+                }
+                
+                {currentLang === 'es' ? 'ES' : 'EN'}
+                </button>
+            </div>
         </div>
     </div>
 </header>

@@ -6,6 +6,7 @@
     padding: 0; 
     box-sizing: border-box; 
     font-family: $font-family-base; 
+    scroll-behavior: smooth;
 }
 
 body {
@@ -22,6 +23,10 @@ body {
 
 .border-visual-debug { 
     /* border: 2px solid $base-color;  */
+}
+
+.background-dark{
+    background-color: $background-color;;
 }
 
 
