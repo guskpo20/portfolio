@@ -1,0 +1,12 @@
+{
+    "nav": {
+        "about": "Sobre mí",
+        "services": "Servicios",
+        "contact": "Contacto"
+    },
+    "about": {
+        "intro": "Hola!",
+        "im": "Soy",
+        "description": "Me dedico a diseñar y desarrollar <b>emails que generan resultados</b> y <b>webs que impulsan conversiones.</b><br>Me apasiona crear experiencias limpias, rápidas y con propósito."
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "nav": {
+        "about": "About me",
+        "services": "Services",
+        "contact": "Contact"
+    },
+    "about": {
+        "intro": "Hello!",
+        "im": "I´m",
+        "description": "I design and develop <b>high-performing emails</b> and <b>conversion-driven websites</b>.<br>I'm passionate about creating clean, fast, and purposeful experiences."
+    }
+}

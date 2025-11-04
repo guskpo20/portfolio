@@ -1,0 +1,78 @@
+---
+interface Props {
+    text: string;
+    url: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    isPrimary?: boolean;
+    imageWidth?: number;
+}
+
+const { 
+    text, 
+    url, 
+    imageSrc, 
+    imageAlt = "Button image",
+    isPrimary = true, 
+    imageWidth,
+} = Astro.props;
+---
+
+<style lang="scss">
+    @import '../styles/variables.scss';
+
+    .cta-button {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 15px;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        width: fit-content;
+        
+        // Estilos para el botón primario
+        &.primary {
+            background-color: $base-color;
+            color: white;
+
+            &:hover {
+                background-color: transparent;
+                color: $base-color;
+            }
+        }
+
+        // Estilos para el botón secundario
+        &.secondary {
+            background-color: $accent-color;
+            color: white;
+
+            &:hover {
+                background-color: $base-color;
+                color: white;
+            }
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+            object-fit: cover;
+        }
+
+        .text {
+            font-family: $font-family-base;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+</style>
+
+<a 
+    href={url} 
+    class={`cta-button ${isPrimary ? 'primary' : 'secondary'}`}
+    target="_blank"
+>
+    {imageSrc && <img src={imageSrc} alt={imageAlt} width={imageWidth}/>}
+    <span class="text">{text}</span>
+</a>

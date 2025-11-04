@@ -1,0 +1,55 @@
+@import 'variables.scss';
+
+// Reset y estilos base
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: $font-family-base; 
+}
+
+body {
+    height: 300vh;
+    position: relative;
+}
+
+// Clases utilitarias
+.container { 
+    max-width: $container-max-width; 
+    margin: 0 auto; 
+    padding: 0 10px;
+}
+
+.border-visual-debug { 
+    /* border: 2px solid $base-color;  */
+}
+
+
+// Tipografía
+.base-text-typo { 
+    font-family: $font-family-base; 
+}
+
+.heading-text-typo { 
+    font-family: $font-family-heading; 
+}
+
+.base-text { 
+    font-size: $font-size-base; 
+    line-height: $line-height-base; 
+    font-weight: $body-font-weight;
+}
+
+.heading-text { 
+    font-size: $font-size-heading; 
+    line-height: $line-height-base; 
+    font-weight: $heading-font-weight;
+}
+
+.small-text{
+    font-size: $font-size-small;
+}
+
+.grey-text{
+    color: $grey-color;
+}

@@ -1,0 +1,217 @@
+---
+import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+
+const { pathname } = Astro.url;
+const currentLang = getLanguageFromURL(pathname);
+const t = useTranslations(currentLang);
+---
+
+<script>
+    // Verificar el idioma preferido al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+        const preferredLang = localStorage.getItem('preferredLanguage');
+        const currentPath = window.location.pathname;
+        const currentLang = currentPath.split('/')[1] || 'es';
+
+        if (preferredLang && preferredLang !== currentLang) {
+            // Si hay un idioma preferido y es diferente al actual, redirigir
+            if (preferredLang === 'es') {
+                window.location.href = '/';
+            } else {
+                const pathWithoutLang = currentPath.replace(`/${currentLang}`, '') || '/';
+                window.location.href = `/${preferredLang}${pathWithoutLang}`;
+            }
+        }
+    });
+
+    const hamburger = document.querySelector('.hamburger');
+    const links = document.querySelector('.links');
+    const langSwitcher = document.querySelector('.lang-switcher');
+    
+    if (hamburger && links) {
+        hamburger.addEventListener('click', () => {
+            links.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+
+    if (langSwitcher) {
+        langSwitcher.addEventListener('click', () => {
+            const currentPath = window.location.pathname;
+            const currentLang = currentPath.split('/')[1] || 'es';
+            const newLang = currentLang === 'es' ? 'en' : 'es';
+            
+            localStorage.setItem('preferredLanguage', newLang);
+
+            const newUrl = newLang === 'es' ? '/' : `/en${currentPath.replace(`/${currentLang}`, '') || '/'}`;
+            
+            history.pushState({}, '', newUrl);
+            window.location.reload();
+        });
+    }
+</script>
+
+<style lang="scss">
+    @import '../styles/variables.scss';
+    
+    .container {
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        z-index: 1000;
+        color: $base-color;
+
+        .column {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .right-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-switcher {
+            padding: 5px 10px;
+            border: 2px solid $accent-color;
+            border-radius: 5px;
+            background: transparent;
+            color: $accent-color;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            &:hover {
+                background: $accent-color;;
+                color: white;
+            }
+        }
+
+        .links {
+            display: flex;
+            gap: 40px;
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                color: $accent-color;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        .text-size{
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+
+            span {
+                width: 30px;
+                height: 3px;
+                background: $accent-color;
+                border-radius: 10px;
+                transition: all 0.3s linear;
+                position: relative;
+                transform-origin: 1px;
+            }
+        }
+
+        @media screen and (max-width: $almost-mobile) {
+            .hamburger {
+                display: flex;
+                &.active {
+                    span {
+                        &:first-child {
+                            transform: rotate(45deg);
+                        }
+                        &:nth-child(2) {
+                            opacity: 0;
+                        }
+                        &:nth-child(3) {
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+            }
+
+            .links {
+                position: fixed;
+                flex-direction: column;
+                background: white;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                padding: 2rem;
+                transition: all 0.3s ease-in-out;
+                align-items: center;
+                justify-content: flex-start;
+
+                &.active {
+                    right: 0;
+                }
+            }
+        }
+    }
+
+    .logo{
+        font-family: "Roboto", sans-serif !important;
+        font-size: 45px;
+        font-weight: bold;
+    }
+</style>
+
+<header class={`container ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
+    <div class="heading-text-typo logo">TAVODEV</div>
+    
+    <div class="column">
+        <div class="right-section">
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="text-size links heading-text-typo">
+            <a target="_self" href="#about">{t('nav.about')}</a>
+            <a target="_self" href="#services">{t('nav.services')}</a>
+            <a target="_self" href="#contact">{t('nav.contact')}</a>
+        </div>
+        <div>
+            <button class="lang-switcher text-size heading-text-typo">
+            {currentLang === "es" ? 
+                <img src="/spanish.png" alt="Español" width="30"/>    
+                :
+                <img src="/english.png" alt="English" width="30"/>
+            }
+            
+            {currentLang === 'es' ? 'ES' : 'EN'}
+            </button>
+        </div>
+    </div>
+</header>

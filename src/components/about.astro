@@ -1,0 +1,114 @@
+
+---
+import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+import Cta from './cta.astro';
+
+const { pathname } = Astro.url;
+const currentLang = getLanguageFromURL(pathname);
+const t = useTranslations(currentLang);
+---
+
+<style lang="scss">
+     @import '../styles/variables.scss';
+    .container{
+        max-height: 100vh;
+        padding-top: 90px; /* 70px del header + 20px de espacio extra */
+        margin-top: 0;
+        width: 100%;
+        height: calc(100% - 90px);
+        position: relative; /* Asegura que el z-index funcione */
+        z-index: 1; /* Menor que el z-index del header */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        
+        .columns{
+            width: 100%;
+            max-width: $container-max-width; // Asumiendo que tienes esta variable definida
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            .left-column, .right-column{
+                width: 50%;
+            }
+            .right-column{
+                display: flex;
+                justify-content: flex-end;
+            }
+            .image-container{
+                width: 250px;
+                border-radius: 50% !important;
+                overflow: hidden;
+                img{
+                    height: 100%
+                }
+            }
+
+            .heading-text{
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+
+            .small-text{
+                margin-bottom: 30px;
+            }
+
+            .accent-color{
+                color: $base-color;
+            }
+
+        
+            p{
+                text-wrap: balance;
+            }
+
+            .ctas{
+                margin-top: 20px;
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                width: 100%;
+            }
+
+            
+            @media screen and (max-width: $almost-mobile) {
+                flex-direction: column-reverse;
+                align-items: center;
+                height: auto;
+                .left-column, .right-column{
+                    text-align: center !important;
+                    justify-content: center !important;
+                    width: 70%;
+                    .ctas{
+                        justify-content: center !important;
+                    }
+                }
+            }
+        }
+
+
+    }
+</style>
+
+<main class="container">
+ <div class="columns">
+    <div class={`left-column ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
+        <p class="base-text base-text-typo">{t('about.intro')}</p>
+        <h1 class="heading-text heading-text-typo">{t('about.im')} <span class="accent-color">Gustavo</span></h1>
+        <p class="base-text" set:html={t('about.description')} />
+        <div class="ctas">
+            <Cta text="Linkedin" imageSrc='/linkedin.png' imageWidth={25} url="https://www.linkedin.com/in/gustavo-keymetlian" isPrimary={true} />
+            <Cta text="Github" imageSrc='/github.webp' imageWidth={25} url="https://github.com/guskpo20" isPrimary={false} />
+        </div>
+    </div>
+    <div class={`right-column ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
+        <div class="image-container">
+            <img src="/tavo.jpg" alt="Tavo Dev" width="250"/>
+        </div>
+    </div>
+ </div>
+</main>
