@@ -3,6 +3,7 @@ import Header from './header.astro';
 import About from './about.astro';
 import Services from './services.astro';
 import Types from './types.astro';
+import Contact from './contact.astro';
 const { lang } = Astro.props;
 
 
@@ -38,6 +39,9 @@ const {
 			<Services />
 		</div>
 		<Types />
+		<div class="background-dark">
+			<Contact />
+		</div>
 		<slot />
 	</body>
 </html>

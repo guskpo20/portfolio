@@ -1,6 +1,5 @@
 ---
 import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
-import Cta from './cta.astro';
 
 const { pathname } = Astro.url;
 const currentLang = getLanguageFromURL(pathname);
@@ -19,6 +18,11 @@ const services = t('services.cards') as ServiceCard[];
     @import '../styles/variables.scss';
     .container{
         padding-top: 90px;
+        @media screen and (max-width: $mobile) {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        
        
         h2,.base-text{
             text-align: center;
@@ -36,6 +40,11 @@ const services = t('services.cards') as ServiceCard[];
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             padding: 40px;
+
+            @media screen and (max-width: $mobile) {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
             div{
                 border: 1px solid $grey-color;
                 color: $accent-color;

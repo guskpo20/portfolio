@@ -24,12 +24,20 @@ const tabs = (t('types') as any).tabs as TabItem[];
     @import '../styles/variables.scss';
 
     .container {
-        padding: 90px 40px;
+        padding: 90px 50px 400px;
 
         h2{
             margin-bottom: 50px;
             color: $base-color;
             text-align: center;
+             @media screen and (max-width: $mobile) {
+                font-size: 35px;
+             }
+        }
+
+        @media screen and (max-width: $mobile) {
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .tabs {
@@ -43,6 +51,7 @@ const tabs = (t('types') as any).tabs as TabItem[];
                 border: 2px solid $accent-color;
                 padding: 10px 20px;
                 color: $accent-color;
+                font-size: $font-size-small;
                 border-radius: 5px;
                 cursor: pointer;
                 transition: all 0.3s ease;
