@@ -100,24 +100,7 @@ const t = useTranslations(currentLang);
             align-items: center;
         }
 
-        .lang-switcher {
-            padding: 5px 10px;
-            border: 2px solid $accent-color;
-            border-radius: 5px;
-            background: transparent;
-            color: $accent-color;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            &:hover {
-                background: $accent-color;;
-                color: white;
-            }
-        }
+        
 
         .links {
             display: flex;
@@ -136,6 +119,36 @@ const t = useTranslations(currentLang);
             font-size: 22px;
             font-weight: 600;
         }
+        .lang-switcher {
+            padding: 5px 10px;
+            border: 2px solid $accent-color;
+            border-radius: 5px;
+            background: transparent;
+            color: $accent-color;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            &:hover {
+                background: $accent-color;;
+                color: white;
+            }
+
+            @media screen and (max-width: $mobile) {
+                
+                font-size: 14px !important;
+
+                img{
+                    width: 20px !important;
+                }
+                
+            
+            }
+
+        }
+
 
         .hamburger {
             display: none;
@@ -202,6 +215,9 @@ const t = useTranslations(currentLang);
         font-family: "Roboto", sans-serif !important;
         font-size: 45px;
         font-weight: bold;
+        @media screen and (max-width: $mobile) {
+            font-size: 35px;
+        }
     }
 </style>
 
