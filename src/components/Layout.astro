@@ -3,7 +3,16 @@ import Header from './header.astro';
 import About from './about.astro';
 import Services from './services.astro';
 import Types from './types.astro';
-const { title, lang } = Astro.props;
+const { lang } = Astro.props;
+
+
+const {
+  title = "TavoDev | Emails that perform. Websites that convert.",
+  description = "Desarrollo de emails HTML y sitios web rápidos y modernos. Soluciones digitales que generan resultados.",
+  image = "/og-image.jpg",
+  url = "https://tavodev.com",
+} = Astro.props;
+
 ---
 <html lang={lang}>
 	<head>
@@ -11,6 +20,12 @@ const { title, lang } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:url" content={url} />
+		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">

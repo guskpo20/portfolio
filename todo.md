@@ -1,3 +1,4 @@
 - Change Linkedin icon 
 - Spanish about me
 - Check all icons for attributions
+- OG image
