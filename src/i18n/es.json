@@ -21,27 +21,27 @@
             {
                 "title": "Plantillas de Email para tu CRM",
                 "description": "Plantillas HTML personalizadas para tus campañas de email marketing. (Salesforce marketing cloud, Veeva, MailChimp)",
-                "image": "/code.png"
+                "image": "/layers.svg"
             },
             {
                 "title": "Pruebas de Email",
                 "description": "Pruebas basadas en tus requerimientos. Utilizando litmus, email on acid y dispositivos reales.",
-                "image": "/code.png"
+                "image": "/test-tube-diagonal.svg"
             },
             {
                 "title": "Revisión de Código de Emails",
                 "description": "Revisión de código HTML/CSS para proporcionar optimización y mejores prácticas.",
-                "image": "/code.png"
+                "image": "/search-code.svg"
             },
             {
                 "title": "Landing Pages",
                 "description": "Captura leads para tu negocio. Dirige a tus suscriptores a una página dedicada.",
-                "image": "/code.png"
+                "image": "/panel-left-right-dashed.svg"
             },
             {
                 "title": "Optimización de Rendimiento",
                 "description": "Mejora de la velocidad y eficiencia del sitio web para máxima satisfacción del usuario.",
-                "image": "/code.png"
+                "image": "/gauge.svg"
             }
         ]
     },
@@ -57,49 +57,42 @@
                         "description": "Actualizaciones regulares sobre tu negocio, productos o contenido.",
                         "idealFor": "Pequeños negocios, creadores de contenido, marcas personales",
                         "includes": "Diseño de cabecera, secciones de contenido, pie con enlaces sociales",
-                        "image": "/code.png"
+                        "image": "/newspaper.svg"
                     },
                     {
                         "title": "Email Promocional",
                         "description": "Ofertas especiales, descuentos y promociones por tiempo limitado.",
                         "idealFor": "E-commerce, negocios locales, proveedores de servicios",
                         "includes": "Destacados de ofertas, contador regresivo, botones de llamada a la acción",
-                        "image": "/code.png"
-                    },
-                    {
-                        "title": "Email de Portfolio Freelance",
-                        "description": "Plantilla profesional para mostrar tu trabajo y servicios.",
-                        "idealFor": "Diseñadores, desarrolladores, escritores, fotógrafos, artistas",
-                        "includes": "Vista previa del portfolio, lista de servicios, sección de testimonios",
-                        "image": "/code.png"
+                        "image": "/tag.svg"
                     },
                     {
                         "title": "Email de Propuesta Comercial",
                         "description": "Plantilla profesional para enviar presupuestos y propuestas.",
                         "idealFor": "Consultores independientes, agencias pequeñas, freelancers",
                         "includes": "Desglose de servicios, tabla de precios, resumen de términos",
-                        "image": "/code.png"
+                        "image": "/file-text.svg"
                     },
                     {
                         "title": "Invitación a Evento Personal",
                         "description": "Plantillas elegantes para bodas, cumpleaños y aniversarios.",
                         "idealFor": "Organizadores de eventos, personas que organizan celebraciones",
                         "includes": "Detalles del evento, botón de RSVP, información de código de vestimenta",
-                        "image": "/code.png"
+                        "image": "/calendar-heart.svg"
                     },
                     {
                         "title": "Email de Seguimiento",
                         "description": "Plantilla amigable para dar seguimiento después de reuniones o contactos iniciales.",
                         "idealFor": "Profesionales, networkers, buscadores de empleo",
                         "includes": "Resumen de reunión, próximos pasos, información de contacto",
-                        "image": "/code.png"
+                        "image": "/send.svg"
                     },
                     {
                         "title": "Email de Agradecimiento",
                         "description": "Plantilla personalizada para agradecer a clientes, colaboradores o asistentes.",
                         "idealFor": "Organizadores de eventos, dueños de negocios, gestores de proyectos",
                         "includes": "Mensaje personal, oportunidades futuras, enlaces sociales",
-                        "image": "/code.png"
+                        "image": "/handshake.svg"
                     }
                 ]
             },
@@ -112,7 +105,7 @@
                         "description": "Página hermosa para bodas, cumpleaños y aniversarios.",
                         "idealFor": "Parejas, organizadores de fiestas, anfitriones de celebraciones",
                         "includes": "Formulario RSVP, programa del evento, registro de regalos, mapa de ubicación",
-                        "image": "/code.png"
+                        "image": "/party-popper.svg"
                     },
                     {
                         "title": "Portfolio Personal",
@@ -126,45 +119,52 @@
                         "description": "Promociona festivales pequeños, conciertos locales o exposiciones de arte.",
                         "idealFor": "Organizadores locales, artistas, grupos comunitarios",
                         "includes": "Venta de entradas, programa del evento, mapa interactivo, galería",
-                        "image": "/code.png"
+                        "image": "/ticket.svg"
                     },
                     {
                         "title": "Reunión Familiar",
                         "description": "Organiza reuniones familiares o encuentros de ex-alumnos.",
                         "idealFor": "Organizadores familiares, comités de reencuentro, grupos de ex-alumnos",
                         "includes": "Galería de fotos, formulario de asistencia, detalles logísticos, actualizaciones",
-                        "image": "/code.png"
+                        "image": "/users.svg"
                     },
                     {
                         "title": "Pequeño Negocio",
                         "description": "Página simple pero efectiva para negocios locales.",
                         "idealFor": "Restaurantes, peluquerías, estudios de yoga, tiendas locales",
                         "includes": "Menú de servicios, formulario de reservas, testimonios, horario comercial",
-                        "image": "/code.png"
+                        "image": "/store.svg"
                     },
                     {
                         "title": "Lanzamiento de Proyecto",
                         "description": "Anuncia tu nuevo proyecto personal o emprendimiento.",
                         "idealFor": "Emprendedores, creadores, startups",
                         "includes": "Contador regresivo, galería de preview, registro en lista de espera, características",
-                        "image": "/code.png"
+                        "image": "/rocket.svg"
                     },
                     {
                         "title": "Currículum Digital",
                         "description": "Versión web moderna de tu CV con elementos interactivos.",
                         "idealFor": "Buscadores de empleo, profesionales, personas en cambio de carrera",
                         "includes": "Matriz de habilidades, línea de tiempo laboral, sección de portfolio, formulario de contacto",
-                        "image": "/code.png"
+                        "image": "/id-card.svg"
                     },
                     {
                         "title": "Página de Donación",
                         "description": "Recauda fondos para causas personales o comunitarias.",
                         "idealFor": "ONGs pequeñas, proyectos comunitarios, recaudadores de fondos",
                         "includes": "Formulario de donación, barra de progreso, descripción de la causa, feed de actualizaciones",
-                        "image": "/code.png"
+                        "image": "/hand-heart.svg"
                     }
                 ]
             }
         ]
+    },
+    "contact":{
+        "title": "Hablemos!",
+        "description": "¿Tienes alguna pregunta o te gustaría colaborar? Rellena el formulario a continuación y te responderé lo antes posible. ¡Trabajemos juntos para crear algo increíble! <br> También puedes contactarme por Linkedin.",
+        "firstName": "Primer nombre",
+        "subjectTitle": "Asunto",
+        "subject": "Escribe algo"
     }
 }

@@ -21,27 +21,27 @@
             {
                 "title": "Email Templates for your CRM",
                 "description": "Customised HTML email Templates for your email marketing activities. (Salesforce marketing cloud, Veeva, MailChimp)",
-                "image": "/code.png"
+                "image": "/layers.svg"
             },
             {
                 "title": "Email Testing",
                 "description": "Tested based on your scope. Using litmus, email on acid and real devices.",
-                "image": "/code.png"
+                "image": "/test-tube-diagonal.svg"
             },
             {
                 "title": "Emails Code review",
                 "description": "Review HTML/CSS code to provide optimization and best practices.",
-                "image": "/code.png"
+                "image": "/search-code.svg"
             },
             {
                 "title": "Landing Pages",
                 "description": "Capture leads for your business. Send your subscribers to a dedicated page.",
-                "image": "/code.png"
+                "image": "/panel-left-right-dashed.svg"
             },
             {
                 "title": "Performance Optimization",
                 "description": "Enhancing website speed and efficiency for maximum user satisfaction.",
-                "image": "/code.png"
+                "image": "/gauge.svg"
             }
         ]
     },
@@ -57,49 +57,42 @@
                         "description": "Regular updates about your business, products, or content.",
                         "idealFor": "Small businesses, content creators, personal brands",
                         "includes": "Header design, content sections, footer with social links",
-                        "image": "/code.png"
+                        "image": "/newspaper.svg"
                     },
                     {
                         "title": "Promotional Email",
                         "description": "Special offers, discounts, and limited-time deals.",
                         "idealFor": "E-commerce, local businesses, service providers",
                         "includes": "Offer highlights, countdown timer, call-to-action buttons",
-                        "image": "/code.png"
-                    },
-                    {
-                        "title": "Freelancer Portfolio Email",
-                        "description": "Professional email template to showcase your work and services.",
-                        "idealFor": "Designers, developers, writers, photographers, artists",
-                        "includes": "Portfolio preview, services list, testimonial section",
-                        "image": "/code.png"
+                        "image": "/tag.svg"
                     },
                     {
                         "title": "Business Proposal Email",
                         "description": "Professional template for sending quotes and proposals.",
                         "idealFor": "Independent consultants, small agencies, freelancers",
                         "includes": "Service breakdown, pricing table, terms summary",
-                        "image": "/code.png"
+                        "image": "/file-text.svg"
                     },
                     {
                         "title": "Personal Event Invitation",
                         "description": "Elegant email templates for weddings, birthdays, and anniversaries.",
                         "idealFor": "Event planners, individuals hosting celebrations",
                         "includes": "Event details, RSVP button, dress code information",
-                        "image": "/code.png"
+                        "image": "/calendar-heart.svg"
                     },
                     {
                         "title": "Follow-up Email",
                         "description": "Friendly template for following up after meetings or initial contacts.",
                         "idealFor": "Professionals, networkers, job seekers",
                         "includes": "Meeting summary, next steps, contact information",
-                        "image": "/code.png"
+                        "image": "/send.svg"
                     },
                     {
                         "title": "Thank You Email",
                         "description": "Personalized template to thank clients, collaborators, or event attendees.",
                         "idealFor": "Event organizers, business owners, project managers",
                         "includes": "Personal message, future opportunities, social links",
-                        "image": "/code.png"
+                        "image": "/handshake.svg"
                     }
                 ]
             },
@@ -112,7 +105,7 @@
                         "description": "Beautiful page for weddings, birthdays, and anniversaries.",
                         "idealFor": "Couples, party planners, celebration hosts",
                         "includes": "RSVP form, event schedule, gift registry, location map",
-                        "image": "/code.png"
+                        "image": "/party-popper.svg"
                     },
                     {
                         "title": "Personal Portfolio",
@@ -126,45 +119,52 @@
                         "description": "Promote small festivals, local concerts, or art exhibitions.",
                         "idealFor": "Local organizers, artists, community groups",
                         "includes": "Ticket sales, event program, interactive map, gallery",
-                        "image": "/code.png"
+                        "image": "/ticket.svg"
                     },
                     {
                         "title": "Family Gathering",
                         "description": "Organize family reunions or alumni meetings.",
                         "idealFor": "Family organizers, reunion committees, alumni groups",
                         "includes": "Photo gallery, attendance form, logistics details, updates",
-                        "image": "/code.png"
+                        "image": "/users.svg"
                     },
                     {
                         "title": "Small Business",
                         "description": "Simple yet effective page for local businesses.",
                         "idealFor": "Restaurants, hair salons, yoga studios, local shops",
                         "includes": "Services menu, booking form, testimonials, business hours",
-                        "image": "/code.png"
+                        "image": "/store.svg"
                     },
                     {
                         "title": "Project Launch",
                         "description": "Announce your new personal project or venture.",
                         "idealFor": "Entrepreneurs, creators, startups",
                         "includes": "Countdown timer, preview gallery, waitlist signup, features",
-                        "image": "/code.png"
+                        "image": "/rocket.svg"
                     },
                     {
                         "title": "Digital Resume",
                         "description": "Modern web version of your CV with interactive elements.",
                         "idealFor": "Job seekers, professionals, career changers",
                         "includes": "Skills matrix, work timeline, portfolio section, contact form",
-                        "image": "/code.png"
+                        "image": "/id-card.svg"
                     },
                     {
                         "title": "Donation Page",
                         "description": "Raise funds for personal or community causes.",
                         "idealFor": "Small NGOs, community projects, fundraisers",
                         "includes": "Donation form, progress bar, cause description, updates feed",
-                        "image": "/code.png"
+                        "image": "/hand-heart.svg"
                     }
                 ]
             }
         ]
+    },
+    "contact":{
+        "title": "Contact me!",
+        "description": "Have a question or want to work together? Just fill out the form below and I'll get back to you as soon as possible. Let's work together to create something amazing! <br> You can also contact me on LinkedIn.",
+        "firstName": "First Name",
+        "subjectTitle": "Subject",
+        "subject": "Write here..."
     }
 }

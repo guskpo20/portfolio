@@ -1,28 +1,24 @@
 
+---
+import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+import Cta from './cta.astro';
+
+const { pathname } = Astro.url;
+const currentLang = getLanguageFromURL(pathname);
+const t = useTranslations(currentLang);
+---
+
 <style lang="scss">
     @import '../styles/variables.scss';
 
-    .position-relative{
-        height: 500px;
-    }
 
     .container {
-        padding: 30px 50px;
-        position: absolute;
-        width: 100%;
-        top: -350px;
-        left:0;
-        right:0;
-        margin-left:auto;
-        margin-right:auto;
+        padding: 90px 50px;
 
         h2{
             margin-bottom: 30px;
             color: $base-color;
             text-align: center;
-             /* @media screen and (max-width: $mobile) {
-                font-size: 35px;
-             } */
         }
 
         .base-text{
@@ -40,40 +36,15 @@
             padding-right: 20px;
         }
 
-        input[type=text], select, textarea {
-            width: 100%; /* Full width */
-            padding: 12px; /* Some padding */ 
-            border: 1px solid #ccc; /* Gray border */
-            border-radius: 4px; /* Rounded borders */
-            box-sizing: border-box; /* Make sure that padding and width stays in place */
-            margin-top: 6px; /* Add a top margin */
-            margin-bottom: 16px; /* Bottom margin */
-            resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+        .ctas{
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            justify-content: center;
         }
-
-        /* Style the submit button with a specific background color etc */
-        input[type=submit] {
-            background-color: $accent-color;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* When moving the mouse over the submit button, add a darker green color */
-        input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        /* Add a background color and some padding around the form */
-        .container {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-
-
     }
 
 
@@ -84,21 +55,27 @@
 <section class="position-relative">
     
     <div class="container">
-        <h2 class="heading-text">Contact Me</h2>
-        <p class="base-text">Have a question or want to work together? Just fill out the form below and I'll get back to you as soon as possible. Let's work together to create something amazing!</p>
-        <div>
+        <h2 class="heading-text">{t('contact.title')}</h2>
+        <p class="base-text" set:html={t('contact.description')}></p>
+
+        <div class="ctas">
+            <Cta url="mailto:keyme2000@gmail.com?Subject=Contact" imageSrc='/mail.svg' imageWidth={25} isPrimary={true} text=`${t('contact.title')}`/>
+            <Cta text="Linkedin" imageSrc='/linkedin.svg' imageWidth={25} url="https://www.linkedin.com/in/gustavo-keymetlian" isPrimary={false} />
+        </div>
+
+        <!-- <div>
             <form>
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                <label for="fname">{t('contact.firstName')}</label>
+                <input type="text" id="fname" name="firstname" placeholder={`${t('contact.firstName')}`}>
     
                 <label for="email">Email</label>
                 <input type="text" id="email" name="lastname" placeholder="email@email.com">
     
-                <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                <label for="subject">{t('contact.subjectTitle')}</label>
+                <textarea id="subject" name="subject" placeholder={`${t('contact.subject')}`} style="height:200px"></textarea>
     
                 <input type="submit" value="Submit">
             </form>
-        </div>
+        </div> -->
     </div>
 </section>
