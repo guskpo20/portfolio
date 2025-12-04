@@ -1,28 +1,44 @@
 ---
-import Header from './header.astro';
-import About from './about.astro';
-import Services from './services.astro';
-import Types from './types.astro';
-import Contact from './contact.astro';
+import Header from "./header.astro";
+import About from "./about.astro";
+import Services from "./services.astro";
+import Types from "./types.astro";
+import Contact from "./contact.astro";
 const { lang } = Astro.props;
 
-
 const {
-  title = "TavoDev | Emails that perform. Websites that convert.",
-  description = "Desarrollo de emails HTML y sitios web rápidos y modernos. Soluciones digitales que generan resultados.",
-  image = "/og-image.jpg",
-  url = "https://tavodev.com",
+	title = "TavoDev | Emails that perform. Websites that convert.",
+	description = "Desarrollo de emails HTML y sitios web rápidos y modernos. Soluciones digitales que generan resultados.",
+	image = "/og-image.jpg",
+	url = "https://tavo.work",
 } = Astro.props;
-
 ---
+
 <html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta property="og:title" content={title} />
@@ -30,14 +46,37 @@ const {
 		<meta property="og:image" content={image} />
 		<meta property="og:url" content={url} />
 		<meta name="twitter:card" content="summary_large_image" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin=""
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
 		<title>{title}</title>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "Person",
+				name: "Gustavo Keymetlian",
+				url: "https://tavo.work",
+				jobTitle: "Email Developer & Web Developer",
+				address: {
+					"@type": "PostalAddress",
+					addressCountry: "UY",
+				},
+				sameAs: ["https://www.linkedin.com/in/gustavo-keymetlian"],
+			})}
+		/>
 	</head>
 	<body>
 		<Header />
-        <About />
+		<About />
 		<div class="background-dark">
 			<Services />
 		</div>
@@ -50,5 +89,5 @@ const {
 </html>
 
 <style is:global>
-    @import '../styles/global.scss';
+	@import "../styles/global.scss";
 </style>

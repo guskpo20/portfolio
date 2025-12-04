@@ -6,7 +6,7 @@
     },
     "about": {
         "intro": "Hello!",
-        "im": "I´m",
+        "im": "I'm",
         "description": "I design and develop <b>high-performing emails</b> and <b>conversion-driven websites</b>.<br>I'm passionate about creating clean, fast, and purposeful experiences."
     },
     "services": {
@@ -20,12 +20,12 @@
             },
             {
                 "title": "Email Templates for your CRM",
-                "description": "Customised HTML email Templates for your email marketing activities. (Salesforce marketing cloud, Veeva, MailChimp)",
+                "description": "Customized HTML email templates for your email marketing activities. (Salesforce Marketing Cloud, Veeva, Mailchimp)",
                 "image": "/layers.svg"
             },
             {
                 "title": "Email Testing",
-                "description": "Tested based on your scope. Using litmus, email on acid and real devices.",
+                "description": "Tested based on your scope. Using Litmus, Email on Acid and real devices.",
                 "image": "/test-tube-diagonal.svg"
             },
             {
@@ -160,9 +160,9 @@
             }
         ]
     },
-    "contact":{
+    "contact": {
         "title": "Contact me!",
-        "description": "Have a question or want to work together? Just fill out the form below and I'll get back to you as soon as possible. Let's work together to create something amazing! <br> You can also contact me on LinkedIn.",
+        "description": "Have a question or want to work together? Click the button below and I'll get back to you as soon as possible. Let's work together to create something amazing! <br> I usually respond faster on LinkedIn.",
         "firstName": "First Name",
         "subjectTitle": "Subject",
         "subject": "Write here..."

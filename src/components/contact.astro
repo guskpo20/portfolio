@@ -1,7 +1,6 @@
-
 ---
-import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
-import Cta from './cta.astro';
+import { languages, getLanguageFromURL, useTranslations } from "../i18n/utils";
+import Cta from "./cta.astro";
 
 const { pathname } = Astro.url;
 const currentLang = getLanguageFromURL(pathname);
@@ -9,24 +8,23 @@ const t = useTranslations(currentLang);
 ---
 
 <style lang="scss">
-    @import '../styles/variables.scss';
-
+    @import "../styles/variables.scss";
 
     .container {
         padding: 90px 50px;
 
-        h2{
+        h2 {
             margin-bottom: 30px;
             color: $base-color;
             text-align: center;
         }
 
-        .base-text{
+        .base-text {
             text-align: center;
             margin-bottom: 50px;
         }
 
-        >div{
+        > div {
             padding: 20px 50px;
             background-color: $base-color;
             color: #f2f2f2;
@@ -36,7 +34,7 @@ const t = useTranslations(currentLang);
             padding-right: 20px;
         }
 
-        .ctas{
+        .ctas {
             background-color: transparent;
             display: flex;
             flex-direction: row;
@@ -46,21 +44,28 @@ const t = useTranslations(currentLang);
             justify-content: center;
         }
     }
-
-
-
 </style>
 
-
 <section class="position-relative">
-    
     <div class="container">
-        <h2 class="heading-text">{t('contact.title')}</h2>
-        <p class="base-text" set:html={t('contact.description')}></p>
+        <h2 class="heading-text">{t("contact.title")}</h2>
+        <p class="base-text" set:html={t("contact.description")} />
 
         <div class="ctas">
-            <Cta url="mailto:keyme2000@gmail.com?Subject=Contact" imageSrc='/mail.svg' imageWidth={25} isPrimary={true} text=`${t('contact.title')}`/>
-            <Cta text="Linkedin" imageSrc='/linkedin.svg' imageWidth={25} url="https://www.linkedin.com/in/gustavo-keymetlian" isPrimary={false} />
+            <Cta
+                url="mailto:gustavo.keymetlian@outlook.com?Subject=Work with me!"
+                imageSrc="/mail.svg"
+                imageWidth={25}
+                isPrimary={true}
+                text=`${t('contact.title')}`
+            />
+            <Cta
+                text="Linkedin"
+                imageSrc="/linkedin.svg"
+                imageWidth={25}
+                url="https://www.linkedin.com/in/gustavo-keymetlian"
+                isPrimary={false}
+            />
         </div>
 
         <!-- <div>

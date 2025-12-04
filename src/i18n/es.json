@@ -9,7 +9,7 @@
         "im": "Soy",
         "description": "Me dedico a diseñar y desarrollar <b>emails que generan resultados</b> y <b>webs que impulsan conversiones.</b><br>Me apasiona crear experiencias limpias, rápidas y con propósito."
     },
-    "services":{
+    "services": {
         "title": "Servicios",
         "subtitle": "Soluciones digitales que impulsan el rendimiento",
         "cards": [
@@ -20,12 +20,12 @@
             },
             {
                 "title": "Plantillas de Email para tu CRM",
-                "description": "Plantillas HTML personalizadas para tus campañas de email marketing. (Salesforce marketing cloud, Veeva, MailChimp)",
+                "description": "Plantillas HTML personalizadas para tus campañas de email marketing. (Salesforce Marketing Cloud, Veeva, Mailchimp)",
                 "image": "/layers.svg"
             },
             {
                 "title": "Pruebas de Email",
-                "description": "Pruebas basadas en tus requerimientos. Utilizando litmus, email on acid y dispositivos reales.",
+                "description": "Pruebas basadas en tus requerimientos. Utilizando Litmus, Email on Acid y dispositivos reales.",
                 "image": "/test-tube-diagonal.svg"
             },
             {
@@ -160,9 +160,9 @@
             }
         ]
     },
-    "contact":{
-        "title": "Hablemos!",
-        "description": "¿Tienes alguna pregunta o te gustaría colaborar? Rellena el formulario a continuación y te responderé lo antes posible. ¡Trabajemos juntos para crear algo increíble! <br> También puedes contactarme por Linkedin.",
+    "contact": {
+        "title": "¡Hablemos!",
+        "description": "¿Tienes alguna pregunta o te gustaría colaborar? Hacé click en el botón de abajo y te responderé lo antes posible. ¡Trabajemos juntos para crear algo increíble! <br> Por LinkedIn suelo responder más rápido.",
         "firstName": "Primer nombre",
         "subjectTitle": "Asunto",
         "subject": "Escribe algo"
