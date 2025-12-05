@@ -1,5 +1,5 @@
 ---
-import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+import { languages, getLanguageFromURL, useTranslations } from "../i18n/utils";
 
 const { pathname } = Astro.url;
 const currentLang = getLanguageFromURL(pathname);
@@ -11,30 +11,32 @@ interface ServiceCard {
     image: string;
 }
 
-const services = t('services.cards') as ServiceCard[];
+const services = t("services.cards") as ServiceCard[];
 ---
 
 <style lang="scss">
-    @import '../styles/variables.scss';
-    .container{
+    @import "../styles/variables.scss";
+    .container {
         padding-top: 90px;
+        min-height: 100vh !important;
+
         @media screen and (max-width: $mobile) {
             padding-left: 0px;
             padding-right: 0px;
         }
-        
-       
-        h2,.base-text{
+
+        h2,
+        .base-text {
             text-align: center;
             color: $accent-color;
         }
 
-         h2{
+        h2 {
             margin-bottom: 30px;
             color: $base-color;
         }
 
-        .services-container{
+        .services-container {
             margin-top: 30px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -45,7 +47,7 @@ const services = t('services.cards') as ServiceCard[];
                 padding-left: 20px;
                 padding-right: 20px;
             }
-            div{
+            div {
                 border: 1px solid $grey-color;
                 color: $accent-color;
                 padding: 20px;
@@ -55,9 +57,9 @@ const services = t('services.cards') as ServiceCard[];
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
-                
-                &:hover{
-                    h3{
+
+                &:hover {
+                    h3 {
                         color: $base-color;
                     }
                 }
@@ -66,17 +68,18 @@ const services = t('services.cards') as ServiceCard[];
     }
 </style>
 
-
 <section class="container" id="services">
-    <h2 class="heading-text ">{t('services.title')}</h2>
-    <p class="base-text">{t('services.subtitle')}</p>
+    <h2 class="heading-text">{t("services.title")}</h2>
+    <p class="base-text">{t("services.subtitle")}</p>
     <div class="services-container">
-        {services.map((service: ServiceCard) => (
-            <div>
-                <img src={service.image} width="35"/>
-                <h3>{service.title}</h3>
-                <p class="grey-text">{service.description}</p>
-            </div>
-        ))}
+        {
+            services.map((service: ServiceCard) => (
+                <div>
+                    <img src={service.image} width="35" />
+                    <h3>{service.title}</h3>
+                    <p class="grey-text">{service.description}</p>
+                </div>
+            ))
+        }
     </div>
 </section>
