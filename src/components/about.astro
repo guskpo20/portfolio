@@ -1,7 +1,6 @@
-
 ---
-import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
-import Cta from './cta.astro';
+import { languages, getLanguageFromURL, useTranslations } from "../i18n/utils";
+import Cta from "./cta.astro";
 
 const { pathname } = Astro.url;
 const currentLang = getLanguageFromURL(pathname);
@@ -9,8 +8,11 @@ const t = useTranslations(currentLang);
 ---
 
 <style lang="scss">
-     @import '../styles/variables.scss';
-    .container{
+    @import "../styles/variables.scss";
+    #about {
+        min-height: 100vh;
+    }
+    .container {
         padding-bottom: 90px;
         padding-top: 90px; /* 70px del header + 20px de espacio extra */
         margin-top: 0;
@@ -20,7 +22,7 @@ const t = useTranslations(currentLang);
         display: flex;
         justify-content: center;
         align-items: center;
-        .columns{
+        .columns {
             width: 100%;
             max-width: $container-max-width; // Asumiendo que tienes esta variable definida
             display: flex;
@@ -28,14 +30,15 @@ const t = useTranslations(currentLang);
             align-items: center;
             gap: 20px;
 
-            .left-column, .right-column{
+            .left-column,
+            .right-column {
                 width: 50%;
             }
-            .right-column{
+            .right-column {
                 display: flex;
                 justify-content: flex-end;
             }
-            .image-container{
+            .image-container {
                 width: 400px;
                 border-radius: 30% !important;
                 overflow: hidden;
@@ -56,37 +59,36 @@ const t = useTranslations(currentLang);
                 }
                 img {
                     width: 100%;
-                    height: auto;  
+                    height: auto;
                     @media screen and (max-width: $almost-mobile) {
                         width: 100%;
                         height: auto;
                         min-height: 100%;
                         object-fit: cover;
                         position: absolute;
-                        top:0;
+                        top: 0;
                     }
                 }
             }
 
-            .heading-text{
+            .heading-text {
                 margin-top: 30px;
                 margin-bottom: 30px;
             }
 
-            .small-text{
+            .small-text {
                 margin-bottom: 30px;
             }
 
-            .accent-color{
+            .accent-color {
                 color: $base-color;
             }
 
-        
-            p{
+            p {
                 text-wrap: balance;
             }
 
-            .ctas{
+            .ctas {
                 margin-top: 20px;
                 display: flex;
                 flex-direction: row;
@@ -95,23 +97,21 @@ const t = useTranslations(currentLang);
                 margin-bottom: 20px;
             }
 
-            
             @media screen and (max-width: $almost-mobile) {
                 flex-direction: column-reverse;
                 align-items: center;
                 height: auto;
-                .left-column, .right-column{
+                .left-column,
+                .right-column {
                     text-align: center !important;
                     justify-content: center !important;
                     width: 70%;
-                    .ctas{
+                    .ctas {
                         justify-content: center !important;
                     }
                 }
             }
         }
-
-
     }
 
     .scroll-arrow {
@@ -145,23 +145,42 @@ const t = useTranslations(currentLang);
 </style>
 
 <main class="container" id="about">
- <div class="columns">
-    <div class={`left-column ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
-        <p class="base-text base-text-typo">{t('about.intro')}</p>
-        <h1 class="heading-text heading-text-typo">{t('about.im')} <span class="accent-color">Gustavo</span></h1>
-        <p class="base-text" set:html={t('about.description')} />
-        <div class="ctas">
-            <Cta text="Linkedin" imageSrc='/linkedin.svg' imageWidth={25} url="https://www.linkedin.com/in/gustavo-keymetlian" isPrimary={true} />
-            <Cta text="Github" imageSrc='/github.svg' imageWidth={25} url="https://github.com/guskpo20" isPrimary={false} />
+    <div class="columns">
+        <div
+            class={`left-column ${import.meta.env.DEV ? "border-visual-debug" : ""}`}
+        >
+            <p class="base-text base-text-typo">{t("about.intro")}</p>
+            <h1 class="heading-text heading-text-typo">
+                {t("about.im")}
+                <span class="accent-color">Gustavo</span>
+            </h1>
+            <p class="base-text" set:html={t("about.description")} />
+            <div class="ctas">
+                <Cta
+                    text="Linkedin"
+                    imageSrc="/linkedin.svg"
+                    imageWidth={25}
+                    url="https://www.linkedin.com/in/gustavo-keymetlian"
+                    isPrimary={true}
+                />
+                <Cta
+                    text="Github"
+                    imageSrc="/github.svg"
+                    imageWidth={25}
+                    url="https://github.com/guskpo20"
+                    isPrimary={false}
+                />
+            </div>
+        </div>
+        <div
+            class={`right-column ${import.meta.env.DEV ? "border-visual-debug" : ""}`}
+        >
+            <div class="image-container">
+                <img src="/tavo.png" alt="Tavo Dev" width="250" />
+            </div>
         </div>
     </div>
-    <div class={`right-column ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
-        <div class="image-container">
-            <img src="/tavo.png" alt="Tavo Dev" width="250"/>
-        </div>
+    <div class="scroll-arrow">
+        <a href="#services" target="_self"><div class="arrow"></div></a>
     </div>
- </div>
- <div class="scroll-arrow">
-    <a href="#services" target="_self"><div class="arrow"></div></a>
- </div>
 </main>
