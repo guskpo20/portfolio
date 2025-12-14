@@ -59,6 +59,13 @@ sitio web para negocio
 
 Podés estructurar las ideas en distintas “categorías” según enfoque — funcional, estratégico, educativo, tendencias, casos reales, etc. Por ejemplo:
 
+Manual de supervivencia laboral de tavodev.
+Un post tipo como seguir laburando con …. Qa, pm, copy, etc....
+Como pedir aumentos, frustacion, etc....
+Conseguir laburo, usar la ia ...
+
+
+
 🔹 Email marketing / Diseño de emails
 
 “Por qué muchos emails nunca se abren — y 5 errores comunes al enviar newsletters”
