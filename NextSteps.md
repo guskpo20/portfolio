@@ -25,7 +25,7 @@ Esto es vital para la autoridad del dominio y la visibilidad local:
 -   [x] **Google Search Console:** Crear robots.txt.
 
 ## 3. Agregar blog de desarrollo, blog estatico (con jsons)
--   [x] Crearlo, va a seguir teniendo version Español/Ingles. El titulo sea "la guida del email" o algo asi
+-   [x] Crearlo, va a seguir teniendo version Español/Ingles. El titulo sea "la guia del email" o algo asi
 -   [x] Diseño minimalista que use los mismos colores que ya estoy usando.
 -   [x] Dejar un README con idea de que hablar.
 -   [x] Chequear como podemos hacer el seo para que el blog esté visible en internet.
@@ -60,7 +60,7 @@ sitio web para negocio
 Podés estructurar las ideas en distintas “categorías” según enfoque — funcional, estratégico, educativo, tendencias, casos reales, etc. Por ejemplo:
 
 Manual de supervivencia laboral de tavodev.
-Un post tipo como seguir laburando con …. Qa, pm, copy, etc....
+Un post tipo como seguir laburando (dando consejos sobre como comunicar) con …. Qa, pm, copy, etc....
 Como pedir aumentos, frustacion, etc....
 Conseguir laburo, usar la ia ...
 
