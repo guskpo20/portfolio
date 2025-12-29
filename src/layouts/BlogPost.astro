@@ -1,0 +1,295 @@
+---
+import Layout from "../components/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"blog">["data"] & {
+    lang: "es" | "en";
+};
+
+const {
+    title_es,
+    title_en,
+    description_es,
+    description_en,
+    pubDate,
+    updatedDate,
+    heroImage,
+    tags,
+    lang,
+} = Astro.props;
+
+const title = lang === "es" ? title_es : title_en;
+const description = lang === "es" ? description_es : description_en;
+
+// --- SEO Logic ---
+
+// 1. Generate Schema.org (Article)
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description: description,
+    author: {
+        "@type": "Person",
+        name: "Gustavo Keymetlian",
+        url: "https://tavo.work",
+    },
+    datePublished: pubDate.toISOString(),
+    dateModified: updatedDate
+        ? updatedDate.toISOString()
+        : pubDate.toISOString(),
+    image: heroImage ? new URL(heroImage, Astro.site).toString() : undefined,
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": new URL(Astro.url.pathname, Astro.site).toString(),
+    },
+};
+
+// 2. Generate Hreflang (Alternate URLs)
+// Assuming slugs match because we use the same content collection file.
+// If currently ES, alternate is EN + /en/blog/slug
+// If currently EN, alternate is ES + /blog/slug
+const currentPath = Astro.url.pathname;
+const slug = currentPath.split("/").pop(); // Extract slug from URL
+
+const alternateURLs =
+    lang === "es" ? { en: `/en/blog/${slug}` } : { es: `/blog/${slug}` };
+---
+
+<Layout
+    title={`${title} | TavoDev`}
+    description={description}
+    lang={lang}
+    schema={schema}
+    alternateURLs={alternateURLs}
+>
+    <article class="container blog-post">
+        <div class="hero-image">
+            {
+                heroImage && (
+                    <img width={1020} height={510} src={heroImage} alt="" />
+                )
+            }
+        </div>
+        <div class="prose">
+            <div class="title">
+                <div class="date">
+                    <time datetime={pubDate.toISOString()}>
+                        {
+                            pubDate.toLocaleDateString(
+                                lang === "es" ? "es-ES" : "en-US",
+                                {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                },
+                            )
+                        }
+                    </time>
+                    {
+                        updatedDate && (
+                            <div class="last-updated-on">
+                                Last updated on{" "}
+                                <time datetime={updatedDate.toISOString()}>
+                                    {updatedDate.toLocaleDateString(
+                                        lang === "es" ? "es-ES" : "en-US",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </time>
+                            </div>
+                        )
+                    }
+                </div>
+                <h1 class="heading-text-typo">{title}</h1>
+                <div class="tags">
+                    {
+                        Astro.props.tags?.map((tag) => (
+                            <a
+                                href={
+                                    Astro.props.lang === "es"
+                                        ? `/blog/tag/${tag}`
+                                        : `/en/blog/tag/${tag}`
+                                }
+                                class="tag"
+                            >
+                                {tag}
+                            </a>
+                        ))
+                    }
+                </div>
+                <hr />
+            </div>
+            <div class="content">
+                <slot />
+            </div>
+        </div>
+    </article>
+</Layout>
+
+<style lang="scss">
+    @import "../styles/variables.scss";
+
+    .blog-post {
+        width: 100%;
+        max-width: 800px; // Standard reading width
+        padding-top: 120px;
+        padding-bottom: 5rem;
+    }
+
+    .hero-image {
+        width: 100%;
+        img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .prose {
+        margin-top: 2rem;
+
+        .title {
+            margin-bottom: 1em;
+            text-align: center;
+
+            h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin: 1rem 0;
+                color: $base-color;
+            }
+
+            .tags {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+
+                .tag {
+                    background-color: #f0f0f0;
+                    color: #555;
+                    font-size: 0.8rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 99px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    text-decoration: none; // It's a link now
+                    transition: background-color 0.2s;
+
+                    &:hover {
+                        background-color: #e0e0e0;
+                        color: #000;
+                    }
+                }
+            }
+
+            .date {
+                color: #666;
+                margin-bottom: 0.5rem;
+            }
+
+            hr {
+                border-top: 1px solid #ddd;
+                margin: 1rem 0;
+            }
+        }
+
+        .content {
+            // Basic typography and elements for MDX content
+            :global(h2) {
+                font-size: 1.8rem;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                font-family: $font-family-heading;
+                color: $base-color;
+            }
+
+            :global(h3) {
+                font-size: 1.4rem;
+                margin-top: 1.5rem;
+                margin-bottom: 0.8rem;
+                color: $base-color;
+            }
+
+            :global(p) {
+                margin-bottom: 1.5rem;
+                color: #333;
+                line-height: 1.8;
+                font-size: 1.1rem;
+            }
+
+            :global(ul),
+            :global(ol) {
+                margin-bottom: 1.5rem;
+                padding-left: 2.5rem; // Uniform padding for alignment
+            }
+
+            :global(ul ul),
+            :global(ol ul),
+            :global(ul ol),
+            :global(ol ol) {
+                margin-bottom: 0;
+                margin-top: 0.5rem;
+            }
+
+            :global(li) {
+                margin-bottom: 0.5rem;
+            }
+
+            :global(pre) {
+                background-color: #f4f4f4;
+                padding: 1rem;
+                border-radius: 8px;
+                overflow-x: auto;
+                margin-bottom: 1.5rem;
+            }
+
+            // Center content images (excluding hero which is outside .content)
+            :global(img) {
+                display: block;
+                margin: 2rem auto;
+                max-width: 100%;
+                width: 100%; // Fill container (subject to max-width constraint)
+
+                // User requested limit:
+                &[src] {
+                    // Specificity hack if needed, or just plain style
+                    max-width: 600px;
+                }
+
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Nice touch for centered images
+            }
+
+            :global(small) {
+                font-size: 0.8em;
+                color: #666;
+            }
+
+            :global(sup),
+            :global(sub) {
+                font-size: 0.75em;
+                line-height: 0;
+                position: relative;
+                vertical-align: baseline;
+            }
+
+            :global(sup) {
+                top: -0.5em;
+            }
+            :global(sub) {
+                bottom: -0.25em;
+            }
+        }
+    }
+</style>
+```

@@ -1,0 +1,7 @@
+---
+const { pathname } = Astro.url;
+// Check if the path starts with /en or not (assuming default is ES)
+const isEn = pathname.startsWith("/en");
+---
+
+{!isEn && <slot />}

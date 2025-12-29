@@ -1,9 +1,6 @@
 ---
 import Header from "./header.astro";
-import About from "./about.astro";
-import Services from "./services.astro";
-import Types from "./types.astro";
-import Contact from "./contact.astro";
+
 const { lang } = Astro.props;
 
 const {
@@ -47,6 +44,39 @@ const {
 		<meta property="og:url" content={url} />
 		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+		{/* Pagination SEO */}
+		{
+			Astro.props.prevUrl && (
+				<link
+					rel="prev"
+					href={new URL(Astro.props.prevUrl, Astro.site)}
+				/>
+			)
+		}
+		{
+			Astro.props.nextUrl && (
+				<link
+					rel="next"
+					href={new URL(Astro.props.nextUrl, Astro.site)}
+				/>
+			)
+		}
+
+		{/* Hreflang for i18n */}
+		{
+			Astro.props.alternateURLs &&
+				Object.entries(Astro.props.alternateURLs).map(
+					([langCode, href]) => (
+						<link
+							rel="alternate"
+							hreflang={langCode}
+							href={new URL(href as string, Astro.site)}
+						/>
+					),
+				)
+		}
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link
 			rel="preconnect"
@@ -58,32 +88,28 @@ const {
 			rel="stylesheet"
 		/>
 		<title>{title}</title>
+
+		{/* Dynamic Schema or Default Person Schema */}
 		<script
 			type="application/ld+json"
-			set:html={JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "Person",
-				name: "Gustavo Keymetlian",
-				url: "https://tavo.work",
-				jobTitle: "Email Developer & Web Developer",
-				address: {
-					"@type": "PostalAddress",
-					addressCountry: "UY",
+			set:html={JSON.stringify(
+				Astro.props.schema || {
+					"@context": "https://schema.org",
+					"@type": "Person",
+					name: "Gustavo Keymetlian",
+					url: "https://tavo.work",
+					jobTitle: "Email Developer & Web Developer",
+					address: {
+						"@type": "PostalAddress",
+						addressCountry: "UY",
+					},
+					sameAs: ["https://www.linkedin.com/in/gustavo-keymetlian"],
 				},
-				sameAs: ["https://www.linkedin.com/in/gustavo-keymetlian"],
-			})}
+			)}
 		/>
 	</head>
 	<body>
 		<Header />
-		<About />
-		<div class="background-dark">
-			<Services />
-		</div>
-		<Types />
-		<div class="background-dark">
-			<Contact />
-		</div>
 		<slot />
 	</body>
 </html>

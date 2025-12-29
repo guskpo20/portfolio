@@ -1,0 +1,130 @@
+---
+title_es: 'Bienvenido a mi Nuevo Blog'
+title_en: 'Welcome to my New Blog'
+description_es: 'Este es el primer post de mi blog personal construido con Astro.'
+description_en: 'This is the first post of my personal blog built with Astro.'
+pubDate: '2025-12-28'
+tags: ['Web Development', 'Email Marketing', 'Design']
+heroImage: '/imagen1.jpg'
+---
+import Es from '../../components/mdx/Es.astro';
+import En from '../../components/mdx/En.astro';
+
+<Es>
+# ¡Hola Mundo!
+
+Este es mi primer post en el blog. Estoy usando **Astro** y **MDX** para crear contenido dinámico y flexible.
+</Es>
+
+<En>
+# Hello World!
+
+This is my first blog post. I am using **Astro** and **MDX** to create dynamic and flexible content.
+</En>
+
+{/* Contenido Compartido / Shared Content */}
+![Blog Placeholder](/imagen1.jpg)
+
+{/* Imagen con ancho fijo / Fixed width image */}
+<img src="/imagen1.jpg" width="400" alt="Fixed width 400px" style="margin: 2rem auto; display: block; border-radius: 8px; max-width: 400px; width: 100%;" />
+
+<Es>
+## ¿Qué puedo hacer con MDX?
+
+Con MDX puedo mezclar Markdown con componentes de JavaScript. Como ves arriba, la imagen se comparte entre ambos idiomas sin necesidad de repetirla.
+</Es>
+
+<En>
+## What can I do with MDX?
+
+With MDX I can mix Markdown with JavaScript components. As you can see above, the image is shared between both languages without needing to repeat it.
+</En>
+
+<Es>
+## Elementos de Texto para Estilar
+
+Probando diferentes elementos comunes de Markdown para verificar los estilos:
+
+### Listas
+*   Esto es una lista desordenada
+*   Tiene varios elementos
+    *   Y elementos anidados también
+*   Último elemento
+
+1.  Esta es una lista ordenada
+2.  Segundo elemento
+3.  Tercer elemento
+
+### Enlaces y Énfasis
+Si quieres buscar algo, ve a [Google](https://google.com).
+Texto en **negrita**, texto en *cursiva*, y texto ~~tachado~~.
+
+### Citas
+> "El diseño no es solo lo que se ve y se siente. El diseño es cómo funciona."
+> — Steve Jobs
+
+### Párrafos y Espaciado
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+
+### Texto Pequeño, Superíndice y Subíndice
+Esto es texto normal, pero <small>esto es texto pequeño</small>.
+También podemos usar fórmulas como H<sub>2</sub>O (agua) o E = mc<sup>2</sup> (energía).
+
+### Tablas (si aplica)
+| Encabezado 1 | Encabezado 2 |
+|__ |__ |
+| Celda 1      | Celda 2      |
+| Celda 3      | Celda 4      |
+</Es>
+
+<En>
+## Text Elements for Styling
+
+Testing different common Markdown elements to verify styles:
+
+### Lists
+*   This is an unordered list
+*   It has multiple items
+    *   And nested items too
+*   Last item
+
+1.  This is an ordered list
+2.  Second item
+3.  Third item
+
+### Links and Emphasis
+If you want to search for something, go to [Google](https://google.com).
+Text in **bold**, text in *italics*, and ~~strikethrough~~ text.
+
+### Blockquotes
+> "Design is not just what it looks like and feels like. Design is how it works."
+> — Steve Jobs
+
+### Paragraphs and Spacing
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+
+### Small Text, Superscript and Subscript
+This is normal text, but <small>this is small text</small>.
+We can also use formulas like H<sub>2</sub>O (water) or E = mc<sup>2</sup> (energy).
+
+### Tables (if applicable)
+| Header 1 | Header 2 |
+|__ |__ |
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+</En>
+
+## Code
+
+```javascript
+// Este código se ve en ambos idiomas / This code is visible in both languages
+console.log('Hello from the blog!');
+```

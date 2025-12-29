@@ -1,5 +1,5 @@
 ---
-import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+import { languages, getLanguageFromURL, useTranslations } from "../i18n/utils";
 
 const { pathname } = Astro.url;
 const currentLang = getLanguageFromURL(pathname);
@@ -8,70 +8,100 @@ const t = useTranslations(currentLang);
 
 <script>
     // Verificar el idioma preferido al cargar la página
-    document.addEventListener('DOMContentLoaded', () => {
-        const preferredLang = localStorage.getItem('preferredLanguage');
+    // Verificar el idioma preferido al cargar la página
+    document.addEventListener("DOMContentLoaded", () => {
+        const preferredLang = localStorage.getItem("preferredLanguage");
         const currentPath = window.location.pathname;
-        const currentLang = currentPath.split('/')[1] || 'es';
+
+        // Correct language detection:
+        // If path starts with /en, it's 'en'. Otherwise it's 'es'.
+        const isEnglishPath = currentPath.startsWith("/en");
+        const currentLang = isEnglishPath ? "en" : "es";
 
         if (preferredLang && preferredLang !== currentLang) {
-            // Si hay un idioma preferido y es diferente al actual, redirigir
-            if (preferredLang === 'es') {
-                window.location.href = '/';
+            // Avoid redirecting if we are just navigating to a valid page in the other language
+            // Actually, the original logic was trying to enforce the preferred language.
+            // If I prefer 'es' but I land on '/en/blog', should I be redirected to '/blog'?
+            // Maybe, but the previous logic was definitely broken for '/blog' (detected as lang 'blog').
+
+            // Let's fix the redirection logic too.
+
+            if (preferredLang === "es") {
+                // If I prefer Spanish but I am on English page
+                // e.g. /en/blog -> /blog
+                // e.g. /en -> /
+                const newPath = currentPath.replace(/^\/en/, "") || "/";
+                window.location.href = newPath;
             } else {
-                const pathWithoutLang = currentPath.replace(`/${currentLang}`, '') || '/';
-                window.location.href = `/${preferredLang}${pathWithoutLang}`;
+                // If I prefer English but I am on Spanish page
+                // e.g. /blog -> /en/blog
+                // e.g. / -> /en
+                // Avoid double slashes
+                const pathSuffix = currentPath === "/" ? "" : currentPath;
+                window.location.href = `/en${pathSuffix}`;
             }
         }
     });
 
-    const hamburger = document.querySelector('.hamburger');
-    const links = document.querySelector('.links');
-    const langSwitcher = document.querySelector('.lang-switcher');
-    const navLinks = document.querySelectorAll('.links a');
+    const hamburger = document.querySelector(".hamburger");
+    const links = document.querySelector(".links");
+    const langSwitcher = document.querySelector(".lang-switcher");
+    const navLinks = document.querySelectorAll(".links a");
 
     // Función para cerrar el menú
     const closeMenu = () => {
-        links?.classList.remove('active');
-        hamburger?.classList.remove('active');
+        links?.classList.remove("active");
+        hamburger?.classList.remove("active");
     };
 
     // Agregar evento click a cada link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) { // Asumiendo que 768px es tu breakpoint mobile
+    navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+                // Asumiendo que 768px es tu breakpoint mobile
                 closeMenu();
             }
         });
     });
-    
+
     if (hamburger && links) {
-        hamburger.addEventListener('click', () => {
-            links.classList.toggle('active');
-            hamburger.classList.toggle('active');
+        hamburger.addEventListener("click", () => {
+            links.classList.toggle("active");
+            hamburger.classList.toggle("active");
         });
     }
 
     if (langSwitcher) {
-        langSwitcher.addEventListener('click', () => {
+        langSwitcher.addEventListener("click", () => {
             const currentPath = window.location.pathname;
-            const currentLang = currentPath.split('/')[1] || 'es';
-            const newLang = currentLang === 'es' ? 'en' : 'es';
-            
-            localStorage.setItem('preferredLanguage', newLang);
+            const currentLang = currentPath.split("/")[1];
+            // Check if current path starts with /en (since 'es' is root for this project usually, but let's be safe)
+            // actually, the project seems to use /en for English and / for Spanish.
+            const isEnglish = currentLang === "en";
 
-            const newUrl = newLang === 'es' ? '/' : `/en${currentPath.replace(`/${currentLang}`, '') || '/'}`;
-            
-            history.pushState({}, '', newUrl);
+            const newLang = isEnglish ? "es" : "en";
+            localStorage.setItem("preferredLanguage", newLang);
+
+            let newUrl;
+            if (isEnglish) {
+                // Switch to Spanish: Remove /en from start
+                newUrl = currentPath.replace(/^\/en/, "") || "/";
+            } else {
+                // Switch to English: Add /en to start
+                newUrl = `/en${currentPath === "/" ? "" : currentPath}`;
+            }
+
+            history.pushState({}, "", newUrl);
             window.location.reload();
         });
     }
 </script>
 
 <style lang="scss">
-    @import '../styles/variables.scss';
-    
-    .background-white{
-        background-color: #FFFFFF;
+    @import "../styles/variables.scss";
+
+    .background-white {
+        background-color: #ffffff;
         width: 100%;
         z-index: 1000;
         position: fixed;
@@ -100,8 +130,6 @@ const t = useTranslations(currentLang);
             align-items: center;
         }
 
-        
-
         .links {
             display: flex;
             gap: 40px;
@@ -115,7 +143,7 @@ const t = useTranslations(currentLang);
             }
         }
 
-        .text-size{
+        .text-size {
             font-size: 22px;
             font-weight: 600;
         }
@@ -132,23 +160,18 @@ const t = useTranslations(currentLang);
             align-items: center;
             gap: 10px;
             &:hover {
-                background: $accent-color;;
+                background: $accent-color;
                 color: white;
             }
 
             @media screen and (max-width: $mobile) {
-                
                 font-size: 14px !important;
 
-                img{
+                img {
                     width: 20px !important;
                 }
-                
-            
             }
-
         }
-
 
         .hamburger {
             display: none;
@@ -211,20 +234,27 @@ const t = useTranslations(currentLang);
         }
     }
 
-    .logo{
+    .logo {
         font-family: "Roboto", sans-serif !important;
         font-size: 45px;
         font-weight: bold;
+        text-decoration: none;
+        color: inherit;
         @media screen and (max-width: $mobile) {
             font-size: 35px;
         }
     }
 </style>
 
-<header class={`background-white ${import.meta.env.DEV ? 'border-visual-debug' : ''}`}>
+<header
+    class={`background-white ${import.meta.env.DEV ? "border-visual-debug" : ""}`}
+>
     <div class="container">
-        <div class="heading-text-typo logo">TAVODEV</div>
-        
+        <a
+            href={currentLang === "es" ? "/" : "/en"}
+            class="heading-text-typo logo">TAVODEV</a
+        >
+
         <div class="column">
             <div class="right-section">
                 <button class="hamburger">
@@ -234,19 +264,38 @@ const t = useTranslations(currentLang);
                 </button>
             </div>
             <div class="text-size links heading-text-typo">
-                <a target="_self" href="#about">{t('nav.about')}</a>
-                <a target="_self" href="#services">{t('nav.services')}</a>
-                <a target="_self" href="#contact">{t('nav.contact')}</a>
+                <a
+                    target="_self"
+                    href={currentLang === "es" ? "/#about" : "/en/#about"}
+                    >{t("nav.about")}</a
+                >
+                <a
+                    target="_self"
+                    href={currentLang === "es" ? "/#services" : "/en/#services"}
+                    >{t("nav.services")}</a
+                >
+                <a
+                    target="_self"
+                    href={currentLang === "es" ? "/blog" : "/en/blog"}
+                    >{t("nav.blog")}</a
+                >
+                <a
+                    target="_self"
+                    href={currentLang === "es" ? "/#contact" : "/en/#contact"}
+                    >{t("nav.contact")}</a
+                >
             </div>
             <div>
                 <button class="lang-switcher text-size heading-text-typo">
-                {currentLang === "es" ? 
-                    <img src="/spanish.png" alt="Español" width="30"/>    
-                    :
-                    <img src="/english.png" alt="English" width="30"/>
-                }
-                
-                {currentLang === 'es' ? 'ES' : 'EN'}
+                    {
+                        currentLang === "es" ? (
+                            <img src="/spanish.png" alt="Español" width="30" />
+                        ) : (
+                            <img src="/english.png" alt="English" width="30" />
+                        )
+                    }
+
+                    {currentLang === "es" ? "ES" : "EN"}
                 </button>
             </div>
         </div>

@@ -1,0 +1,159 @@
+---
+import Layout from "../../../components/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const allPosts = await getCollection("blog");
+    const uniqueTags = [
+        ...new Set(allPosts.map((post) => post.data.tags || []).flat()),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) =>
+            post.data.tags?.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const sortedPosts = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Layout title={`Blog - ${tag} | TavoDev`} lang="es">
+    <div class="container blog-wrapper">
+        <div class="content-wrapper">
+            <h1 class="heading-text-typo">Blog: {tag}</h1>
+            <p class="intro-text">
+                Mostrando entradas etiquetadas con <strong>{tag}</strong>.
+                <br />
+                <a
+                    href="/blog"
+                    style="font-size: 0.9rem; text-decoration: underline;"
+                    >Volver a todos los posts</a
+                >
+            </p>
+            <div class="posts-grid">
+                {
+                    sortedPosts.length > 0 ? (
+                        sortedPosts.map((post) => (
+                            <div class="post-card">
+                                <a href={`/blog/${post.slug}`}>
+                                    <h2 class="heading-text-typo">
+                                        {post.data.title_es}
+                                    </h2>
+                                    <div class="date">
+                                        {post.data.pubDate.toLocaleDateString(
+                                            "es-ES",
+                                        )}
+                                    </div>
+                                    <p>{post.data.description_es}</p>
+                                    <div class="tags">
+                                        {post.data.tags?.map((t) => (
+                                            <span class="tag">{t}</span>
+                                        ))}
+                                    </div>
+                                </a>
+                            </div>
+                        ))
+                    ) : (
+                        <div class="empty-state">
+                            <p>No se encontraron posts con esta etiqueta.</p>
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style lang="scss">
+    @import "../../../styles/variables.scss";
+    .blog-wrapper {
+        padding-top: 120px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+    .content-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: $base-color;
+            text-transform: capitalize;
+        }
+        .intro-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            a {
+                color: $base-color;
+            }
+        }
+        .empty-state {
+            padding: 4rem 0;
+            text-align: center;
+            p {
+                font-size: 1.5rem;
+                color: #999;
+            }
+        }
+    }
+    @media screen and (max-width: $mobile) {
+        .content-wrapper {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    }
+    .post-card {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: opacity 0.2s;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: $base-color;
+        }
+        .date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .tags {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            .tag {
+                background-color: #f5f5f5;
+                color: #666;
+                padding: 0.2rem 0.5rem;
+                border-radius: 4px;
+                font-size: 0.8rem;
+            }
+        }
+    }
+</style>

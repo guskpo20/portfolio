@@ -1,0 +1,262 @@
+---
+import Layout from "../../../components/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+    const posts = (await getCollection("blog")).sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    );
+    return paginate(posts, { pageSize: 7 });
+}
+
+const { page } = Astro.props;
+---
+
+<Layout
+    title="Blog | TavoDev"
+    lang="en"
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+>
+    <div class="container blog-wrapper">
+        <div class="content-wrapper">
+            <h1 class="heading-text-typo">Blog</h1>
+            <p class="intro-text">
+                Welcome to my blog. Here I'll share my thoughts on web
+                development, email marketing, and technology.
+            </p>
+            <div class="posts-grid" id="posts-grid">
+                {
+                    page.data.map((post) => (
+                        <div class="post-card">
+                            <a href={`/en/blog/${post.slug}`}>
+                                <h2 class="heading-text-typo">
+                                    {post.data.title_en}
+                                </h2>
+                                <div class="date">
+                                    {post.data.pubDate.toLocaleDateString(
+                                        "en-US",
+                                    )}
+                                </div>
+                                <p>{post.data.description_en}</p>
+                                <div class="tags">
+                                    {post.data.tags?.map((tag) => (
+                                        <span class="tag">{tag}</span>
+                                    ))}
+                                </div>
+                            </a>
+                        </div>
+                    ))
+                }
+            </div>
+
+            {/* Loading Indicator */}
+            <div id="loading" class="loading-indicator">
+                <span>Loading more posts...</span>
+            </div>
+
+            {/* Pagination controls for JS-disabled users and SEO */}
+            <div class="pagination">
+                {
+                    page.url.prev ? (
+                        <a href={page.url.prev} class="prev">
+                            ← Previous
+                        </a>
+                    ) : null
+                }
+                {
+                    page.url.next ? (
+                        <a
+                            href={page.url.next}
+                            class="next"
+                            id="next-page-link"
+                        >
+                            Next →
+                        </a>
+                    ) : null
+                }
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    // Infinite Scroll Logic
+    const nextLink = document.getElementById(
+        "next-page-link",
+    ) as HTMLAnchorElement;
+    const postsGrid = document.getElementById("posts-grid");
+    const loadingIndicator = document.getElementById("loading");
+    let isLoading = false;
+
+    if (nextLink && postsGrid) {
+        // Hide standard pagination as we are doing infinite scroll
+        const pagination = document.querySelector(".pagination") as HTMLElement;
+        if (pagination) pagination.style.display = "none";
+
+        const observer = new IntersectionObserver(
+            async (entries) => {
+                const entry = entries[0];
+                if (entry.isIntersecting && !isLoading) {
+                    const nextUrl = nextLink.getAttribute("href");
+                    if (!nextUrl) return;
+
+                    isLoading = true;
+                    loadingIndicator.classList.add("visible");
+
+                    try {
+                        const response = await fetch(nextUrl);
+                        if (response.ok) {
+                            const html = await response.text();
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(
+                                html,
+                                "text/html",
+                            );
+
+                            // Extract posts from the next page
+                            const newPosts = doc.querySelectorAll(".post-card");
+                            newPosts.forEach((post) => {
+                                postsGrid.appendChild(post);
+                            });
+
+                            // Update next link
+                            const newNextLink =
+                                doc.getElementById("next-page-link");
+                            if (newNextLink) {
+                                nextLink.setAttribute(
+                                    "href",
+                                    newNextLink.getAttribute("href"),
+                                );
+                            } else {
+                                // No more pages
+                                nextLink.remove();
+                                observer.disconnect();
+                            }
+                        }
+                    } catch (error) {
+                        console.error("Error loading more posts:", error);
+                    } finally {
+                        isLoading = false;
+                        loadingIndicator.classList.remove("visible");
+                    }
+                }
+            },
+            {
+                rootMargin: "200px", // Trigger before reaching bottom
+                threshold: 0.1,
+            },
+        );
+
+        // Observe the loading indicator or footer area
+        if (loadingIndicator) {
+            observer.observe(loadingIndicator);
+        }
+    } else {
+        // Hide loading if no next page initially
+        if (loadingIndicator) loadingIndicator.style.display = "none";
+    }
+</script>
+
+<style lang="scss">
+    @import "../../../styles/variables.scss";
+    .blog-wrapper {
+        padding-top: 120px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+    .content-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: $base-color;
+        }
+        .intro-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+    }
+
+    .loading-indicator {
+        text-align: center;
+        padding: 2rem;
+        color: #888;
+        opacity: 0;
+        transition: opacity 0.3s;
+        &.visible {
+            opacity: 1;
+        }
+    }
+
+    .pagination {
+        display: flex; // Hide if JS is running to prefer infinite scroll, typically toggle this or style it to look like load more button
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        a {
+            color: $base-color;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            &:hover {
+                background: #f5f5f5;
+            }
+        }
+    }
+
+    @media screen and (max-width: $mobile) {
+        .content-wrapper {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    }
+    .post-card {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: opacity 0.2s;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: $base-color;
+        }
+        .date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .tags {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            .tag {
+                background-color: #f5f5f5;
+                color: #666;
+                padding: 0.2rem 0.5rem;
+                border-radius: 4px;
+                font-size: 0.8rem;
+            }
+        }
+    }
+</style>

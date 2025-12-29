@@ -2,6 +2,7 @@
     "nav": {
         "about": "About me",
         "services": "Services",
+        "blog": "Blog",
         "contact": "Contact"
     },
     "about": {

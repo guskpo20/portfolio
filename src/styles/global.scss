@@ -9,6 +9,10 @@
     scroll-behavior: smooth;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 body {
     /* height: 300vh; */
     position: relative;

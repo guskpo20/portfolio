@@ -1,7 +1,18 @@
 ---
 import Layout from "../components/Layout.astro";
+import About from "../components/about.astro";
+import Services from "../components/services.astro";
+import Types from "../components/types.astro";
+import Contact from "../components/contact.astro";
 ---
 
 <Layout title="TavoDev | Desarrollador de Emails y Web en Uruguay" lang="es">
-  <!-- Aquí irá el contenido específico de la página -->
+  <About />
+  <div class="background-dark">
+    <Services />
+  </div>
+  <Types />
+  <div class="background-dark">
+    <Contact />
+  </div>
 </Layout>
