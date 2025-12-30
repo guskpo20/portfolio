@@ -1,0 +1,1 @@
+Hacer una subpagina portfolio en la que dejar muestra de todas las webs, emails que he hecho. Todo se va a manejar con .mdx como los posts asi puedo poner imagenes y manejar la version ingles/español
