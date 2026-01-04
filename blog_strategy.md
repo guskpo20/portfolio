@@ -69,6 +69,7 @@ Para temas más puntuales que pueden cruzar varias categorías:
 *   "Entrevista: Cómo una PYME uruguaya mejoró sus conversiones con email marketing"
 *   "Herramientas gratuitas para desarrolladores web en 2025"
 *   "El lado humano de la tecnología: Historias de clientes y sus desafíos digitales"
+*   Manual de supervivencia laboral de tavodev: posts tipo como seguir laburando (mas distendidos, dando consejos sobre como comunicar) con …. Qa, pm, copy, etc...., como pedir aumentos, frustacion, etc.... , conseguir laburo, usar la ia ...
 
 ### E. Desarrollo Técnico Avanzado
 *   "Astro.js vs Next.js: Cuál elegir para tu próximo proyecto"
