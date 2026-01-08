@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Pulse</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #486581;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            background-color: #3e4c59;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            color: white;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .illustration {
+            width: 100%;
+            max-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #102a43;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #627d98;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #109cf1;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(16, 156, 241, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .steps {
+            text-align: left;
+            margin-top: 40px;
+            background: #f0f4f8;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .step {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .step:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #109cf1;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #9aa5b1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Pulse.</div>
+        </div>
+        <div class="content">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                alt="Team" class="illustration" style="border-radius: 50%;">
+
+            <h1>Welcome aboard!</h1>
+            <p>We're thrilled to have you with us. Pulse is designed to help you organize your workflow seamlessly.
+                You're just a few steps away from productivity nirvana.</p>
+
+            <a href="#" class="btn">Get Started Now</a>
+
+            <div class="steps">
+                <p style="font-weight: bold; margin-bottom: 15px; color: #102a43;">Next Steps:</p>
+                <div class="step">Complete your profile</div>
+                <div class="step">Create your first workspace</div>
+                <div class="step">Invite your team members</div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Sent with ❤️ by the Pulse Team</p>
+            <p>123 Startup Blvd, San Francisco, CA</p>
+        </div>
+    </div>
+</body>
+
+</html>

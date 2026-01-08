@@ -6,10 +6,7 @@ const posts = (await getCollection("portfolio")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const uniqueCategories = [
-    "All",
-    ...new Set(posts.map((post) => post.data.category)),
-];
+const uniqueCategories = [...new Set(posts.map((post) => post.data.category))];
 ---
 
 <Layout title="Portfolio | TavoDev" lang="en">
@@ -25,10 +22,7 @@ const uniqueCategories = [
         <div class="filters">
             {
                 uniqueCategories.map((category) => (
-                    <button
-                        class={`filter-btn ${category === "All" ? "active" : ""}`}
-                        data-filter={category}
-                    >
+                    <button class="filter-btn" data-filter={category}>
                         {category}
                     </button>
                 ))
@@ -69,25 +63,30 @@ const uniqueCategories = [
     const filterBtns = document.querySelectorAll(".filter-btn");
     const projectCards = document.querySelectorAll(".project-card");
 
+    function updateGrid() {
+        const activeFilters = Array.from(
+            document.querySelectorAll(".filter-btn.active"),
+        ).map((btn) => btn.getAttribute("data-filter"));
+
+        projectCards.forEach((card) => {
+            const cardCategory = card.getAttribute("data-category");
+            const htmlCard = card as HTMLElement;
+
+            if (
+                activeFilters.length === 0 ||
+                (cardCategory && activeFilters.includes(cardCategory))
+            ) {
+                htmlCard.style.display = "flex";
+            } else {
+                htmlCard.style.display = "none";
+            }
+        });
+    }
+
     filterBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-            // Remove active class from all
-            filterBtns.forEach((b) => b.classList.remove("active"));
-            // Add active to clicked
-            btn.classList.add("active");
-
-            const filterValue = btn.getAttribute("data-filter");
-
-            projectCards.forEach((card) => {
-                const cardCategory = card.getAttribute("data-category");
-                const htmlCard = card as HTMLElement;
-
-                if (filterValue === "All" || filterValue === cardCategory) {
-                    htmlCard.style.display = "flex";
-                } else {
-                    htmlCard.style.display = "none";
-                }
-            });
+            btn.classList.toggle("active");
+            updateGrid();
         });
     });
 </script>

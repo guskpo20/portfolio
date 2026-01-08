@@ -64,6 +64,20 @@ const alternateURLs =
     alternateURLs={alternateURLs}
 >
     <article class="container blog-post">
+        <a href={lang === "es" ? "/blog" : "/en/blog"} class="back-link">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg
+            >
+            {lang === "es" ? "Volver al Blog" : "Back to Blog"}
+        </a>
         <div class="hero-image">
             {
                 heroImage && (
@@ -138,6 +152,29 @@ const alternateURLs =
         max-width: 800px; // Standard reading width
         padding-top: 120px;
         padding-bottom: 5rem;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #666;
+        text-decoration: none;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        transition: color 0.2s;
+
+        &:hover {
+            color: $base-color;
+        }
+
+        svg {
+            transition: transform 0.2s;
+        }
+
+        &:hover svg {
+            transform: translateX(-3px);
+        }
     }
 
     .hero-image {

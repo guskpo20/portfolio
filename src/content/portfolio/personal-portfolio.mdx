@@ -1,0 +1,74 @@
+---
+title_es: "Portfolio Personal v1"
+title_en: "Personal Portfolio v1"
+description_es: "Diseño y desarrollo de este sitio web utilizando Astro, View Transitions y soporte bilingüe."
+description_en: "Design and development of this website using Astro, View Transitions, and bilingual support."
+category: "Web"
+pubDate: "2026-01-08"
+tags: ["Astro", "TypeScript", "SCSS", "i18n"]
+heroImage: "/portfolio/portfolio-cover.png"
+---
+import Es from '../../components/mdx/Es.astro';
+import En from '../../components/mdx/En.astro';
+
+<Es>
+
+## Sobre el Proyecto
+
+Este mismo sitio web que estás visitando es un ejemplo de mi trabajo. El objetivo era crear una plataforma **rápida**, **SEO-friendly** y **fácil de mantener** para mostrar mis habilidades y proyectos.
+
+### Tecnologías Clave
+
+*   **Astro:** Elegido por su arquitectura "Islands" y performance por defecto. Envía 0 JavaScript al cliente excepto donde es estrictamente necesario (como en los filtros o el carrusel).
+*   **View Transitions:** Implementadas para dar una sensación de SPA (Single Page Application) nativa sin sacrificar la simplicidad de un sitio estático.
+*   **i18n (Internacionalización):** Sistema de traducción personalizado basado en rutas (`/` vs `/en/`) y archivos JSON.
+*   **SCSS:** Estilos modulares y variables globales para mantener la consistencia visual.
+
+### Desafíos y Soluciones
+
+#### 1. Gestión de Contenido Bilingüe
+Quería escribir mis posts en Markdown una sola vez pero soportar dos idiomas. <br />
+**Solución:** Implementé componentes `<Es>` y `<En>` dentro de archivos `.mdx`. Esto permite tener un solo archivo fuente para ambos idiomas, renderizando el bloque correcto según la ruta URL.
+
+```astro
+// Ejemplo de uso en MDX
+<Es> Hola Mundo </Es>
+<En> Hello World </En>
+```
+
+#### 2. Performance Extrema
+El sitio obtiene una puntuación de **100/100** en Lighthouse. <br />
+**Solución:** Imágenes optimizadas automáticamente por Astro, fuentes auto-hospedadas y CSS mínimo crítico inlineado.
+
+</Es>
+
+<En>
+
+## About the Project
+
+The very website you are visiting is a showcase of my work. The goal was to build a platform that is **fast**, **SEO-friendly**, and **easy to maintain** to highlight my skills and projects.
+
+### Key Technologies
+
+*   **Astro:** Chosen for its "Islands" architecture and default performance. It sends 0 JavaScript to the client except where strictly necessary (like filters or carousel).
+*   **View Transitions:** Implemented to provide a native SPA (Single Page Application) feel without sacrificing the simplicity of a static site.
+*   **i18n (Internationalization):** Custom translation system based on routing (`/` vs `/en/`) and JSON files.
+*   **SCSS:** Modular styles and global variables to maintain visual consistency.
+
+### Challenges & Solutions
+
+#### 1. Bilingual Content Management
+I wanted to write my posts in Markdown once but support two languages. <br />
+**Solution:** Implemented `<Es>` and `<En>` components within `.mdx` files. This allows for a single source file for both languages, rendering the correct block based on the URL route.
+
+```astro
+// Usage example in MDX
+<Es> Hola Mundo </Es>
+<En> Hello World </En>
+```
+
+#### 2. Extreme Performance
+The site scores **100/100** on Lighthouse. <br />
+**Solution:** Automatically optimized images by Astro, self-hosted fonts, and minimal critical inline CSS.
+
+</En>

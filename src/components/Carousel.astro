@@ -182,40 +182,98 @@ const { images } = Astro.props;
 
         if (!track || slides.length <= 1) return;
 
-        // Update dots on scroll
-        track.addEventListener("scroll", () => {
-            const slideWidth = track.clientWidth;
-            const scrollIndex = Math.round(track.scrollLeft / slideWidth);
+        let currentIndex = 0;
+        let autoPlayInterval: number | undefined;
+        const intervalTime = 4000; // 4 seconds
 
-            dots.forEach((dot, index) => {
-                if (index === scrollIndex) {
+        const updateCarousel = (index: number) => {
+            const slideWidth = track.clientWidth;
+            track.scrollTo({ left: slideWidth * index, behavior: "smooth" });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
                     dot.classList.add("active");
                 } else {
                     dot.classList.remove("active");
                 }
             });
-        });
+            currentIndex = index;
+        };
 
-        // Navigation buttons
+        const nextSlide = () => {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= slides.length) {
+                newIndex = 0; // Loop back to start (Infinite)
+            }
+            updateCarousel(newIndex);
+        };
+
+        const prevSlide = () => {
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) {
+                newIndex = slides.length - 1; // Loop to end
+            }
+            updateCarousel(newIndex);
+        };
+
+        // Auto Play Logic
+        const startAutoPlay = () => {
+            stopAutoPlay(); // Clear existing to recall safely
+            autoPlayInterval = setInterval(nextSlide, intervalTime);
+        };
+
+        const stopAutoPlay = () => {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+        };
+
+        // Event Listeners
+
+        // Manual Navigation stops autoplay temporarily (or permanently, but let's restart on leave)
         prevBtn?.addEventListener("click", () => {
-            track.scrollBy({ left: -track.clientWidth, behavior: "smooth" });
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
         });
 
         nextBtn?.addEventListener("click", () => {
-            track.scrollBy({ left: track.clientWidth, behavior: "smooth" });
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
         });
 
-        // Dots navigation
         dots.forEach((dot) => {
             dot.addEventListener("click", (e) => {
+                stopAutoPlay();
                 const index = parseInt(
                     (e.target as HTMLElement).dataset.index || "0",
                 );
-                track.scrollTo({
-                    left: track.clientWidth * index,
-                    behavior: "smooth",
-                });
+                updateCarousel(index);
+                startAutoPlay();
             });
         });
+
+        // Pause on hover
+        container.addEventListener("mouseenter", stopAutoPlay);
+        container.addEventListener("mouseleave", startAutoPlay);
+
+        // Touch support - Pause on interaction
+        track.addEventListener("touchstart", stopAutoPlay, { passive: true });
+        track.addEventListener("touchend", startAutoPlay);
+
+        // Sync scroll event (in case user swipes manually)
+        track.addEventListener("scroll", () => {
+            // Debounce or just check approximate position to update dots
+            const slideWidth = track.clientWidth;
+            const newIndex = Math.round(track.scrollLeft / slideWidth);
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
+            }
+        });
+
+        // Start on load
+        startAutoPlay();
     });
 </script>

@@ -61,14 +61,40 @@ const alternateURLs =
     <!-- Project Header -->
     <section class="project-header">
         <div class="container">
-            <div class="header-content">
+            <a
+                href={lang === "es" ? "/portfolio" : "/en/portfolio"}
+                <div
+                class="header-content"
+            >
+                <a
+                    href={lang === "es" ? "/portfolio" : "/en/portfolio"}
+                    class="back-link"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path d="m15 18-6-6 6-6"></path></svg
+                    >
+                    {
+                        lang === "es"
+                            ? "Volver al Portfolio"
+                            : "Back to Portfolio"
+                    }
+                </a>
                 <span class="category-badge">{category}</span>
                 <h1 class="heading-text-typo">{title}</h1>
                 <p class="description">{description}</p>
                 <div class="meta">
                     {tags?.map((tag) => <span class="tech-tag">#{tag}</span>)}
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -101,9 +127,53 @@ const alternateURLs =
         position: relative;
         z-index: 1;
 
+        // Target the container directly for flex alignment
+        // > .container {
+        //     display: flex;
+        //     flex-direction: column;
+        //     align-items: flex-start; // Align children (like back-link) to left
+        // }
+
         .header-content {
+            width: 100%; // Ensure it takes full width to center its internal text
             max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center text stack */
+            position: relative; /* Ensure context */
+        }
+
+        .back-link {
+            display: flex; /* Flex behavior, block-level in flex container */
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+            align-self: flex-start; /* Push ONLY the button to the left edge of the 800px content */
+
+            @media (min-width: 768px) {
+                position: relative;
+                top: auto;
+                left: auto;
+                /* align-self: flex-start is already set */
+                margin-left: 0;
+            }
+
+            &:hover {
+                color: $base-color;
+            }
+
+            svg {
+                transition: transform 0.2s;
+            }
+
+            &:hover svg {
+                transform: translateX(-3px);
+            }
         }
 
         .category-badge {
@@ -186,22 +256,59 @@ const alternateURLs =
             color: $base-color;
             font-weight: 600;
         }
+        :global(h4) {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
         :global(p) {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #333;
             margin-bottom: 1.5rem;
         }
-        :global(ul) {
+
+        :global(ul),
+        :global(ol) {
             margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
+            padding-left: 2rem; // Increased alignment spacing
 
             :global(li) {
                 margin-bottom: 0.5rem;
                 color: #333;
-                line-height: 1.6;
+                line-height: 1.8; // Match p line-height
+                padding-left: 0.5rem;
+                font-size: 1.1rem; // Match p font-size
+            }
+
+            // Nested lists
+            :global(ul) {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                padding-left: 2rem;
+                list-style-type: circle;
+            }
+
+            :global(ol) {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                padding-left: 2rem;
+                list-style-type: decimal;
             }
         }
+
+        :global(pre) {
+            background-color: #f4f4f4;
+            padding: 2rem; // More padding on all sides
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
         :global(strong) {
             color: $base-color;
             font-weight: 600;

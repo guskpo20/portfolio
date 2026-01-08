@@ -1,115 +1,235 @@
 ---
-title_es: "Campaña de Newsletter Corporativo"
-title_en: "Corporate Newsletter Campaign"
-description_es: "Diseño y maquetación de plantillas de email responsivas compatibles con Outlook."
-description_en: "Design and coding of responsive email templates compatible with Outlook."
+title_es: "Colección de Emails HTML"
+title_en: "HTML Email Template Collection"
+description_es: "Una galería curada de 11 plantillas de email responsive, desde newsletters hasta notificaciones transaccionales."
+description_en: "A curated gallery of 11 responsive email templates, ranging from newsletters to transactional notifications."
 category: "Email"
-pubDate: "2025-12-01"
-tags: ["HTML Email", "MJML", "Outlook"]
-heroImage: "/posts/is-it-the-end-of-ofts.jpg"
+pubDate: "2026-01-08"
+tags: ["HTML Email", "Responsive Design", "CRM", "Automation"]
+heroImage: "/portfolio/email-galery-hero.webp"
 ---
 import Es from '../../components/mdx/Es.astro';
 import En from '../../components/mdx/En.astro';
-import Carousel from '../../components/Carousel.astro';
+import EmailGrid from '../../components/mdx/EmailGrid.astro';
 
 <Es>
 
-## Sobre el Proyecto
+## Sobre la Colección
 
-Este proyecto consistió en digitalizar una tienda de ropa local que solo operaba físicamente. El objetivo principal era expandir su alcance y permitir ventas automatizadas 24/7.
+En el mundo del Email Marketing, la confidencialidad es clave. Gran parte de mi trabajo se realiza bajo acuerdos de no divulgación (NDA) para clientes privados.
 
-<Carousel images={[
-  "/posts/is-it-the-end-of-ofts.jpg",
-  "/posts/microsoft-is-lost.jpg",
-  "/posts/blog_first-post_1.png"
+Para poder demostrar mis capacidades técnicas y de diseño, he creado esta **colección de templates originales**. Estos ejemplos cubren los casos de uso más comunes en la industria, demostrando:
+
+*   **HTML & CSS Robustos:** Compatibilidad probada en Outlook, Gmail, Apple Mail, etc.
+*   **Diseño Responsive:** Se adaptan perfectamente a móviles y escritorio.
+*   **Variedad de Estilos:** Desde corporativo minimalista hasta diseños oscuros y creativos.
+
+### Galería de Templates
+
+<EmailGrid lang="es" items={[
+  {
+    image: "/portfolio/email-v1.png",
+    title_es: "Newsletter Corporativo",
+    title_en: "Corporate Newsletter",
+    desc_es: "Diseño limpio para noticias mensuales, artículos destacados y actualizaciones de la empresa.",
+    desc_en: "Clean design for monthly news, featured articles, and company updates."
+  },
+  {
+    image: "/portfolio/email-v2.png",
+    title_es: "Recibo Transaccional",
+    title_en: "Transactional Receipt",
+    desc_es: "Confirmación de compra clara y funcional con tablas de resumen y desglose de costos.",
+    desc_en: "Clear and functional purchase confirmation with summary tables and cost breakdown."
+  },
+  {
+    image: "/portfolio/email-v3.png",
+    title_es: "Promoción Flash",
+    title_en: "Promotional Flash Sale",
+    desc_es: "Alto impacto visual con colores vibrantes para generar urgencia en ofertas limitadas.",
+    desc_en: "High visual impact with vibrant colors to drive urgency on limited-time offers."
+  },
+  {
+    image: "/portfolio/email-v4.png",
+    title_es: "Invitación a Evento (Dark)",
+    title_en: "Event Invitation (Dark)",
+    desc_es: "Estética elegante en modo oscuro, ideal para eventos exclusivos o webinars nocturnos.",
+    desc_en: "Elegant dark mode aesthetic, ideal for exclusive events or evening webinars."
+  },
+  {
+    image: "/portfolio/email-v5.png",
+    title_es: "Bienvenida SaaS",
+    title_en: "SaaS Welcome",
+    desc_es: "Onboarding amigable estilo startup para nuevos usuarios, fomentando la activación.",
+    desc_en: "Friendly startup-style onboarding for new users, encouraging activation."
+  },
+  {
+    image: "/portfolio/email-v6.png",
+    title_es: "Recuperación de Contraseña",
+    title_en: "Password Reset",
+    desc_es: "Crucial para UX. Simple, directo y seguro, enfocado en una sola acción.",
+    desc_en: "Crucial for UX. Simple, direct, and secure, focused on a single action."
+  },
+  {
+    image: "/portfolio/email-v7.png",
+    title_es: "Encuesta de Satisfacción",
+    title_en: "Feedback Survey",
+    desc_es: "Sistema de calificación interactivo simple para medir NPS o satisfacción del cliente.",
+    desc_en: "Simple interactive rating system to measure NPS or customer satisfaction."
+  },
+  {
+    image: "/portfolio/email-v8.png",
+    title_es: "Carrito Abandonado",
+    title_en: "Cart Abandonment",
+    desc_es: "Recuperación de ventas con recordatorio visual del producto y CTA claro.",
+    desc_en: "Sales recovery with visual product reminder and clear CTA."
+  },
+  {
+    image: "/portfolio/email-v9.png",
+    title_es: "Propuesta Comercial",
+    title_en: "Commercial Proposal",
+    desc_es: "Formato B2B profesional para enviar cotizaciones y cerrar tratos.",
+    desc_en: "Professional B2B format for sending quotes and closing deals."
+  },
+  {
+    image: "/portfolio/email-v10.png",
+    title_es: "Seguimiento Personal",
+    title_en: "Personal Follow-up",
+    desc_es: "Simula un email personal de texto plano pero con estructura HTML controlada.",
+    desc_en: "Simulates a personal plain-text email but with controlled HTML structure."
+  },
+  {
+    image: "/portfolio/email-v11.png",
+    title_es: "Agradecimiento",
+    title_en: "Thank You Note",
+    desc_es: "Diseño cálido y elegante para nutrir la relación con el cliente post-evento o compra.",
+    desc_en: "Warm and elegant design to nurture customer relationships after an event or purchase."
+  }
 ]} />
 
-### El Reto
-El cliente necesitaba enviar comunicados internos a **5000+ empleados**, la mayoría usando Outlook de escritorio (versiones 2016 y 2019).
-Las plantillas anteriores presentaban los siguientes problemas:
-1.  Se rompían en dispositivos móviles.
-2.  Las imágenes no cargaban correctamente.
-3.  Los botones no eran clicables en Outlook.
+### Estrategia y Situaciones de Uso
+Debido a acuerdos de confidencialidad (NDA), estos diseños son recreaciones de trabajos reales. A continuación, detallo la situación de negocio que resuelve cada uno:
 
-> "Necesitamos que nuestros empleados puedan leer las novedades de la empresa desde su celular mientras viajan al trabajo, sin perder la identidad corporativa." - **HR Manager**
-
-### Solución Técnica
-Para resolver esto, implementamos una arquitectura basada en **MJML** para asegurar la compatibilidad.
-
-#### Snippet de Código (MJML)
-Así estructuramos la cabecera para garantizar que se viera bien en móvil:
-
-```xml
-<mj-section background-color="#ffffff" padding-bottom="0px" padding-top="0px">
-  <mj-column width="100%">
-    <mj-image src="https://example.com/logo.png" alt="Logo Corporativo" align="center" width="150px" />
-    <mj-divider border-color="#F45E43"></mj-divider>
-    <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
-      Boletín Mensual
-    </mj-text>
-  </mj-column>
-</mj-section>
-```
-
-### Tecnologías Utilizadas
-*   `MJML`: Framework para email responsive.
-*   `VML`: Lenguaje de marcado vectorial para _backgrounds_ en Outlook.
-*   `Litmus`: Plataforma de testing.
-
-### Resultados
-- **100%** de consistencia visual en +40 clientes de correo.
-- Aumento del **35%** en la tasa de apertura.
-- _Feedback_ positivo inmediato de los empleados.
+1.  **Newsletter Corporativo:** Para una empresa Tech que necesitaba aumentar la retención de usuarios compartiendo actualizaciones mensuales y artículos del blog.
+2.  **Recibo Transaccional:** Optimizado para una marca de moda urbana; el objetivo era reducir tickets de soporte confirmando claramente los detalles del pedido.
+3.  **Promoción Flash:** Diseñado para campañas de Black Friday, enfocándose en la urgencia y CTR (Click-Through Rate).
+4.  **Invitación a Evento:** Para una gala exclusiva de arquitectura; se requería un diseño "Dark Mode" que transmitiera elegancia y exclusividad.
+5.  **Bienvenida SaaS:** El primer punto de contacto para una app de productividad; diseñado para guiar al usuario a completar su perfil (Activation Rate).
+6.  **Recuperación de Contraseña:** Un email crítico de seguridad donde la claridad y la confianza son lo único que importa evita frustraciones.
+7.  **Encuesta de Feedback:** Implementado para medir el NPS post-servicio; el diseño visual aumenta la tasa de respuesta comparado con enlaces de texto.
+8.  **Carrito Abandonado:** Estrategia de retargeting para un e-commerce; recupera entre un 10-15% de ventas perdidas recordándoles el producto específico.
+9.  **Propuesta Comercial:** Usado por agencias para enviar cotizaciones formales que se vean profesionales y organizadas, no solo un PDF adjunto.
+10. **Seguimiento Personal:** Diseñado para parecer un email personal ("text-only") pero con estructura HTML controlada para tracking, ideal para equipos de ventas B2B.
+11. **Agradecimiento:** Automatización post-evento para nutrir la relación a largo plazo sin intentar vender nada inmediatamente.
 
 </Es>
 
 <En>
 
-## About the Project
+## About the Collection
 
-This project involved digitizing a local clothing store that only operated physically. The main goal was to expand its reach and enable automated 24/7 sales.
+In the world of Email Marketing, confidentiality is key. Much of my work is done under non-disclosure agreements (NDAs) for private clients.
 
-<Carousel images={[
-  "/posts/is-it-the-end-of-ofts.jpg",
-  "/posts/microsoft-is-lost.jpg",
-  "/posts/blog_first-post_1.png"
+To showcase my technical and design capabilities, I have created this **collection of original templates**. These examples cover the most common use cases in the industry, demonstrating:
+
+*   **Robust HTML & CSS:** Proven compatibility across Outlook, Gmail, Apple Mail, etc.
+*   **Responsive Design:** Perfectly adapted for both mobile and desktop.
+*   **Variety of Styles:** From minimalist corporate to dark and creative designs.
+
+### Template Gallery
+
+<EmailGrid lang="en" items={[
+  {
+    image: "/portfolio/email-v1.png",
+    title_es: "Newsletter Corporativo",
+    title_en: "Corporate Newsletter",
+    desc_es: "Diseño limpio para noticias mensuales, artículos destacados y actualizaciones de la empresa.",
+    desc_en: "Clean design for monthly news, featured articles, and company updates."
+  },
+  {
+    image: "/portfolio/email-v2.png",
+    title_es: "Recibo Transaccional",
+    title_en: "Transactional Receipt",
+    desc_es: "Confirmación de compra clara y funcional con tablas de resumen y desglose de costos.",
+    desc_en: "Clear and functional purchase confirmation with summary tables and cost breakdown."
+  },
+  {
+    image: "/portfolio/email-v3.png",
+    title_es: "Promoción Flash",
+    title_en: "Promotional Flash Sale",
+    desc_es: "Alto impacto visual con colores vibrantes para generar urgencia en ofertas limitadas.",
+    desc_en: "High visual impact with vibrant colors to drive urgency on limited-time offers."
+  },
+  {
+    image: "/portfolio/email-v4.png",
+    title_es: "Invitación a Evento (Dark)",
+    title_en: "Event Invitation (Dark)",
+    desc_es: "Estética elegante en modo oscuro, ideal para eventos exclusivos o webinars nocturnos.",
+    desc_en: "Elegant dark mode aesthetic, ideal for exclusive events or evening webinars."
+  },
+  {
+    image: "/portfolio/email-v5.png",
+    title_es: "Bienvenida SaaS",
+    title_en: "SaaS Welcome",
+    desc_es: "Onboarding amigable estilo startup para nuevos usuarios, fomentando la activación.",
+    desc_en: "Friendly startup-style onboarding for new users, encouraging activation."
+  },
+  {
+    image: "/portfolio/email-v6.png",
+    title_es: "Recuperación de Contraseña",
+    title_en: "Password Reset",
+    desc_es: "Crucial para UX. Simple, directo y seguro, enfocado en una sola acción.",
+    desc_en: "Crucial for UX. Simple, direct, and secure, focused on a single action."
+  },
+  {
+    image: "/portfolio/email-v7.png",
+    title_es: "Encuesta de Satisfacción",
+    title_en: "Feedback Survey",
+    desc_es: "Sistema de calificación interactivo simple para medir NPS o satisfacción del cliente.",
+    desc_en: "Simple interactive rating system to measure NPS or customer satisfaction."
+  },
+  {
+    image: "/portfolio/email-v8.png",
+    title_es: "Carrito Abandonado",
+    title_en: "Cart Abandonment",
+    desc_es: "Recuperación de ventas con recordatorio visual del producto y CTA claro.",
+    desc_en: "Sales recovery with visual product reminder and clear CTA."
+  },
+  {
+    image: "/portfolio/email-v9.png",
+    title_es: "Propuesta Comercial",
+    title_en: "Commercial Proposal",
+    desc_es: "Formato B2B profesional para enviar cotizaciones y cerrar tratos.",
+    desc_en: "Professional B2B format for sending quotes and closing deals."
+  },
+  {
+    image: "/portfolio/email-v10.png",
+    title_es: "Seguimiento Personal",
+    title_en: "Personal Follow-up",
+    desc_es: "Simula un email personal de texto plano pero con estructura HTML controlada.",
+    desc_en: "Simulates a personal plain-text email but with controlled HTML structure."
+  },
+  {
+    image: "/portfolio/email-v11.png",
+    title_es: "Agradecimiento",
+    title_en: "Thank You Note",
+    desc_es: "Diseño cálido y elegante para nutrir la relación con el cliente post-evento o compra.",
+    desc_en: "Warm and elegant design to nurture customer relationships after an event or purchase."
+  }
 ]} />
 
-### The Challenge
-The client needed to send internal announcements to **5000+ employees**, most of them using Outlook desktop (2016 and 2019 versions).
-Previous templates had the following issues:
-1.  Broken layout on mobile devices.
-2.  Images failing to load properly.
-3.  Buttons were not clickable in Outlook.
+### Strategy & Use Cases
+Due to Non-Disclosure Agreements (NDA), these designs are recreations of real-world work. Below is the business situation each template solves:
 
-> "We need our employees to be able to read company news on their phones during their commute, without losing our corporate identity." - **HR Manager**
-
-### Technical Solution
-To solve this, we implemented an architecture based on **MJML** to ensure compatibility.
-
-#### Code Snippet (MJML)
-Here is how we structured the header to guarantee mobile viewing:
-
-```xml
-<mj-section background-color="#ffffff" padding-bottom="0px" padding-top="0px">
-  <mj-column width="100%">
-    <mj-image src="https://example.com/logo.png" alt="Corporate Logo" align="center" width="150px" />
-    <mj-divider border-color="#F45E43"></mj-divider>
-    <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
-      Monthly Newsletter
-    </mj-text>
-  </mj-column>
-</mj-section>
-```
-
-### Technologies Used
-*   `MJML`: Framework for responsive email.
-*   `VML`: Vector Markup Language for _backgrounds_ in Outlook.
-*   `Litmus`: Testing platform.
-
-### Results
-- **100%** visual consistency across +40 email clients.
-- **35%** increase in open rates.
-- Immediate positive _feedback_ from employees.
+1.  **Corporate Newsletter:** For a Tech company needing to boost user retention by sharing monthly product updates and blog content.
+2.  **Transactional Receipt:** Optimized for an urban fashion brand; the goal was to reduce support tickets by clearly confirming order details.
+3.  **Flash Sale:** Designed for Black Friday campaigns, focusing purely on urgency and CTR (Click-Through Rate).
+4.  **Event Invitation:** For an exclusive architecture gala; required a "Dark Mode" design to convey elegance and exclusivity.
+5.  **SaaS Welcome:** The first touchpoint for a productivity app; designed to guide the user to complete their profile (Activation Rate).
+6.  **Password Reset:** A critical security email where clarity and trust are paramount to prevent user frustration.
+7.  **Feedback Survey:** Implemented to measure post-service NPS; the visual design increases response rates compared to plain text links.
+8.  **Cart Abandonment:** Retargeting strategy for e-commerce; recovers 10-15% of lost sales by visually reminding users of their specific items.
+9.  **Commercial Proposal:** Used by agencies to send formal quotes that look professional and organized, rather than just a boring PDF attachment.
+10. **Personal Follow-up:** Designed to look like a personal "text-only" email but with controlled HTML structure, ideal for B2B sales teams.
+11. **Thank You Note:** Post-event automation to nurture long-term relationships without immediately trying to upsell.
 
 </En>

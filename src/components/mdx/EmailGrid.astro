@@ -1,0 +1,321 @@
+---
+interface Props {
+    items: {
+        title_es: string;
+        title_en: string;
+        image: string;
+        desc_es: string;
+        desc_en: string;
+    }[];
+    lang: "es" | "en";
+}
+
+const { items, lang } = Astro.props;
+---
+
+<div class="email-grid">
+    {
+        items.map((item) => (
+            <div
+                class="email-item"
+                data-image={item.image}
+                data-title={lang === "es" ? item.title_es : item.title_en}
+            >
+                <div class="image-container">
+                    <img
+                        src={item.image}
+                        alt={lang === "es" ? item.title_es : item.title_en}
+                        loading="lazy"
+                    />
+                    <div class="overlay">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <>
+                                <path d="M15 3h6v6" />
+                                <path d="M10 14 21 3" />
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                <path d="M14 3h7v7" />
+                            </>
+                        </svg>
+                    </div>
+                </div>
+                <div class="info">
+                    <h3>{lang === "es" ? item.title_es : item.title_en}</h3>
+                    <p>{lang === "es" ? item.desc_es : item.desc_en}</p>
+                </div>
+            </div>
+        ))
+    }
+</div>
+
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="" />
+        <button id="lightbox-close" aria-label="Close">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+            >
+        </button>
+        <h3 id="lightbox-caption"></h3>
+    </div>
+</div>
+
+<script>
+    function setupLightbox() {
+        const items = document.querySelectorAll(".email-item .image-container");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById(
+            "lightbox-img",
+        ) as HTMLImageElement;
+        const lightboxCaption = document.getElementById("lightbox-caption");
+        const closeBtn = document.getElementById("lightbox-close");
+
+        if (
+            !items.length ||
+            !lightbox ||
+            !lightboxImg ||
+            !lightboxCaption ||
+            !closeBtn
+        )
+            return;
+
+        const openLightbox = (src, title) => {
+            lightboxImg.src = src;
+            lightboxCaption.textContent = title;
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+        };
+
+        const closeLightbox = () => {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "";
+            setTimeout(() => {
+                lightboxImg.src = "";
+            }, 300);
+        };
+
+        items.forEach((item) => {
+            item.addEventListener("click", () => {
+                const parent = item.closest(".email-item") as HTMLElement;
+                const src = parent.getAttribute("data-image");
+                const title = parent.getAttribute("data-title");
+                if (src && title) openLightbox(src, title);
+            });
+        });
+
+        closeBtn.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && lightbox.classList.contains("active")) {
+                closeLightbox();
+            }
+        });
+    }
+
+    // Bind on load and after view transitions
+    setupLightbox();
+    document.addEventListener("astro:after-swap", setupLightbox);
+</script>
+
+<style lang="scss">
+    .email-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .email-item {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        overflow: hidden;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+
+            .overlay {
+                opacity: 1;
+            }
+        }
+
+        .image-container {
+            background: #f4f4f4;
+            aspect-ratio: 3/4; // Tall aspect ratio typical for emails
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top; // Start showing from the header
+                display: block;
+                transition: transform 0.5s ease;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+
+                svg {
+                    color: white;
+                    width: 32px;
+                    height: 32px;
+                    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+                }
+            }
+        }
+
+        .info {
+            padding: 1rem;
+
+            h3 {
+                margin: 0 0 0.5rem 0;
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #333;
+            }
+
+            p {
+                margin: 0;
+                font-size: 0.9rem;
+                color: #666;
+                line-height: 1.4;
+            }
+        }
+    }
+
+    /* Lightbox Styles */
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        backdrop-filter: blur(5px);
+
+        &.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+            img {
+                max-width: 100%;
+                max-height: 85vh;
+                display: block;
+                object-fit: contain;
+            }
+
+            h3 {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                margin: 0;
+                padding: 1rem;
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: 20px; /* Position inside the content */
+            right: 20px;
+            background: rgba(
+                0,
+                0,
+                0,
+                0.5
+            ); /* Dark background for contrast on white images */
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 40px; /* Fixed width/height for perfect circle */
+            height: 40px;
+            border-radius: 50%;
+            display: flex; /* Flexbox for centering SVG */
+            align-items: center;
+            justify-content: center;
+            transition:
+                background 0.2s,
+                transform 0.2s;
+            padding: 0; /* Remove padding to rely on flex centering */
+            z-index: 10;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.8);
+                transform: scale(1.1);
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+</style>
