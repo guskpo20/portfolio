@@ -1,5 +1,7 @@
 ---
 import Header from "./header.astro";
+import Footer from "./Footer.astro";
+import { Analytics } from "@vercel/analytics/react";
 
 const { lang } = Astro.props;
 
@@ -112,6 +114,8 @@ const {
 	<body>
 		<Header />
 		<slot />
+		<Footer />
+		<Analytics client:load />
 	</body>
 </html>
 

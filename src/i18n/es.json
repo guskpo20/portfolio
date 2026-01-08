@@ -169,5 +169,13 @@
         "firstName": "Primer nombre",
         "subjectTitle": "Asunto",
         "subject": "Escribe algo"
+    },
+    "footer": {
+        "text": "Diseñado y desarrollado por Gustavo Keymetlian"
+    },
+    "error404": {
+        "title": "Página no encontrada",
+        "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+        "button": "Volver al inicio"
     }
 }

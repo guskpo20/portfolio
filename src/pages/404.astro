@@ -1,0 +1,96 @@
+---
+import Layout from "../components/Layout.astro";
+import { useTranslations } from "../i18n/utils";
+
+const t_es = useTranslations("es");
+const t_en = useTranslations("en");
+---
+
+<Layout title="404 | TavoDev" lang="es">
+    <div class="container not-found-container">
+        <!-- Spanish Content (Default) -->
+        <div id="content-es">
+            <h1 class="heading-text-typo">404</h1>
+            <h2>{t_es("error404.title")}</h2>
+            <p>{t_es("error404.description")}</p>
+            <a href="/" class="btn">{t_es("error404.button")}</a>
+        </div>
+
+        <!-- English Content (Hidden by default, shown via JS) -->
+        <div id="content-en" style="display:none;">
+            <h1 class="heading-text-typo">404</h1>
+            <h2>{t_en("error404.title")}</h2>
+            <p>{t_en("error404.description")}</p>
+            <a href="/en" class="btn">{t_en("error404.button")}</a>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    // Simple client-side check to switch to English if URL starts with /en/
+    if (
+        window.location.pathname.startsWith("/en") ||
+        window.location.pathname === "/en"
+    ) {
+        const esContent = document.getElementById("content-es");
+        const enContent = document.getElementById("content-en");
+        if (esContent && enContent) {
+            esContent.style.display = "none";
+            enContent.style.display = "block";
+        }
+    }
+</script>
+
+<style lang="scss">
+    @import "../styles/variables.scss";
+
+    .not-found-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 70vh;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    h1 {
+        font-size: 8rem;
+        line-height: 1;
+        color: #eee;
+        margin: 0;
+        font-weight: 900;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        color: $base-color;
+        margin-bottom: 1rem;
+        margin-top: -1.5rem; // Overlap slightly with big number
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 2.5rem;
+        max-width: 500px;
+    }
+
+    .btn {
+        background-color: $base-color;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        display: inline-block;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+    }
+</style>

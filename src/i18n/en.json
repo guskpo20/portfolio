@@ -169,5 +169,13 @@
         "firstName": "First Name",
         "subjectTitle": "Subject",
         "subject": "Write here..."
+    },
+    "footer": {
+        "text": "Designed and developed by Gustavo Keymetlian"
+    },
+    "error404": {
+        "title": "Page Not Found",
+        "description": "Sorry, the page you are looking for does not exist or has been moved.",
+        "button": "Go back home"
     }
 }
