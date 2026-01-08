@@ -10,47 +10,106 @@ heroImage: "/posts/is-it-the-end-of-ofts.jpg"
 ---
 import Es from '../../components/mdx/Es.astro';
 import En from '../../components/mdx/En.astro';
+import Carousel from '../../components/Carousel.astro';
 
 <Es>
 
-## El Reto
+## Sobre el Proyecto
 
-El cliente necesitaba enviar comunicados internos a 5000+ empleados, la mayoría usando Outlook de escritorio (versiones 2016 y 2019). Las plantillas anteriores se rompían en dispositivos móviles.
+Este proyecto consistió en digitalizar una tienda de ropa local que solo operaba físicamente. El objetivo principal era expandir su alcance y permitir ventas automatizadas 24/7.
 
-### Mi Rol
+<Carousel images={[
+  "/posts/is-it-the-end-of-ofts.jpg",
+  "/posts/microsoft-is-lost.jpg",
+  "/posts/blog_first-post_1.png"
+]} />
 
-Me encargué de todo el desarrollo frontend de los emails.
+### El Reto
+El cliente necesitaba enviar comunicados internos a **5000+ empleados**, la mayoría usando Outlook de escritorio (versiones 2016 y 2019).
+Las plantillas anteriores presentaban los siguientes problemas:
+1.  Se rompían en dispositivos móviles.
+2.  Las imágenes no cargaban correctamente.
+3.  Los botones no eran clicables en Outlook.
 
-### Tecnologías
+> "Necesitamos que nuestros empleados puedan leer las novedades de la empresa desde su celular mientras viajan al trabajo, sin perder la identidad corporativa." - **HR Manager**
 
-*   **MJML:** Para asegurar la estructura responsiva.
-*   **VML:** Para fondos y botones en Outlook.
-*   **Litmus:** Para pruebas de renderizado en +40 clientes de correo.
+### Solución Técnica
+Para resolver esto, implementamos una arquitectura basada en **MJML** para asegurar la compatibilidad.
 
-### Resultado
+#### Snippet de Código (MJML)
+Así estructuramos la cabecera para garantizar que se viera bien en móvil:
 
-Logramos una consistencia visual del 100% en todos los clientes de correo soportados y aumentamos la tasa de apertura interna gracias a un diseño más limpio.
+```xml
+<mj-section background-color="#ffffff" padding-bottom="0px" padding-top="0px">
+  <mj-column width="100%">
+    <mj-image src="https://example.com/logo.png" alt="Logo Corporativo" align="center" width="150px" />
+    <mj-divider border-color="#F45E43"></mj-divider>
+    <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
+      Boletín Mensual
+    </mj-text>
+  </mj-column>
+</mj-section>
+```
+
+### Tecnologías Utilizadas
+*   `MJML`: Framework para email responsive.
+*   `VML`: Lenguaje de marcado vectorial para _backgrounds_ en Outlook.
+*   `Litmus`: Plataforma de testing.
+
+### Resultados
+- **100%** de consistencia visual en +40 clientes de correo.
+- Aumento del **35%** en la tasa de apertura.
+- _Feedback_ positivo inmediato de los empleados.
 
 </Es>
 
 <En>
 
-## The Challenge
+## About the Project
 
-The client needed to send internal announcements to 5000+ employees, most of them using Outlook desktop (2016 and 2019 versions). Previous templates broke on mobile devices.
+This project involved digitizing a local clothing store that only operated physically. The main goal was to expand its reach and enable automated 24/7 sales.
 
-### My Role
+<Carousel images={[
+  "/posts/is-it-the-end-of-ofts.jpg",
+  "/posts/microsoft-is-lost.jpg",
+  "/posts/blog_first-post_1.png"
+]} />
 
-I handled all the frontend development of the emails.
+### The Challenge
+The client needed to send internal announcements to **5000+ employees**, most of them using Outlook desktop (2016 and 2019 versions).
+Previous templates had the following issues:
+1.  Broken layout on mobile devices.
+2.  Images failing to load properly.
+3.  Buttons were not clickable in Outlook.
 
-### Technologies
+> "We need our employees to be able to read company news on their phones during their commute, without losing our corporate identity." - **HR Manager**
 
-*   **MJML:** To ensure responsive structure.
-*   **VML:** For backgrounds and buttons in Outlook.
-*   **Litmus:** For rendering tests in +40 email clients.
+### Technical Solution
+To solve this, we implemented an architecture based on **MJML** to ensure compatibility.
 
-### Result
+#### Code Snippet (MJML)
+Here is how we structured the header to guarantee mobile viewing:
 
-We achieved 100% visual consistency across all supported email clients and increased the internal open rate thanks to a cleaner design.
+```xml
+<mj-section background-color="#ffffff" padding-bottom="0px" padding-top="0px">
+  <mj-column width="100%">
+    <mj-image src="https://example.com/logo.png" alt="Corporate Logo" align="center" width="150px" />
+    <mj-divider border-color="#F45E43"></mj-divider>
+    <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
+      Monthly Newsletter
+    </mj-text>
+  </mj-column>
+</mj-section>
+```
+
+### Technologies Used
+*   `MJML`: Framework for responsive email.
+*   `VML`: Vector Markup Language for _backgrounds_ in Outlook.
+*   `Litmus`: Testing platform.
+
+### Results
+- **100%** visual consistency across +40 email clients.
+- **35%** increase in open rates.
+- Immediate positive _feedback_ from employees.
 
 </En>

@@ -59,7 +59,7 @@ const alternateURLs =
     alternateURLs={alternateURLs}
 >
     <!-- Project Header -->
-    <div class="project-header">
+    <section class="project-header">
         <div class="container">
             <div class="header-content">
                 <span class="category-badge">{category}</span>
@@ -70,16 +70,16 @@ const alternateURLs =
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Hero Image (Full Width or contained) -->
-    <div class="project-hero-image container">
+    <section class="project-hero-image container">
         <img
             src={heroImage}
             alt={title}
             transition:name={`project-image-${slug}`}
         />
-    </div>
+    </section>
 
     <!-- Content -->
     <article class="container project-content">
@@ -93,10 +93,18 @@ const alternateURLs =
     @import "../styles/variables.scss";
 
     .project-header {
+        // Ensure this clears the fixed navbar
         padding-top: 140px;
         padding-bottom: 3rem;
         background: linear-gradient(to bottom, #f9f9f9, #fff);
         text-align: center;
+        position: relative;
+        z-index: 1;
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
         .category-badge {
             display: inline-block;
@@ -108,45 +116,57 @@ const alternateURLs =
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: $base-color;
             margin-bottom: 1rem;
-            line-height: 1.1;
+            line-height: 1.2;
         }
 
         .description {
             font-size: 1.25rem;
             color: #666;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
         }
 
         .meta {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             justify-content: center;
+            flex-wrap: wrap;
+
             .tech-tag {
-                color: #888;
+                color: #555;
                 font-size: 0.9rem;
+                background: #eee;
+                padding: 4px 12px;
+                border-radius: 20px;
             }
         }
     }
 
     .project-hero-image {
         margin-bottom: 4rem;
+        margin-top: -2rem; // Slight overlap if desired, or 0
+        position: relative;
+        z-index: 2;
+
         img {
             width: 100%;
             height: auto;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            display: block; // Remove inline alignment gaps
         }
     }
 
     .project-content {
-        max-width: 900px !important;
+        max-width: 800px !important; // Match header width for reading
         padding-bottom: 5rem;
     }
 
@@ -154,20 +174,47 @@ const alternateURLs =
     .prose {
         :global(h2) {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
             color: $base-color;
+            font-family: $font-family-heading;
+        }
+        :global(h3) {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: $base-color;
+            font-weight: 600;
         }
         :global(p) {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #444;
+            color: #333;
             margin-bottom: 1.5rem;
+        }
+        :global(ul) {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+
+            :global(li) {
+                margin-bottom: 0.5rem;
+                color: #333;
+                line-height: 1.6;
+            }
+        }
+        :global(strong) {
+            color: $base-color;
+            font-weight: 600;
         }
     }
 
     @media (max-width: 768px) {
-        .project-header h1 {
-            font-size: 2.5rem;
+        .project-header {
+            padding-top: 100px; // Adjust for smaller mobile header if needed
+
+            h1 {
+                font-size: 2.2rem;
+            }
         }
     }
 </style>

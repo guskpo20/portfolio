@@ -2,6 +2,7 @@
     "nav": {
         "about": "About me",
         "services": "Services",
+        "portfolio": "Portfolio",
         "blog": "Blog",
         "contact": "Contact"
     },
@@ -13,6 +14,7 @@
     "services": {
         "title": "Services",
         "subtitle": "Digital solutions that drive performance",
+        "cta": "View all projects",
         "cards": [
             {
                 "title": "HTML Email Development",

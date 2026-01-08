@@ -196,7 +196,7 @@ const t = useTranslations(currentLang);
             }
         }
 
-        @media screen and (max-width: $almost-mobile) {
+        @media screen and (max-width: $navbar-min-desktop) {
             .hamburger {
                 display: flex;
                 &.active {
@@ -273,6 +273,11 @@ const t = useTranslations(currentLang);
                     target="_self"
                     href={currentLang === "es" ? "/#services" : "/en/#services"}
                     >{t("nav.services")}</a
+                >
+                <a
+                    target="_self"
+                    href={currentLang === "es" ? "/portfolio" : "/en/portfolio"}
+                    >{t("nav.portfolio")}</a
                 >
                 <a
                     target="_self"

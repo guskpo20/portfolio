@@ -82,4 +82,44 @@ const services = t("services.cards") as ServiceCard[];
             ))
         }
     </div>
+
+    <div class="cta-container">
+        <a
+            href={currentLang === "es" ? "/portfolio" : "/en/portfolio"}
+            class="btn-primary"
+        >
+            {t("services.cta")}
+        </a>
+    </div>
 </section>
+
+<style lang="scss">
+    // ... previous styles ...
+    @import "../styles/variables.scss";
+
+    // Add specific styles for the CTA
+    .cta-container {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 60px;
+        margin-top: 20px;
+
+        .btn-primary {
+            background-color: $base-color;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: bold;
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba($base-color, 0.3);
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba($base-color, 0.4);
+            }
+        }
+    }
+</style>
