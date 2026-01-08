@@ -1,0 +1,173 @@
+---
+import Layout from "../components/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"portfolio">["data"] & {
+    lang: "es" | "en";
+};
+
+const {
+    title_es,
+    title_en,
+    description_es,
+    description_en,
+    category,
+    pubDate,
+    updatedDate,
+    heroImage,
+    tags,
+    lang,
+} = Astro.props;
+
+const title = lang === "es" ? title_es : title_en;
+const description = lang === "es" ? description_es : description_en;
+
+// --- SEO Logic ---
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    headline: title,
+    description: description,
+    author: {
+        "@type": "Person",
+        name: "Gustavo Keymetlian",
+        url: "https://tavo.work",
+    },
+    datePublished: pubDate.toISOString(),
+    image: new URL(heroImage, Astro.site).toString(),
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": new URL(Astro.url.pathname, Astro.site).toString(),
+    },
+};
+
+const currentPath = Astro.url.pathname;
+const slug = currentPath.split("/").pop();
+
+const alternateURLs =
+    lang === "es"
+        ? { en: `/en/portfolio/${slug}` }
+        : { es: `/portfolio/${slug}` };
+---
+
+<Layout
+    title={`${title} | Portfolio`}
+    description={description}
+    lang={lang}
+    schema={schema}
+    alternateURLs={alternateURLs}
+>
+    <!-- Project Header -->
+    <div class="project-header">
+        <div class="container">
+            <div class="header-content">
+                <span class="category-badge">{category}</span>
+                <h1 class="heading-text-typo">{title}</h1>
+                <p class="description">{description}</p>
+                <div class="meta">
+                    {tags?.map((tag) => <span class="tech-tag">#{tag}</span>)}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Image (Full Width or contained) -->
+    <div class="project-hero-image container">
+        <img
+            src={heroImage}
+            alt={title}
+            transition:name={`project-image-${slug}`}
+        />
+    </div>
+
+    <!-- Content -->
+    <article class="container project-content">
+        <div class="prose">
+            <slot />
+        </div>
+    </article>
+</Layout>
+
+<style lang="scss">
+    @import "../styles/variables.scss";
+
+    .project-header {
+        padding-top: 140px;
+        padding-bottom: 3rem;
+        background: linear-gradient(to bottom, #f9f9f9, #fff);
+        text-align: center;
+
+        .category-badge {
+            display: inline-block;
+            background: $base-color;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: $base-color;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .description {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .meta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            .tech-tag {
+                color: #888;
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .project-hero-image {
+        margin-bottom: 4rem;
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .project-content {
+        max-width: 900px !important;
+        padding-bottom: 5rem;
+    }
+
+    /* Reuse some prose styles or define new ones */
+    .prose {
+        :global(h2) {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: $base-color;
+        }
+        :global(p) {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .project-header h1 {
+            font-size: 2.5rem;
+        }
+    }
+</style>

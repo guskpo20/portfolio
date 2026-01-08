@@ -1,0 +1,103 @@
+---
+title_es: "¿Es el final de los OFT?"
+title_en: "Is it the end of OFTs?"
+description_es: "Analizamos el estado actual de los archivos OFT, sus pros, sus contras y por qué el nuevo Outlook podría significar su desaparición."
+description_en: "We analyze the current state of OFT files, their pros, cons, and why the new Outlook might mean their demise."
+pubDate: "2026-01-08"
+tags: ["Email", "Outlook", "OFT"]
+heroImage: "/posts/is-it-the-end-of-ofts.jpg"
+---
+import Es from '../../components/mdx/Es.astro';
+import En from '../../components/mdx/En.astro';
+
+<Es>
+
+## ¿Qué es un OFT y por qué nos importa?
+
+Un archivo **OFT (Outlook File Template)** es básicamente una plantilla de correo electrónico de Outlook. Para los desarrolladores de email, ha sido una herramienta "secreta" muy valiosa: nos permite maquetar un email en HTML, abrirlo en Outlook y guardarlo como `.oft`.
+
+¿La gran ventaja? **Se puede enviar con un solo clic.** No necesitas configurar un servidor SMTP, ni usar una plataforma de terceros como Mailchimp o SendGrid para envíos internos rápidos. Es ideal para comunicaciones corporativas internas donde el remitente es un humano real enviando desde su propio Outlook.
+
+### Casos de uso comunes
+- **Comunicación Interna Empresarial:** Newsletters internos de RRHH o comunicados de gerencia.
+- **Ventas B2B:** Ejecutivos enviando propuestas estandarizadas pero personalizables antes de salir.
+- **Soporte:** Respuestas predefinidas con formato rico que los agentes pueden abrir y enviar.
+
+## Pros y Contras
+
+Aunque útiles, los OFT no son perfectos.
+
+### 👍 Lo Bueno
+- **Facilidad de envío:** Doble clic al archivo, se abre en Outlook, escribes el destinatario y envías.
+- **Remitente real:** Sale desde tu buzón personal/profesional, no "on behalf of".
+- **Sin costes extra:** No requiere pagar por servicios de Email Marketing para envíos puntuales.
+
+### 👎 Lo Malo
+- **Renderizado impredecible:** Al guardar un HTML como OFT, Outlook "reescribe" el código. Le agrega toneladas de estilos VML y MSO propietarios, lo que a veces rompe layouts complejos.
+- **Difícil mantenimiento:** No puedes editar el código del OFT fácilmente una vez guardado.
+- **Solo Windows (principalmente):** El soporte completo siempre ha estado ligado al Outlook de escritorio para Windows.
+
+## El Futuro: ¿Se extinguirán?
+
+Todo apunta a que **sí, o al menos quedarán como reliquias**.
+
+Microsoft está impulsando el **"Nuevo Outlook"**, que esencialmente es una aplicación web progresiva (PWA) envuelta en una carcasa de escritorio. Esta nueva versión busca unificar la experiencia entre la web y el escritorio, pero en el camino, se está deshaciendo de muchas funcionalidades "legacy" (heredadas).
+
+### La Evidencia
+1.  **Incompatibilidad:** El nuevo Outlook tiene soporte limitado o nulo para crear y usar archivos OFT de la manera tradicional.
+2.  **Filosofía Web:** Microsoft está apostando por complementos basados en web y plantillas en la nube, alejándose de los archivos locales propietarios como `.pst` o `.oft`.
+    
+Puedes leer más sobre las limitaciones del nuevo Outlook en este [artículo oficial de comparación de Microsoft](https://support.microsoft.com/en-us/office/feature-comparison-between-new-outlook-and-classic-outlook-de453583-1e76-48bf-975a-2e9cd2ee16dd).
+
+Además, para aquellos que siguen aferrados a versiones antiguas para mantener estas funciones, recuerden que el [soporte para Office 2016 y 2019 finalizó en octubre de 2025](https://support.microsoft.com/es-es/office/finalizaci%C3%B3n-del-soporte-para-office-2016-y-office-2019-818c68bc-d5e5-47e5-b52f-ddf636cf8e16).
+
+### Conclusión
+Si tu flujo de trabajo depende críticamente de OFTs, es hora de buscar alternativas. El Outlook "Clásico" seguirá con nosotros hasta 2029, pero el futuro es web, y en la web, los archivos `.oft` no tienen lugar.
+
+</Es>
+
+<En>
+
+## What is an OFT and why does it matter?
+
+An **OFT (Outlook File Template)** is basically an Outlook email template file. For email developers, it has been a valuable "secret" tool: it allows us to code an email in HTML, open it in Outlook, and save it as an `.oft`.
+
+The big advantage? **It can be sent with a single click.** You don't need to configure an SMTP server, or use a third-party platform like Mailchimp or SendGrid for quick internal sends. It is ideal for internal corporate communications where the sender is a real human sending from their own Outlook.
+
+### Common Use Cases
+- **Internal Corporate Communication:** HR newsletters or management announcements.
+- **B2B Sales:** Executives sending standardized but customizable proposals before sending.
+- **Support:** Predefined rich-format responses that agents can open and send.
+
+## Pros and Cons
+
+While useful, OFTs are not perfect.
+
+### 👍 The Good
+- **Ease of sending:** Double click the file, it opens in Outlook, type the recipient, and send.
+- **Real Sender:** It goes out from your personal/professional mailbox, not "on behalf of".
+- **No extra costs:** Does not require paying for Email Marketing services for sporadic sends.
+
+### 👎 The Bad
+- **Unpredictable Rendering:** When saving an HTML as OFT, Outlook "rewrites" the code. It adds tons of proprietary VML and MSO styles, which sometimes breaks complex layouts.
+- **Hard to Maintain:** You cannot easily edit the OFT code once saved.
+- **Windows Only (mostly):** Full support has always been tied to Outlook desktop for Windows.
+
+## The Future: Will they go extinct?
+
+All signs point to **yes, or at least they will remain as relics**.
+
+Microsoft is pushing the **"New Outlook"**, which is essentially a Progressive Web App (PWA) wrapped in a desktop shell. This new version seeks to unify the experience between web and desktop, but along the way, it is ditching many "legacy" functionalities.
+
+### The Evidence
+1.  **Incompatibility:** The new Outlook has limited or no support for creating and using OFT files in the traditional way.
+2.  **Web Philosophy:** Microsoft is betting on web-based add-ins and cloud templates, moving away from proprietary local files like `.pst` or `.oft`.
+
+You can read more about the limitations of the new Outlook in this [official Microsoft comparison article](https://support.microsoft.com/en-us/office/feature-comparison-between-new-outlook-and-classic-outlook-de453583-1e76-48bf-975a-2e9cd2ee16dd).
+
+Also, for those still clinging to older versions to keep these features, remember that [support for Office 2016 and 2019 ended in October 2025](https://support.microsoft.com/es-es/office/finalizaci%C3%B3n-del-soporte-para-office-2016-y-office-2019-818c68bc-d5e5-47e5-b52f-ddf636cf8e16).
+
+### Conclusion
+If your workflow critically depends on OFTs, it is time to look for alternatives. "Classic" Outlook will be with us until 2029, but the future is web, and on the web, `.oft` files have no place.
+
+</En>
