@@ -14,5 +14,7 @@ export default defineConfig({
     }
   },
 
-  integrations: [sitemap(), mdx(), react()]
+  integrations: [sitemap({
+    filter: (page) => page !== 'https://tavo.work/404/'
+  }), mdx(), react()]
 });
