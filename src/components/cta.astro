@@ -8,18 +8,18 @@ interface Props {
     imageWidth?: number;
 }
 
-const { 
-    text, 
-    url, 
-    imageSrc, 
+const {
+    text,
+    url,
+    imageSrc,
     imageAlt = "Button image",
-    isPrimary = true, 
+    isPrimary = true,
     imageWidth,
 } = Astro.props;
 ---
 
 <style lang="scss">
-    @import '../styles/variables.scss';
+    @import "../styles/variables.scss";
 
     .cta-button {
         display: grid;
@@ -31,7 +31,7 @@ const {
         border-radius: 50px;
         transition: all 0.3s ease;
         width: fit-content;
-        
+
         // Estilos para el botón primario
         &.primary {
             background-color: $base-color;
@@ -39,17 +39,36 @@ const {
 
             &:hover {
                 background-color: $accent-color;
+                color: var(--accent-text-color);
+
+                // Dark Mode Hover: Bg is Light Grey, Text is Dark.
+                // Source Icon is White -> Invert to Black to match text.
+                :global([data-theme="dark"]) & img {
+                    filter: invert(1);
+                }
             }
         }
 
         // Estilos para el botón secundario
         &.secondary {
             background-color: $accent-color;
-            color: white;
+            color: var(--accent-text-color);
+
+            // Dark Mode Default: Bg is Light Grey.
+            // Source Icon is White -> Invert to Black.
+            :global([data-theme="dark"]) & img {
+                filter: invert(1);
+            }
 
             &:hover {
                 background-color: $base-color;
                 color: white;
+
+                // Dark Mode Hover: Bg is Blue.
+                // Source Icon is White -> Remove invert to keep it White.
+                :global([data-theme="dark"]) & img {
+                    filter: none;
+                }
             }
         }
 
@@ -67,11 +86,11 @@ const {
     }
 </style>
 
-<a 
-    href={url} 
-    class={`cta-button ${isPrimary ? 'primary' : 'secondary'}`}
+<a
+    href={url}
+    class={`cta-button ${isPrimary ? "primary" : "secondary"}`}
     target="_blank"
 >
-    {imageSrc && <img src={imageSrc} alt={imageAlt} width={imageWidth}/>}
+    {imageSrc && <img src={imageSrc} alt={imageAlt} width={imageWidth} />}
     <span class="text">{text}</span>
 </a>

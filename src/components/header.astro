@@ -1,5 +1,6 @@
 ---
 import { languages, getLanguageFromURL, useTranslations } from "../i18n/utils";
+import ThemeToggle from "./ThemeToggle.astro";
 
 const { pathname } = Astro.url;
 const currentLang = getLanguageFromURL(pathname);
@@ -101,7 +102,7 @@ const t = useTranslations(currentLang);
     @import "../styles/variables.scss";
 
     .background-white {
-        background-color: #ffffff;
+        background-color: var(--card-bg);
         width: 100%;
         z-index: 1000;
         position: fixed;
@@ -115,7 +116,7 @@ const t = useTranslations(currentLang);
         flex-direction: row;
         align-items: center;
         width: 100%;
-        background-color: white;
+        background-color: var(--card-bg);
         color: $base-color;
 
         .column {
@@ -161,7 +162,7 @@ const t = useTranslations(currentLang);
             gap: 10px;
             &:hover {
                 background: $accent-color;
-                color: white;
+                color: var(--accent-text-color);
             }
 
             @media screen and (max-width: $mobile) {
@@ -217,7 +218,7 @@ const t = useTranslations(currentLang);
             .links {
                 position: fixed;
                 flex-direction: column;
-                background: white;
+                background: var(--card-bg);
                 top: 70px;
                 right: -100%;
                 width: 100%;
@@ -290,7 +291,10 @@ const t = useTranslations(currentLang);
                     >{t("nav.contact")}</a
                 >
             </div>
-            <div>
+            <div
+                style="display: flex; align-items: center; gap: 10px; margin-left: 20px;"
+            >
+                <ThemeToggle />
                 <button class="lang-switcher text-size heading-text-typo">
                     {
                         currentLang === "es" ? (

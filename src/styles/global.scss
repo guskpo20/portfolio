@@ -1,5 +1,39 @@
 @import 'variables.scss';
 
+// CSS Custom Properties for Theming (Moved from variables.scss to ensure global scope)
+:root {
+    --base-color: #2563EB;
+    --accent-color: #0f172a;
+    --background-color: #e0f2fe; // Sections background (celeste)
+    --body-bg: #ffffff; // Main background (white)
+
+    --text-main: #000000;
+    --text-secondary: #000000;
+
+    --white-color: #dbd8d8;
+    --grey-color: #707070;
+    --card-bg: #ffffff;
+
+    --accent-text-color: #ffffff;
+}
+
+[data-theme='dark'] {
+    --base-color: #60a5fa;
+    --accent-color: #e2e8f0;
+
+    --background-color: #1e293b;
+    --body-bg: #0f172a;
+
+    --text-main: #f8fafc;
+    --text-secondary: #e2e8f0;
+
+    --white-color: #1e293b;
+    --grey-color: #94a3b8;
+    --card-bg: #1e293b;
+
+    --accent-text-color: #0f172a;
+}
+
 // Reset y estilos base
 * {
     margin: 0;
@@ -16,6 +50,8 @@ html {
 body {
     /* height: 300vh; */
     position: relative;
+    background-color: var(--body-bg);
+    color: var(--text-secondary);
 }
 
 // Clases utilitarias
@@ -25,9 +61,7 @@ body {
     padding: 0 10px;
 }
 
-.border-visual-debug {
-    /* border: 2px solid $base-color;  */
-}
+
 
 .background-dark {
     background-color: $background-color;

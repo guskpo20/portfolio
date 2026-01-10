@@ -110,6 +110,23 @@ const {
 				},
 			)}
 		/>
+
+		<script is:inline>
+			// Theme initialization
+			(function () {
+				const theme = localStorage.getItem("theme");
+				const systemTheme = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches
+					? "dark"
+					: "light";
+				const appliedTheme = theme || systemTheme;
+				document.documentElement.setAttribute(
+					"data-theme",
+					appliedTheme,
+				);
+			})();
+		</script>
 	</head>
 	<body>
 		<Header />

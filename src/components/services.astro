@@ -63,6 +63,13 @@ const services = t("services.cards") as ServiceCard[];
                         color: $base-color;
                     }
                 }
+
+                // Invert icons in dark mode
+                :global([data-theme="dark"]) & {
+                    img {
+                        filter: invert(1) brightness(2); // Make black icons white
+                    }
+                }
             }
         }
     }

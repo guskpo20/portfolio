@@ -1,10 +1,14 @@
-// Colors
-$base-color: #2563EB;
-$accent-color: #0f172a;
-$background-color: #e0f2fe;
-$gradient: linear-gradient(135deg, #2563EB, #00c6ff);
-$white-color: #dbd8d8;
-$grey-color: #707070;
+// CSS Custom Properties for Theming are now in global.scss
+// This file maps SCSS variables to those CSS properties
+
+
+// Colors (mapped to CSS variables)
+$base-color: var(--base-color);
+$accent-color: var(--accent-color);
+$background-color: var(--background-color);
+$gradient: linear-gradient(135deg, var(--base-color), #00c6ff); // Gradient might need more work for dark mode, but start here
+$white-color: var(--white-color);
+$grey-color: var(--grey-color);
 
 // Layout
 $container-max-width: 1024px;
@@ -23,7 +27,10 @@ $font-size-small: 18px;
 $font-size-base: 24px;
 $font-size-heading: 60px;
 $line-height-base: 1.1;
-$heading-color: #333;
-$body-color: #666;
+
+// Use CSS vars for these too if possible, but they are used in global scss
+$heading-color: var(--text-main);
+$body-color: var(--text-secondary);
+
 $heading-font-weight: 600;
 $body-font-weight: 400;

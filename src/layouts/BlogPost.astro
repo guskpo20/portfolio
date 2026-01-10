@@ -158,14 +158,14 @@ const alternateURLs =
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        color: #666;
+        color: var(--text-secondary);
         text-decoration: none;
         font-weight: 500;
         margin-bottom: 1.5rem;
         transition: color 0.2s;
 
         &:hover {
-            color: $base-color;
+            color: var(--base-color);
         }
 
         svg {
@@ -200,7 +200,7 @@ const alternateURLs =
                 font-size: 2.5rem;
                 line-height: 1.2;
                 margin: 1rem 0;
-                color: $base-color;
+                color: var(--base-color);
             }
 
             .tags {
@@ -229,7 +229,7 @@ const alternateURLs =
             }
 
             .date {
-                color: #666;
+                color: var(--text-secondary);
                 margin-bottom: 0.5rem;
             }
 
@@ -246,21 +246,30 @@ const alternateURLs =
                 margin-top: 2rem;
                 margin-bottom: 1rem;
                 font-family: $font-family-heading;
-                color: $base-color;
+                color: var(--base-color);
             }
 
             :global(h3) {
                 font-size: 1.4rem;
                 margin-top: 1.5rem;
                 margin-bottom: 0.8rem;
-                color: $base-color;
+                color: var(--base-color);
             }
 
             :global(p) {
                 margin-bottom: 0.5rem;
-                color: #333;
+                color: var(--text-secondary);
                 line-height: 1.8;
                 font-size: 1.1rem;
+            }
+
+            :global(a) {
+                color: var(--base-color);
+                text-decoration: underline;
+                transition: opacity 0.2s;
+                &:hover {
+                    opacity: 0.8;
+                }
             }
 
             :global(ul),
@@ -268,7 +277,7 @@ const alternateURLs =
                 font-size: 1.1rem;
                 margin-bottom: 0.5rem;
                 padding-left: 2.5rem; // Uniform padding for alignment
-                color: #333;
+                color: var(--text-secondary);
             }
 
             :global(ul ul),
@@ -284,7 +293,7 @@ const alternateURLs =
             }
 
             :global(pre) {
-                background-color: #f4f4f4;
+                background-color: var(--white-color);
                 padding: 1rem;
                 border-radius: 8px;
                 overflow-x: auto;
@@ -311,7 +320,7 @@ const alternateURLs =
 
             :global(small) {
                 font-size: 0.8em;
-                color: #666;
+                color: var(--grey-color);
             }
 
             :global(sup),

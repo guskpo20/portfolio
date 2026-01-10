@@ -1,5 +1,5 @@
 ---
-import { languages, getLanguageFromURL, useTranslations } from '../i18n/utils';
+import { languages, getLanguageFromURL, useTranslations } from "../i18n/utils";
 
 const { pathname } = Astro.url;
 const currentLang = getLanguageFromURL(pathname);
@@ -17,22 +17,22 @@ interface TabItem {
     }[];
 }
 
-const tabs = (t('types') as any).tabs as TabItem[];
+const tabs = (t("types") as any).tabs as TabItem[];
 ---
 
 <style lang="scss">
-    @import '../styles/variables.scss';
+    @import "../styles/variables.scss";
 
     .container {
         padding: 90px 50px;
 
-        h2{
+        h2 {
             margin-bottom: 50px;
             color: $base-color;
             text-align: center;
-             @media screen and (max-width: $mobile) {
+            @media screen and (max-width: $mobile) {
                 font-size: 35px;
-             }
+            }
         }
 
         @media screen and (max-width: $mobile) {
@@ -58,7 +58,9 @@ const tabs = (t('types') as any).tabs as TabItem[];
 
                 &.active {
                     background: $accent-color;
-                    color: white;
+                    color: var(
+                        --body-bg
+                    ); // White in Light Mode, Dark in Dark Mode (vs Light Accent)
                 }
 
                 &:hover:not(.active) {
@@ -81,6 +83,11 @@ const tabs = (t('types') as any).tabs as TabItem[];
                 border-radius: 10px;
                 text-align: center;
 
+                // Invert icons in dark mode
+                :global([data-theme="dark"]) & img {
+                    filter: invert(1) brightness(2);
+                }
+
                 &.active {
                     display: flex;
                     flex-direction: column;
@@ -100,6 +107,18 @@ const tabs = (t('types') as any).tabs as TabItem[];
                     margin: 10px 0;
                 }
 
+                // ... rest of styles
+                .description {
+                    color: $grey-color;
+                    font-size: 0.95em;
+                    margin-bottom: 15px;
+                }
+
+                // Keep styles structure intact, just partial replace if possible or full block
+                // Since replace tool works on blocks, I need to match carefully.
+                // Let's replace the whole .type-card block to be safe or just top part.
+                // I will try to match from .type-card down to h3 to include the img filter.
+
                 .description {
                     color: $grey-color;
                     font-size: 0.95em;
@@ -109,10 +128,10 @@ const tabs = (t('types') as any).tabs as TabItem[];
                 .details {
                     width: 100%;
                     text-align: left;
-                    
+
                     .detail-section {
                         margin-top: 12px;
-                        
+
                         strong {
                             color: $accent-color;
                             font-size: 0.9em;
@@ -145,64 +164,83 @@ const tabs = (t('types') as any).tabs as TabItem[];
 </style>
 
 <section class="container" id="types">
-    <h2 class="heading-text">{t('types.title')}</h2>
+    <h2 class="heading-text">{t("types.title")}</h2>
     <div class="tabs">
-        {tabs.map((tab, index) => (
-            <button 
-                class={index === 0 ? 'active' : ''} 
-                data-tab={tab.id}
-            >
-                {tab.title}
-            </button>
-        ))}
+        {
+            tabs.map((tab, index) => (
+                <button class={index === 0 ? "active" : ""} data-tab={tab.id}>
+                    {tab.title}
+                </button>
+            ))
+        }
     </div>
-    
+
     <div class="tab-content">
-        {tabs.map((tab, tabIndex) => 
-            tab.items.map((item, itemIndex) => (
-                <div 
-                    class={`type-card ${tabIndex === 0 ? 'active' : ''}`}
-                    data-content={tab.id}
-                >
-                    <img src={item.image} alt={item.title} />
-                    <h3>{item.title}</h3>
-                    <p class="description">{item.description}</p>
-                    <div class="details">
-                        <div class="detail-section">
-                            <strong>{currentLang === 'es' ? 'Ideal para:' : 'Ideal for:'}</strong>
-                            <p>{item.idealFor}</p>
-                        </div>
-                        <div class="detail-section">
-                            <strong>{currentLang === 'es' ? 'Incluye:' : 'Includes:'}</strong>
-                            <p>{item.includes}</p>
+        {
+            tabs.map((tab, tabIndex) =>
+                tab.items.map((item, itemIndex) => (
+                    <div
+                        class={`type-card ${tabIndex === 0 ? "active" : ""}`}
+                        data-content={tab.id}
+                    >
+                        <img src={item.image} alt={item.title} />
+                        <h3>{item.title}</h3>
+                        <p class="description">{item.description}</p>
+                        <div class="details">
+                            <div class="detail-section">
+                                <strong>
+                                    {currentLang === "es"
+                                        ? "Ideal para:"
+                                        : "Ideal for:"}
+                                </strong>
+                                <p>{item.idealFor}</p>
+                            </div>
+                            <div class="detail-section">
+                                <strong>
+                                    {currentLang === "es"
+                                        ? "Incluye:"
+                                        : "Includes:"}
+                                </strong>
+                                <p>{item.includes}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))
-        )}
+                )),
+            )
+        }
     </div>
 </section>
 
 <script>
     function setupTabs() {
-        const tabs = document.querySelectorAll('.tabs button[data-tab]') as NodeListOf<HTMLButtonElement>;
-        const cards = document.querySelectorAll('.type-card') as NodeListOf<HTMLDivElement>;
+        const tabs = document.querySelectorAll(
+            ".tabs button[data-tab]",
+        ) as NodeListOf<HTMLButtonElement>;
+        const cards = document.querySelectorAll(
+            ".type-card",
+        ) as NodeListOf<HTMLDivElement>;
 
         function setActiveTab(tabId: string): void {
             // Update tabs
-            tabs.forEach(tab => {
-                tab.classList.toggle('active', tab.getAttribute('data-tab') === tabId);
+            tabs.forEach((tab) => {
+                tab.classList.toggle(
+                    "active",
+                    tab.getAttribute("data-tab") === tabId,
+                );
             });
 
             // Update content
-            cards.forEach(card => {
-                card.classList.toggle('active', card.getAttribute('data-content') === tabId);
+            cards.forEach((card) => {
+                card.classList.toggle(
+                    "active",
+                    card.getAttribute("data-content") === tabId,
+                );
             });
         }
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-tab');
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const tabId = tab.getAttribute("data-tab");
                 if (tabId) {
                     setActiveTab(tabId);
                 }
@@ -211,11 +249,11 @@ const tabs = (t('types') as any).tabs as TabItem[];
     }
 
     // Setup tabs when the page loads
-    document.addEventListener('DOMContentLoaded', setupTabs);
-    document.addEventListener('astro:page-load', setupTabs);
+    document.addEventListener("DOMContentLoaded", setupTabs);
+    document.addEventListener("astro:page-load", setupTabs);
 
     // Run setup immediately in case the page is already loaded
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
         setupTabs();
     }
 </script>

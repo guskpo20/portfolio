@@ -176,7 +176,7 @@ const { page } = Astro.props;
         }
         .intro-text {
             font-size: 1.2rem;
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 3rem;
             max-width: 800px;
         }
@@ -234,15 +234,15 @@ const { page } = Astro.props;
         h2 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            color: $base-color;
+            color: var(--base-color);
         }
         .date {
             font-size: 0.9rem;
-            color: #888;
+            color: var(--grey-color);
             margin-bottom: 0.5rem;
         }
         p {
-            color: #666;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
         .tags {

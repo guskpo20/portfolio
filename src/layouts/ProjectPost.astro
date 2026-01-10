@@ -122,7 +122,7 @@ const alternateURLs =
         // Ensure this clears the fixed navbar
         padding-top: 140px;
         padding-bottom: 3rem;
-        background: linear-gradient(to bottom, #f9f9f9, #fff);
+        background: transparent;
         text-align: center;
         position: relative;
         z-index: 1;
@@ -148,7 +148,7 @@ const alternateURLs =
             display: flex; /* Flex behavior, block-level in flex container */
             align-items: center;
             gap: 0.5rem;
-            color: #666;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             margin-bottom: 2rem;
@@ -198,7 +198,7 @@ const alternateURLs =
 
         .description {
             font-size: 1.25rem;
-            color: #666;
+            color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto 1.5rem;
             line-height: 1.6;
@@ -211,9 +211,10 @@ const alternateURLs =
             flex-wrap: wrap;
 
             .tech-tag {
-                color: #555;
+                color: var(--text-secondary);
                 font-size: 0.9rem;
-                background: #eee;
+                background: var(--card-bg);
+                border: 1px solid var(--grey-color);
                 padding: 4px 12px;
                 border-radius: 20px;
             }
@@ -246,28 +247,36 @@ const alternateURLs =
             font-size: 2rem;
             margin-top: 3rem;
             margin-bottom: 1rem;
-            color: $base-color;
+            color: var(--base-color);
             font-family: $font-family-heading;
         }
         :global(h3) {
             font-size: 1.5rem;
             margin-top: 2rem;
             margin-bottom: 0.8rem;
-            color: $base-color;
+            color: var(--base-color);
             font-weight: 600;
         }
         :global(h4) {
             font-size: 1.3rem;
             margin-top: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: var(--text-main);
             font-weight: 600;
         }
         :global(p) {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #333;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
+        }
+        :global(a) {
+            color: var(--base-color);
+            text-decoration: underline;
+            transition: opacity 0.2s;
+            &:hover {
+                opacity: 0.8;
+            }
         }
 
         :global(ul),
@@ -277,7 +286,7 @@ const alternateURLs =
 
             :global(li) {
                 margin-bottom: 0.5rem;
-                color: #333;
+                color: var(--text-secondary);
                 line-height: 1.8; // Match p line-height
                 padding-left: 0.5rem;
                 font-size: 1.1rem; // Match p font-size
@@ -300,7 +309,7 @@ const alternateURLs =
         }
 
         :global(pre) {
-            background-color: #f4f4f4;
+            background-color: var(--white-color);
             padding: 2rem; // More padding on all sides
             border-radius: 8px;
             overflow-x: auto;
@@ -310,7 +319,7 @@ const alternateURLs =
         }
 
         :global(strong) {
-            color: $base-color;
+            color: var(--base-color);
             font-weight: 600;
         }
     }
