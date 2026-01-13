@@ -197,8 +197,6 @@ Podés estructurar las ideas en distintas “categorías” según enfoque — f
 
 🔹 Email marketing / Diseño de emails
 
-“Por qué muchos emails nunca se abren — y 5 errores comunes al enviar newsletters”
-
 “Checklist para un email que convierte: qué revisar antes de dar ‘Enviar’”
 
 “Cómo estructuro un email para que sea claro en mobile y desktop (sin complicarte con código)”

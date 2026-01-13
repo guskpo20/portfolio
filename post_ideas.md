@@ -1,1 +1,1 @@
-Por qué muchos emails nunca se abren — y 5 errores comunes al enviar newsletters
+Para hacer: Cómo estructuro un email para que sea claro en mobile y desktop (sin complicarte con código)
