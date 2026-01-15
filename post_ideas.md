@@ -1,1 +1,1 @@
-Para hacer: Cómo estructuro un email para que sea claro en mobile y desktop (sin complicarte con código)
+“Qué tener en cuenta al hacer una web + newsletter + embudo de ventas”

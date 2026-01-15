@@ -199,8 +199,6 @@ Podés estructurar las ideas en distintas “categorías” según enfoque — f
 
 “Checklist para un email que convierte: qué revisar antes de dar ‘Enviar’”
 
-“Cómo estructuro un email para que sea claro en mobile y desktop (sin complicarte con código)”
-
 “Asuntos que sí abren: buenas prácticas para líneas de asunto en 2026”
 
 Algo sobre preheaders
