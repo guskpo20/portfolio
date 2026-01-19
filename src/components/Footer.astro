@@ -49,8 +49,8 @@ const year = new Date().getFullYear();
     @import "../styles/variables.scss";
 
     .footer {
-        background-color: #fff;
-        border-top: 1px solid #eaeaea;
+        background-color: var(--card-bg);
+        border-top: 1px solid var(--card-border, #eaeaea);
         padding: 2rem 0;
         margin-top: auto;
     }
@@ -75,9 +75,13 @@ const year = new Date().getFullYear();
                 opacity 0.2s;
 
             img {
-                filter: brightness(0); // Force icons to be black
-                opacity: 0.6; // Soften the black a bit
+                filter: var(--icon-filter, brightness(0));
+                opacity: 0.8;
                 transition: opacity 0.2s;
+
+                :global([data-theme="dark"]) & {
+                    filter: brightness(0) invert(1);
+                }
             }
 
             &:hover {
@@ -94,7 +98,7 @@ const year = new Date().getFullYear();
     .copyright {
         font-family: $font-family-base;
         font-size: 0.9rem;
-        color: #666;
+        color: $heading-color; // var(--text-main) for better visibility
         text-align: center;
     }
 </style>

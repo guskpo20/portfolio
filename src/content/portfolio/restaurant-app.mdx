@@ -1,0 +1,105 @@
+---
+title_es: "Restaurante Experience App"
+title_en: "Restaurante Experience App"
+description_es: "Una aplicación web moderna y completa para la gestión integral de un restaurante premium."
+description_en: "A modern and complete web application for the comprehensive management of a premium restaurant."
+category: "Web"
+pubDate: "2024-01-20"
+tags: ["React", "TypeScript", "Vite", "SCSS", "UX/UI"]
+heroImage: "/portfolio/restaurant-app-1.png"
+---
+import Es from '../../components/mdx/Es.astro';
+import En from '../../components/mdx/En.astro';
+import Carousel from '../../components/Carousel.astro';
+
+<Es>
+
+## Sobre el Proyecto
+
+**Restaurante Experience App** es una aplicación web moderna diseñada para la gestión integral de un restaurante premium. Este proyecto simula un ecosistema full-stack, ofreciendo una experiencia fluida tanto para el cliente final como para el personal administrativo.
+
+> **Proyecto Personal** | Diseñado para demostrar capacidades en React Avanzado, Arquitectura de Software y Diseño UX/UI.
+
+**🔗 [Visitar Sitio Web](https://restaurant-tau-sable.vercel.app)**
+
+<Carousel images={[
+  "/portfolio/restaurant-app-1.png",
+  "/portfolio/restaurant-app-2.png",
+  "/portfolio/restaurant-app-3.png",
+  "/portfolio/restaurant-app-4.png",
+  "/portfolio/restaurant-app-5.png",
+  "/portfolio/restaurant-app-6.png",
+  "/portfolio/restaurant-app-7.png"
+]} />
+
+### Características Principales
+
+#### Lado Cliente (Public Facing)
+*   **Landing Page Impactante**: Diseño "Premium" con animaciones fluidas (Framer Motion), tipografía elegante y una interfaz inmersiva en modo oscuro.
+*   **Gestión de Reservas Visual**: Sistema único donde los clientes no solo eligen la hora, sino que seleccionan su **mesa específica** en un mapa interactivo en tiempo real, que valida disponibilidad según fecha y hora.
+*   **Catálogo Digital**: Visualización del menú con filtrado por categorías y detalles de productos.
+
+#### Panel de Administración & POS
+*   **Dashboard en Tiempo Real**: Vista general del salón con indicadores de estado (Libre, Ocupada, Reservada) y alertas visuales para "Reservas Pendientes".
+*   **Sistema de Pedidos (POS)**: Apertura de mesas, asignación de camareros, gestión de ítems y cálculo automático de totales.
+*   **Ticket / Facturación**: Generación automática de tickets de consumo (PDF) utilizando capacidades nativas del navegador.
+
+### Stack Tecnológico
+
+*   **Core**: React 18, TypeScript, Vite.
+*   **Estilos**: SCSS Modules con Tokens de diseño.
+*   **Arquitectura**: Patrón **Service Layer** para abstraer la lógica de negocio y simular un backend con persistencia en `LocalStorage` y latencia artificial.
+
+### Highlights de Implementación
+
+*   **Lógica de Reservas Cruzada**: Detección inteligente de conflictos entre mesas libres y reservas próximas.
+*   **Optimizaciones**: Uso eficiente de `useMemo` para datos complejos.
+*   **Zero-Dependency PDF**: Generación de tickets usando herramientas estándar de la web (`window.print`).
+
+</Es>
+
+<En>
+
+## About the Project
+
+**Restaurante Experience App** is a modern web application designed for the comprehensive management of a premium restaurant. This project simulates a full-stack ecosystem, offering a fluid experience for both the end customer and administrative staff.
+
+> **Personal Project** | Designed to demonstrate capabilities in Advanced React, Software Architecture, and UX/UI Design.
+
+**🔗 [Visit Website](https://restaurant-tau-sable.vercel.app)**
+
+<Carousel images={[
+  "/portfolio/restaurant-app-1.png",
+  "/portfolio/restaurant-app-2.png",
+  "/portfolio/restaurant-app-3.png",
+  "/portfolio/restaurant-app-4.png",
+  "/portfolio/restaurant-app-5.png",
+  "/portfolio/restaurant-app-6.png",
+  "/portfolio/restaurant-app-7.png"
+]} />
+
+### Key Features
+
+#### Client Side (Public Facing)
+*   **Impactful Landing Page**: "Premium" design with fluid animations (Framer Motion), elegant typography, and an immersive dark mode interface.
+*   **Visual Reservation Management**: Unique system where customers not only choose the time but also select their **specific table** on a real-time interactive map, validating availability based on date and time.
+*   **Digital Catalog**: Menu visualization with category filtering and product details.
+
+#### Admin Panel & POS
+*   **Real-Time Dashboard**: Overview of the dining room with status indicators (Free, Occupied, Reserved) and visual alerts for "Pending Reservations".
+*   **POS System**: Table opening, waiter assignment, item management, and automatic total calculation.
+*   **Ticket / Invoicing**: Automatic generation of consumption tickets (PDF) using native browser capabilities.
+
+### Tech Stack
+
+*   **Core**: React 18, TypeScript, Vite.
+*   **Styles**: SCSS Modules with Design Tokens.
+*   **Architecture**: **Service Layer** pattern to abstract business logic and simulate a backend with `LocalStorage` persistence and artificial latency.
+
+### Implementation Highlights
+
+*   **Cross-Reservation Logic**: Intelligent detection of conflicts between free tables and upcoming reservations.
+*   **Optimizations**: Efficient use of `useMemo` for complex data.
+*   **Zero-Dependency PDF**: Ticket generation using standard web tools (`window.print`).
+
+</En>
