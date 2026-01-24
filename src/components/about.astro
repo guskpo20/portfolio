@@ -40,33 +40,39 @@ const t = useTranslations(currentLang);
             }
             .image-container {
                 width: 400px;
-                border-radius: 30% !important;
+                width: 400px;
+                border-radius: 0 0 30% 30% !important;
                 overflow: hidden;
-                background-color: $base-color;
+                /* background-color: $base-color; */
                 display: flex;
+                filter: var(--profile-shadow);
                 justify-content: center;
                 @media screen and (max-width: $almost-mobile) {
                     width: 250px;
-                    aspect-ratio: 1/1;
+                    /* aspect-ratio: 1/1; */
                     display: flex;
                     align-items: center;
-                    height: 250px;
-                    border-radius: 20% !important;
+                    /* height: 250px; */
+                    /* height: 250px; */
+                    border-radius: 0 0 20% 20% !important;
                     overflow: hidden;
-                    background-color: $base-color;
+                    /* background-color: $base-color; */
+                    /* background-color: $base-color; */
                     display: flex;
+                    margin-bottom: 30px;
                     position: relative;
                 }
                 img {
                     width: 100%;
+
                     height: auto;
                     @media screen and (max-width: $almost-mobile) {
                         width: 100%;
                         height: auto;
-                        min-height: 100%;
-                        object-fit: cover;
-                        position: absolute;
-                        top: 0;
+                        /* min-height: 100%; */
+                        /* object-fit: cover; */
+                        /* position: absolute; */
+                        /* top: 0; */
                     }
                 }
             }
