@@ -4,9 +4,18 @@ import About from "../components/about.astro";
 import Services from "../components/services.astro";
 import Types from "../components/types.astro";
 import Contact from "../components/contact.astro";
+import { useTranslations } from "../i18n/utils";
+
+const t = useTranslations("es");
+const alternateURLs = { en: "/en/" };
 ---
 
-<Layout title="TavoDev | Desarrollador de Emails y Web en Uruguay" lang="es">
+<Layout
+  title="TavoDev | Desarrollador de Emails y Web en Uruguay"
+  description={t("meta.description")}
+  alternateURLs={alternateURLs}
+  lang="es"
+>
   <About />
   <div class="background-dark">
     <Services />
