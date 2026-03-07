@@ -92,11 +92,11 @@ const sortedPosts = posts.sort(
         }
         .intro-text {
             font-size: 1.2rem;
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 3rem;
             max-width: 800px;
             a {
-                color: $base-color;
+                color: var(--base-color);
             }
         }
         .empty-state {
@@ -104,7 +104,7 @@ const sortedPosts = posts.sort(
             text-align: center;
             p {
                 font-size: 1.5rem;
-                color: #999;
+                color: var(--grey-color);
             }
         }
     }
@@ -118,7 +118,7 @@ const sortedPosts = posts.sort(
     .post-card {
         margin-bottom: 2rem;
         padding-bottom: 2rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--grey-color);
         a {
             text-decoration: none;
             color: inherit;
@@ -131,15 +131,15 @@ const sortedPosts = posts.sort(
         h2 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            color: $base-color;
+            color: var(--base-color);
         }
         .date {
             font-size: 0.9rem;
-            color: #888;
+            color: var(--grey-color);
             margin-bottom: 0.5rem;
         }
         p {
-            color: #666;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
         .tags {
@@ -148,8 +148,8 @@ const sortedPosts = posts.sort(
             gap: 0.5rem;
             flex-wrap: wrap;
             .tag {
-                background-color: #f5f5f5;
-                color: #666;
+                background-color: var(--white-color);
+                color: var(--text-secondary);
                 padding: 0.2rem 0.5rem;
                 border-radius: 4px;
                 font-size: 0.8rem;

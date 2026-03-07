@@ -156,8 +156,8 @@ const { items, lang } = Astro.props;
     }
 
     .email-item {
-        background: #fff;
-        border: 1px solid #eee;
+        background: var(--card-bg);
+        border: 1px solid var(--grey-color);
         border-radius: 8px;
         overflow: hidden;
         transition:
@@ -174,7 +174,7 @@ const { items, lang } = Astro.props;
         }
 
         .image-container {
-            background: #f4f4f4;
+            background: var(--white-color);
             aspect-ratio: 3/4; // Tall aspect ratio typical for emails
             overflow: hidden;
             position: relative;
@@ -218,13 +218,13 @@ const { items, lang } = Astro.props;
                 margin: 0 0 0.5rem 0;
                 font-size: 1.1rem;
                 font-weight: 600;
-                color: #333;
+                color: var(--text-main);
             }
 
             p {
                 margin: 0;
                 font-size: 0.9rem;
-                color: #666;
+                color: var(--text-secondary);
                 line-height: 1.4;
             }
         }
