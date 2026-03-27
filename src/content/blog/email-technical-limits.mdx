@@ -1,0 +1,101 @@
+---
+title_es: "Límites Técnicos del Email: Qué se puede y qué no se puede hacer"
+title_en: "Technical Limitations of Emails: What you can and cannot do"
+description_es: "Desmitificamos las locuras del diseño. Aprendé por qué no podés usar Javascript, y dominá las reglas de oro de UI/UX en correos."
+description_en: "We demystify crazy design ideas. Learn why you cannot use Javascript, and master the golden rules of UI/UX in emails."
+pubDate: "2026-03-30"
+tags: ["Email Development", "Frontend", "Strategy", "Design"]
+heroImage: "/posts/blog_first-post_1.png"
+---
+import Es from '../../components/mdx/Es.astro';
+import En from '../../components/mdx/En.astro';
+
+<Es>
+
+# Límites Técnicos del Email: ¿Qué se puede (y qué no) hacer?
+
+A todos los desarrolladores nos pasa. Llega un diseñador o el gerente de marketing con una idea brillante y "disruptiva": *"Quiero que el correo tenga un video autoplay de fondo, un carrusel interactivo táctil y un formulario de encuesta integrado"*. 
+
+Y acá es donde tenés que tragar saliva y ser el portador de las malas noticias: **un email no es una página web moderna.** 
+
+Los clientes de correo masivos (como Outlook, Gmail o Apple Mail) están limitados por medidas de seguridad increíblemente estrictas y motores de renderizado que, en algunos casos vergonzosos pero reales, no han evolucionado de forma drástica desde 2007.
+
+## Lo que *NO* podés hacer en un Email
+
+*   **JavaScript:** Olvidate para siempre. Ningún cliente de correo importante permite la ejecución de scripts por obvias razones de seguridad (principalmente *phishing* e inyecciones de código malicioso). Nada de animaciones JS complejas, librerías modernas ni llamadas a APIs.
+*   **Embeber Videos (Autoplay):** Colocar un tag `<video>` o un `<iframe>` de YouTube simplemente no va a funcionar en Gmail ni en el temido Outlook. La solución estándar es poner una imagen estática `.jpg` con un ícono enorme de "Play" pegado encima, el cual sirve de ancla para redirigir al usuario hacia YouTube.
+*   **Formularios integrados:** Aunque algunos clientes experimentales que soportan AMP for Email lo permiten a medias, los formularios clásicos de HTML que envían datos (`<form>`, `<input>`) fallan catastróficamente o son marcados agresivamente como **Spam** en la gran mayoría de las bandejas de entrada empresariales. Si precisás que llenen datos, poné un botón grande que los lleve a una *Landing Page* externa y limpia.
+
+## Lo que *SÍ* podés (y debés) hacer
+
+*   **GIFs Animados:** Son la auténtica salvación visual del email marketing. Pesan poquísimo y simulan la energía de un video sin depender de scripts. Todos los clientes los soportan, **pero tené en cuenta:** el soporte de la "animación" varía. Algunos clientes reproducirán el GIF en bucle infinito (*autorepeat forever*), otros lo reproducirán una sola vez y lo frenarán, y versiones antiguas de Outlook Desktop **no** lo animarán en absoluto y mostrarán únicamente el *primer frame* estático como una imagen JPG normal. Asegurate SIEMPRE de que el fotograma 1 tenga sentido comunicacional por sí solo.
+*   **Media Queries limitadas:** Podés usar un código híbrido basado en tablas combinado con Media Queries clásicas para que Gmail en un Android o Apple Mail en un iPhone muestren el correo fluido en pantallas chicas.
+
+## Las Reglas de Oro Visuales (Do's y Don'ts)
+
+Incluso respetando los límites técnicos, un buen diseño debe priorizar la legibilidad y la jerarquía por encima de la "creatividad extrema". Seguí estos principios:
+
+**✅ Lo que tenés que hacer (Do's):**
+*   **Mantené layouts simples y limpios:** Un máximo de dos columnas es ideal. Siempre pensá en *Mobile-First* primero, porque más del 60% de las aperturas suceden ahí.
+*   **Jerarquía visual clara:** Titular principal -> Imagen de apoyo -> Texto -> Botón (CTA). Esa es la ruta que guía el ojo del lector.
+*   **Diseñá previendo el bloqueo de imágenes:** Asegurate de sumar texto alternativo (`ALT text`) descriptivo a todas las imágenes y botones. Tu mensaje tiene que entenderse igual aunque tu cliente bloquee las fotos por defecto.
+*   **Aprovechá la "Zona VIP" (The Fold):** Mantené tu mensaje principal y CTA visibles sin que el usuario haga *scroll* (el tope de 300-400px es tu mejor terreno). Podés colocar los links clave de ventas justo acá arriba.
+*   **Fondos sólidos y fuentes seguras:** Usá bloques de colores simples, excelente contraste y fuentes "Web-safe" (Arial, Helvetica, Verdana).
+*   **Espacios consistentes:** Añadí *whitespace* para que el ojo descanse entre secciones y mantené márgenes iguales a lo largo de todo el correo.
+*   **CTAs cortos y directos:** "Comprar ahora", "Leer más", "Empezar". Un botón no es un párrafo. Mantene también la consistencia de tu marca en el tono.
+
+**❌ Lo que debés evitar (Don'ts):**
+*   **Grillas complejas:** Evitá layouts súper enroscados de muchas columnas; terminan rompiéndose o apilándose rarísimo en móviles y Outlook.
+*   **Texto sobre imágenes de fondo:** Los clientes viejos directamente no soportan fondos fotográficos.
+*   **Sombras, gradientes o blends:** Olvidate de CSS moderno avanzado. La mayoría de los clientes los ignorarán y se verán planos.
+*   **Texto minúsculo:** Evitá usar fuentes menores a 12px. Son súper difíciles de leer en el teléfono. Tampoco mezcles más de 2-3 tamaños/colores de fuente en todo el mail.
+*   **Elementos interactivos puros:** Efectos por *hover* en textos o elementos interactivos CSS pesados casi nunca funcionan. Tampoco confíes ciegamente en *custom fonts* (prepará siempre una fuente `sans-serif` de sistema porque la reemplazarán por defecto).
+
+Aprender a maquetar sabiendo dónde están las fronteras te ahorra muchísimos dolores de cabeza. Si lográs acatar estos límites manteniendo la identidad visual de la marca, estarás listo para armar un embudo de ventas demoledor. Podes leer de esto en mi **[Guía Definitiva de Email Marketing](/blog/guia-definitiva-email-marketing)**.
+
+</Es>
+
+<En>
+
+# Technical Limitations of Emails: What you can and cannot do
+
+It happens to every developer sooner or later. An enthusiastic designer or a marketing manager walks up with a brilliant, "disruptive" idea: *"I want the email to feature an auto-playing video background, an interactive touch carousel, and a fully functional embedded survey form."*
+
+And this is where you have to swallow hard and be the bearer of bad news: **an email is not a modern website.**
+
+Massive email clients (like Outlook, Gmail, or Apple Mail) are severely constrained by incredibly strict security measures and rendering engines that, in some embarrassing-but-real cases, haven't drastically evolved since 2007.
+
+## What you *CANNOT* do in an Email
+
+*   **JavaScript:** Forget about it completely. No major email client allows script execution due to blatant security reasons (chiefly *phishing* and malicious code injection). No complex JS animations, no modern libraries, no API calls.
+*   **Embedded Videos (Autoplay):** Placing a `<video>` tag or a YouTube `<iframe>` simply will not work in Gmail or the dreaded corporate Outlook Desktop. The "industry standard" workaround is pasting a static `.jpg` image with a massive "Play" icon layered on top of it, which acts as a simple anchor to redirect the user to an external YouTube link.
+*   **Complex Integrated Forms:** Even though some experimental clients supporting *AMP for Email* partially allow this, classic HTML forms that send data (`<form>`, `<input>`) fail catastrophically or get aggressively flagged as **Spam** in the vast majority of enterprise inboxes. If you need data collection, place a large button that links the user to a clean, external *Landing Page*.
+
+## What you *CAN* (and should) do
+
+*   **Animated GIFs:** The absolute visual salvation of email marketing. They simulate video motion without relying on scripts. All email clients broadly support them, **but beware:** animation support varies. Some modern clients loop them infinitely (*autorepeat forever*), others play them exactly once and stop on the last frame, and older stubborn clients (like Outlook Desktop) **won't animate them at all**, rendering only the *first static frame* as a JPG image. ALWAYS ensure that Frame 1 conveys the intended message on its own.
+*   **Limited Media Queries:** While Outlook Desktop is famously rebellious, you can use hybrid coding techniques (reliant on table-based layouts) combined with classic Media Queries. This ensures that Gmail on an Android or Apple Mail on an iPhone scales fluidly on a small screen.
+
+## The Visual Golden Rules (Do's and Don'ts)
+
+Even when staying within technical bounds, a great design should prioritize readability and hierarchy over "extreme creativity". Follow these core UI/UX principles for emails:
+
+**✅ What you must do (Do's):**
+*   **Keep layouts simple and clean:** Two columns max is ideal. Always think *Mobile-First* (over 60% of opens happen there).
+*   **Clear visual hierarchy:** Headline -> Image -> Text -> Button (CTA). This sequence naturally guides the reader's eye.
+*   **Design as if images might be blocked:** Ensure you include descriptive alternative text (`ALT text`) for all key images and buttons. Because if the client blocks inline images by default, your message should perfectly make sense anyway.
+*   **Utilize "The Fold":** Keep your main message and CTA visible *without* scrolling (the top 300-400px are prime real estate). Start your key links early.
+*   **Solid backgrounds and Web-safe fonts:** Use simple color blocks, high contrast between text and background, and reliable "Web-safe" fonts.
+*   **Consistent spacing:** Add *whitespace* to help the reader's eye move through the content naturally and avoid uneven margins between sections.
+*   **Short and action-oriented CTAs:** "Shop now", "Learn more". Keep it completely straightforward. Maintain overall brand consistency holding the same tone and colors.
+
+**❌ What you must avoid (Don'ts):**
+*   **Complex grids:** Avoid having too many columns; they often break gracefully or stack weirdly in mobile apps and Outlook.
+*   **Background images with text on top:** Outlook explicitly doesn't support background imagery (without hacky VML code). Your text could easily vanish.
+*   **Shadows, gradients, or blend effects:** Most clients strip these completely, rendering the designs rigidly flat.
+*   **Very small text:** Avoid sizing text smaller than 12px; it's borderline impossible to read and might blur on smartphones. Stick to a maximum of 2 or 3 styles/colors.
+*   **Pure interactive elements:** CSS-only carousels and text hover effects are simply not supported by most clients. Relying heavily on *custom web fonts* is also risky; most clients will overwrite them with generic system fonts.
+
+Learning how to code knowing exactly where your boundaries are saves you endless headaches. Keep it simple, fast, and legible. For the overarching strategic side of this, I invite you to read my pillar article: the **[Ultimate Guide to Email Marketing](/en/blog/guia-definitiva-email-marketing)**.
+
+</En>

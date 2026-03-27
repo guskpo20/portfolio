@@ -1,0 +1,109 @@
+---
+title_es: "Diseño de Emails en 2026: Por qué el Dark Mode rompe tus correos"
+title_en: "Email Design in 2026: Why Dark Mode breaks your emails"
+description_es: "Descubrí por qué tus correos corporativos se ven mal en modo oscuro y qué trucos técnicos usar para evitar la inversión automática de colores."
+description_en: "Discover why your corporate emails look terrible in dark mode and what technical tricks to use to prevent automatic color inversion."
+pubDate: "2026-03-29"
+tags: ["Email Development", "Frontend", "Career"]
+heroImage: "/posts/blog_first-post_1.png"
+---
+import Es from '../../components/mdx/Es.astro';
+import En from '../../components/mdx/En.astro';
+
+<Es>
+
+# Diseño de Emails en 2026: Por qué el "Dark Mode" rompe tus correos
+
+El **Modo Oscuro (Dark Mode)** se ha convertido en el estándar por defecto para la gran mayoría de los usuarios de teléfonos y aplicaciones de escritorio. Sin embargo, para los desarrolladores y diseñadores de *Email Marketing*, esto representa una de las mayores pesadillas técnicas posibles.
+
+¿Alguna vez enviaste un newsletter corporativo precioso y minimalista con fondo blanco, solo para darte cuenta de que el cliente de correo del usuario (como Gmail o Outlook) invirtió todos los colores forzosamente y dejó tu logo con un cuadro blanco horrible alrededor?
+
+No estás solo. Así es como podés evitarlo.
+
+## El problema del renderizado automático
+
+A diferencia del desarrollo web tradicional (donde tú definís exactamente cómo se comporta el sitio usando CSS), en los correos electrónicos dependés íntegramente de cómo el *cliente de correo* decida interpretar (o ignorar) tu código. 
+
+Cuando un usuario tiene activo el Dark Mode a nivel sistema operativo, clientes masivos como la "Gmail App" para iOS forzarán una inversión completa de todos los colores hexadecimales que hayas definido en la etiqueta `<body>` o `<table>`, sin pedirte permiso ni acatar tu CSS general. 
+
+## 3 Trucos para sobrevivir al Modo Oscuro
+
+### 1. Usa PNGs transparentes (Siempre)
+El error más común de los principiantes (y de algunos diseñadores confiados) es exportar los logos o íconos en formato JPG o con un fondo blanco sólido. Cuando el cliente invierte el fondo general del correo a gris muy oscuro o negro, tu imagen resalta como un parche cuadrado que grita "diseño amateur". Asegurate de que todos tus *assets* gráficos sean PNGs o WebP con fondo 100% transparente.
+
+### 2. Agregá bordes claros a las fuentes oscuras
+Si tu logo es de texto negro (`#000000`) y tiene fondo transparente, en modo claro se verá deslumbrante. Pero cuando el fondo se vuelva negro, el logo desaparecerá mágicamente camuflado con el fondo. Un truco rápido (si no podés usar *Media Queries* complejas por problemas de compatibilidad) es aplicarle un sutil *Stroke* (borde) de color blanco brillante o gris claro a las letras negras de tu logo. De esa forma, se resaltará sobre fondos oscuros pero pasará desapercibido en fondos claros.
+
+### 3. @media (prefers-color-scheme: dark)
+Para los clientes de correo que sí respetan los estándares modernos (Apple Mail es el mejor ejemplo de esto), podés tomar el control absoluto añadiendo meta tags y sus correspondientes *Media Queries* en tu bloque de `<style>`:
+
+```html
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+
+<style>
+  @media (prefers-color-scheme: dark) {
+    .dark-mode-bg { background-color: #1a1a1a !important; }
+    .dark-mode-text { color: #ffffff !important; }
+  }
+</style>
+```
+
+Lamentablemente, el gigante de Gmail ignora esto olímpicamente en muchas de sus versiones, por lo que las soluciones base de diseño (truco 1 y 2) siguen siendo tu seguro de vida más confiable.
+
+## El diseño es solo el envase
+
+Saber maquetar correos *pixel perfect* y dominar estos hacks de Dark Mode demuestra un excelente nivel técnico de Frontend, pero nada de esto te servirá si el contenido del correo no convence a la persona para hacer el deseado clic. 
+
+El diseño increíble debe encajar de forma microscópica dentro de un embudo (funnel) estructurado. Si querés aprender la parte estratégica que le da retorno a este desarrollo técnico, leé mi post principal: la **[Guía Definitiva de Email Marketing](/blog/guia-definitiva-email-marketing)**.
+
+</Es>
+
+<En>
+
+# Email Design in 2026: Why "Dark Mode" is breaking your emails
+
+**Dark Mode** has become the default standard for the vast majority of mobile and desktop application users. However, for *Email Marketing* developers and designers, this represents one of the biggest possible technical nightmares.
+
+Have you ever sent a beautiful, minimalist corporate newsletter with a white background, only to realize that the user's email client (like Gmail or Outlook) forcibly inverted all your colors and left your logo with a hideous white box around it?
+
+You are not alone. Here is how you can prevent it.
+
+## The auto-rendering problem
+
+Unlike traditional web development (where you define exactly how the site behaves using CSS), in emails you depend entirely on how the *email client* decides to parse (or ignore) your code.
+
+When a user has Dark Mode enabled at the OS level, massive clients like the iOS "Gmail App" will forcefully invert all HEX colors you have defined in the `<body>` or `<table>` tags, without asking for permission and completely bypassing your general CSS.
+
+## 3 Tricks to survive Dark Mode
+
+### 1. Use transparent PNGs (Always)
+The most common beginner mistake is exporting logos or icons in JPG format or with a solid white background. When the client inverts the overall background to dark gray or black, your image stands out as an ugly square patch that screams "amateur design". Make sure all your graphic *assets* are perfectly transparent PNGs or WebPs.
+
+### 2. Add light strokes to dark text
+If your logo is black text (`#000000`) on a transparent background, it will look stunning in light mode. But when the background turns black, the logo will magically disappear, perfectly camouflaged. A quick trick (if you can't use complex *Media Queries* due to compatibility issues) is to apply a subtle white or light gray *Stroke* to the black letters of your logo inside Illustrator or Figma. That way, it will stand out on dark backgrounds but go completely unnoticed on light ones.
+
+### 3. @media (prefers-color-scheme: dark)
+For modern email clients that actually respect standards (Apple Mail being the prime example of this), you can take absolute control by adding meta tags and specific Media Queries to your `<style>` block:
+
+```html
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+
+<style>
+  @media (prefers-color-scheme: dark) {
+    .dark-mode-bg { background-color: #1a1a1a !important; }
+    .dark-mode-text { color: #ffffff !important; }
+  }
+</style>
+```
+
+Unfortunately, the tech giant Gmail blatantly ignores this in many of its app versions, which is why baseline design solutions (tricks 1 and 2) remain your most reliable lifeline.
+
+## Design is just the packaging
+
+Knowing how to code *pixel-perfect* emails and mastering these Dark Mode hacks demonstrates excellent technical Frontend skills, but none of this will serve you if the email content doesn't convince the person to make the desired click.
+
+An incredible design must perfectly fit into a structured funnel. If you want to learn the strategic side that brings ROI to this technical development, make sure to read my pillar post: the **[Ultimate Guide to Email Marketing](/en/blog/guia-definitiva-email-marketing)**.
+
+</En>
